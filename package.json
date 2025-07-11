@@ -1,0 +1,43 @@
+{
+  "name": "ajk",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001 --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/postprocessing": "^3.0.4",
+    "@theatre/core": "0.5",
+    "@theatre/r3f": "0.5",
+    "@theatre/studio": "0.5",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.4",
+    "leva": "^0.10.0",
+    "lucide-react": "^0.522.0",
+    "maath": "^0.10.8",
+    "motion": "^12.19.1",
+    "next": "15.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "three": "^0.177.0",
+    "three-stdlib": "^2.36.0",
+    "tw-animate-css": "^1.3.4",
+    "uuid-by-string": "^4.0.0"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.2.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "24.0.7",
+    "@types/react": "19.1.8",
+    "@types/three": "^0.177.0",
+    "tailwindcss": "^4",
+    "typescript": "5.8.3"
+  }
+}

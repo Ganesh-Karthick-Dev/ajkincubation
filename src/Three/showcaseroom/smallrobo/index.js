@@ -1,0 +1,126 @@
+import React, { useRef } from 'react'
+import { useGLTF } from '@react-three/drei'
+
+export function SmallRoboModel(props) {
+  const { nodes, materials } = useGLTF('/models/showcaseroom/Robo.glb')
+  return (
+    <group {...props} dispose={null}>
+      <group 
+      position={[-6.909, 0.739, -53.019]}
+       rotation={[-Math.PI / 2, 0, 2.333]} 
+       scale={5.148}
+      >
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_1.geometry}
+          material={materials.FingersMAt}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_2.geometry}
+          material={materials.Head}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_3.geometry}
+          material={materials.EyeBorder}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_4.geometry}
+          material={materials.Ears}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_5.geometry}
+          material={materials.Eyes}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_6.geometry}
+          material={materials.Antenna}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_7.geometry}
+          material={materials.Holder}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_8.geometry}
+          material={materials['light.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_9.geometry}
+          material={materials.chestMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_10.geometry}
+          material={materials.hipsMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_11.geometry}
+          material={materials.Neck}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_12.geometry}
+          material={materials.midSpineMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_13.geometry}
+          material={materials.Wheelmat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_14.geometry}
+          material={materials.wheelHolderMAt}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_15.geometry}
+          material={materials.HandCircleMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_16.geometry}
+          material={materials.AfterCircleMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_17.geometry}
+          material={materials.ForeArmMat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.RightArm_FingersMAt_0_18.geometry}
+          material={materials.HandMad}
+        />
+      </group>
+    </group>
+  )
+}
+
+useGLTF.preload('/models/showcaseroom/Robo.glb')
