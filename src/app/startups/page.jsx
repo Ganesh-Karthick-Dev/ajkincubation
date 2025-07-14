@@ -101,12 +101,12 @@ const CardDesign = ({data}) => {
     })
 
     return (
-        <div ref={cardRef} className=' w-[160px] h-[300px] flex flex-col gap-[10px] relative overflow-hidden'>
+        <div ref={cardRef} className=' w-[210px] h-[300px] flex flex-col gap-[10px] relative overflow-hidden'>
 
             {/* Text Content - Shows by default */}
             <div ref={textContentRef} className="flex flex-col gap-[10px]">
-                <p className=' text-lg font-medium text-[#00CA40]'>{data.title}</p>
-                <p className=' text-xs text-[#929292] leading-normal tracking-wide'>{data.description}</p>
+                <p className=' text-2xl font-medium text-[#00CA40]'>{data.title}</p>
+                <p className=' text-lg text-[#929292] leading-normal tracking-wide'>{data.description}</p>
             </div>
 
             {/* Image Content - Hidden initially, shows on hover */}

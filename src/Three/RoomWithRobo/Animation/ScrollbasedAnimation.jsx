@@ -59,6 +59,10 @@ function ScrollbasedAnimation({ project }) {
       const smoothness = 0.1;
       const currentAnimPos = sheet.sequence.position;
       const newPosition = currentAnimPos + (currentPosition - currentAnimPos) * smoothness;
+
+      console.log(`totalDuration: ${totalDuration}`);
+      console.log(`currentDuration: ${sheet.sequence.position}`);
+      
       
       sheet.sequence.position = newPosition;
       scrollRef.current.current = newPosition;

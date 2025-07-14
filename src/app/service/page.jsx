@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react'
 import HorizontalStackingCards from '@/Components/Common/HorizontalStackingCards'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Image from 'next/image';
 
 const page = () => {
 
@@ -57,15 +58,22 @@ const page = () => {
             <div className='flex flex-col items-center justify-center gap-[2rem]'>
             <h1 className='text-6xl font-bold text-center text-[#2A2A2A]'>Programs & Services</h1>
 
-            <h2 className=' text-green-500 text-3xl font-semibold'>Incubation Program</h2>
+            <h2 className=' text-green-500 text-3xl font-semibold'>Nurturing Innovation from Ideation to Launch</h2>
 
-            <h3 className=' text-xl text-[#2A2A2A] font-light'>AIIF offers a pre-incubation and full incubation pathway with</h3>
+            <h3 className=' text-xl text-[#2A2A2A] text-center w-[80%] mx-auto font-light'>At AJK Innovation Incubator Foundation (AIIF), we offer a curated suite of programs and services that cater to student innovators, early-stage entrepreneurs, and research-driven founders. Whether you're just forming your idea or preparing to go to market, our structured pathways provide the right environment, resources, and guidance to help your startup succeed.</h3>
             </div>
 
             {/* cards */}
             <div>
                 <HorizontalStackingCards />
             </div>
+
+
+            <div>
+              {/* Standout Section */}
+              <StandoutSection />
+            </div>
+
 
             <div className=' flex flex-col gap-[30px] place-content-center place-items-center mb-[50px]'>
 
@@ -119,3 +127,55 @@ const page = () => {
 }
 
 export default page
+
+
+
+
+function StandoutSection() {
+  return (
+    <section
+      className="bg-gray-50 rounded-3xl shadow-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 max-w-6xl mx-auto my-12"
+    >
+
+
+      {/* Left column */}
+      <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#4e73ff] mb-6 leading-tight">
+          Startup Clinic
+        </h2>
+        <p className="text-lg text-gray-500 mb-8">
+          The AIIF Startup Clinic is a strategic advisory platform where founders receive tailored guidance to overcome startup challenges.
+        </p>
+        {/* <span className="bg-white text-gray-800 text-xs font-semibold px-4 py-1 rounded-full mb-4 shadow-sm">
+        Clinic Services Include
+          </span> */}
+        <button className="bg-[#4e73ff] text-white font-semibold px-8 py-3 rounded-lg shadow  transition">
+        Clinic Services Include
+        </button>
+
+        {/* points */}
+        <div className="mt-8">
+          <ul className="list-disc pl-6 space-y-3 text-gray-700 text-lg">
+            <li>One-on-one diagnostic sessions to assess startup gaps</li>
+            <li>Pitch deck reviews and investor presentation feedback</li>
+            <li>Business model evaluation and risk mitigation advice</li>
+            <li>Access to a pool of mentors from domains like tech, finance, legal, and marketing</li>
+          </ul>
+        </div>
+
+        <p className="text-gray-700 text-lg mt-4 italic">This service is especially beneficial for startups preparing for funding, accelerator applications, or market entry.</p>
+
+
+      </div>
+
+
+      {/* Right column */}
+      <div className="flex-1 flex items-center justify-center">
+        <div className="bg-gray-200 rounded-2xl flex items-center justify-center w-80 h-80">
+          {/* Replace below with your SVG or logo */}
+          <Image src="/webp/startup.webp" alt="Startup Clinic" width={300} height={300} />
+        </div>
+      </div>
+    </section>
+  );
+}

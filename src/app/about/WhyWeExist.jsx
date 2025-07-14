@@ -121,9 +121,9 @@ const WhyWeExist = () => {
 
                 
                 <div className=' flex flex-col items-end gap-5 rounded-xl px-[3.5rem] py-[4rem] justify-self-end w-[60%] bg-gradient-to-l from-[#00CA40] from-0% via-[#00CA40] via-60% to-transparent to-100% relative z-10'>
-                    <p className='text-3xl font-semibold'>Why We Exist</p>
-                    <p className='text-sm text-end'>India’s next wave of startups won’t just come from metros. They’ll emerge from classrooms, labs, and small towns places full of raw talent and untapped potential. AIIF exists to bridge the gap between grassroots innovation and global opportunity.</p>
-                    <p className='text-sm text-end'>Our incubator helps first-generation entrepreneurs take confident steps toward product building, fundraising, market validation, and company formatio</p>
+                    <p className='text-3xl font-semibold'>Our Institutional Advantage</p>
+                    <p className='text-sm text-end'>Being embedded within the AJK College of Arts and Science, AIIF has access to a multidisciplinary talent pool, research facilities, and academic mentorship that provides a unique advantage over standalone incubators. Students and faculty get a real-time opportunity to turn their academic pursuits into real world impact.</p>
+                    {/* <p className='text-sm text-end'>Our incubator helps first-generation entrepreneurs take confident steps toward product building, fundraising, market validation, and company formatio</p> */}
                 </div>
             </div>
         </>

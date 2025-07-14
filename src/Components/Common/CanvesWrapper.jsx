@@ -72,7 +72,7 @@ function  CanvesWrapper({ children }) {
             </e.mesh>
             <BaseEnvironment />
             {children}
-            <OrbitControls rotateSpeed={0.3} zoomSpeed={0.3} panSpeed={0.3} />
+            {/* <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} /> */}
             <ambientLight intensity={0.5} />
             <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport

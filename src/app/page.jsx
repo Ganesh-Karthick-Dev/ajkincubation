@@ -23,6 +23,11 @@ import { VaultModel } from "@/Three/showcaseroom/vault";
 import { BitcoinModel } from "@/Three/showcaseroom/bitcoin";
 import { MoneyModel } from "@/Three/showcaseroom/bitcoin/money";
 import { CenterElementModel } from "@/Three/showcaseroom/center-element";
+import TextOne from "@/Three/floatingtext/text1";
+import TextTwo from "@/Three/floatingtext/text2";
+import TextThree from "@/Three/floatingtext/text3";
+import TextFour from "@/Three/floatingtext/text4";
+import TextFive from "@/Three/floatingtext/text5";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -31,7 +36,7 @@ import { CenterElementModel } from "@/Three/showcaseroom/center-element";
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      <Loader />
+      {/* <Loader /> */}
       <CanvesWrapper>
         <Idel />
         <Wall />
@@ -61,6 +66,16 @@ export default function Home() {
         <BitcoinModel />
         {/* <MoneyModel /> */}
         <CenterElementModel />
+
+
+
+        {/* Floating Text */}
+        <TextOne />
+        <TextTwo />
+        <TextThree />
+        <TextFour />
+        <TextFive />
+        {/* Floating Text */}
 
      
       </CanvesWrapper>

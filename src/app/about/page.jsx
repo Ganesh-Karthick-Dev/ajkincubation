@@ -8,6 +8,8 @@ import { FaQuoteLeft } from "react-icons/fa6";
 import Mission from "./Mission";
 import WhyWeExist from "./WhyWeExist";
 import ScrollFan from "./scroll-fan";
+import Image from "next/image";
+import FinalSection from "./FinalSection";
 
 // Register GSAP with React
 gsap.registerPlugin(useGSAP);
@@ -45,13 +47,16 @@ function page() {
 
         {/* section 1 */}
           <div className=" grid grid-cols-2 gap-5 ">
-            <div className=" flex flex-col justify-center">
+            <div className=" flex flex-col justify-start">
             <h1 className=" text-7xl font-semibold">About Us</h1>
             </div>
 
             <div className=" flex flex-col justify-center items-end gap-[1rem]">
-              <h3 className="text-3xl font-bold">Who We Are</h3>
-              <p className=" text-end">The AJK Innovation Incubator Foundation (AIIF) is a Section 8 company established under AJK Educational Trust to create an innovation-driven startup ecosystem within the campus. Our focus is to support early-stage ventures, student innovators, and idea-stage entrepreneurs with infrastructure, mentorship, and funding access.</p>
+              <h3 className="text-3xl font-bold">Transforming Ideas into Impact</h3>
+              <p className=" text-end">At the heart of innovation and entrepreneurship in Tamil Nadu's Tier 2 and Tier 3 ecosystem, the AJK Innovation Incubator Foundation (AIIF) is redefining what’s possible for student-led startups and early-stage founders. Built by AJK College of Arts and Science, AIIF is not just an incubator it’s a launchpad where imagination meets execution.
+              </p>
+
+              <p className=" text-end">Whether it’s a ground breaking idea, a college project, or a passion driven prototype we turn potential into progress.</p>
             </div>
           </div>
 
@@ -70,9 +75,17 @@ function page() {
               className="absolute inset-0 left-1/2 w-1/2 h-full bg-white rounded-r-[2rem] z-10" 
             />
 
+            <Image
+              src="/webp/7379608_32265_updated.webp"
+              alt="aboutus"
+              width={1000}
+              height={1000}
+              className="w-full h-full object-cover rounded-[2rem]"
+            />
+
             
 
-            <video 
+            {/* <video 
               className="w-full h-full object-cover rounded-[2rem]"
               // controls
               autoPlay
@@ -91,7 +104,7 @@ function page() {
                   Download the video instead.
                 </a>
               </p>
-            </video>
+            </video> */}
 
           </div>
 
@@ -121,6 +134,11 @@ function page() {
 
             <div className=" my-[5rem]">
               <WhyWeExist />
+            </div>
+
+
+            <div>
+              {/* <FinalSection /> */}
             </div>
           
         </div>
