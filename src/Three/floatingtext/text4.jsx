@@ -41,8 +41,6 @@ const TextFour = () => {
                     <meshMatcapMaterial color="blue" matcap={matcapTexture} />
                 </Text3D>
             </Center>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[1, 1, 1]} intensity={1} />
             {/* <axesHelper args={[2]} /> */}
         </group>
     );

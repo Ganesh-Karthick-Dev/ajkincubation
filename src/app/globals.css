@@ -49,6 +49,15 @@
     background-color: #e5e5e5;
   }
 
+body, * {
+  cursor: url('/svg/arrowhead-rounded-outline.svg') 6 4, auto;
+}
+
+::selection{
+  background-color: rgb(104, 230, 79);
+  color: ghostwhite;
+}
+
 /* Hide scrollbar but keep scroll functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */

@@ -28,6 +28,9 @@ import TextTwo from "@/Three/floatingtext/text2";
 import TextThree from "@/Three/floatingtext/text3";
 import TextFour from "@/Three/floatingtext/text4";
 import TextFive from "@/Three/floatingtext/text5";
+import TitleText from "@/Three/floatingtext/TitleText";
+import RobotLeftText from "@/Three/floatingtext/RobotLeftText";
+import RobotTopText from "@/Three/floatingtext/RobotTopText";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -70,6 +73,9 @@ export default function Home() {
 
 
         {/* Floating Text */}
+        <TitleText />
+        <RobotLeftText />
+        <RobotTopText />
         <TextOne />
         <TextTwo />
         <TextThree />

@@ -4,7 +4,7 @@ import { useCurrentSheet } from '@theatre/r3f';
 import { val } from '@theatre/core';
 import { useFrame } from '@react-three/fiber';
 
-const TextOne = () => {
+const RobotLeftText = () => {
     const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
     const sheet = useCurrentSheet();
     const groupRef = useRef();
@@ -14,15 +14,15 @@ const TextOne = () => {
         const position = sheet.sequence.position;
         const total = val(sheet.sequence.pointer.length);
         const percent = position / total;
-        const shouldBeVisible = percent >= 0.53 && percent <= 0.58;
+        const shouldBeVisible = percent >= 0.58 && percent <= 0.61;
         groupRef.current.visible = shouldBeVisible;
     });
 
     return (
         <group
             ref={groupRef}
-            position={[0, 3.5, -9.7]}
-            rotation={[0, 5.1 , 0]}
+            position={[4, 4, -7.7]}
+            rotation={[0, 3 , 0]}
         >
             <Center>
                 <Text3D
@@ -37,23 +37,7 @@ const TextOne = () => {
                     bevelSegments={1}
                     letterSpacing={0.05}
                 >
-                    Big Dreams.
-                    <meshMatcapMaterial color="orange" matcap={matcapTexture} />
-                </Text3D>
-                <Text3D
-                    font="/fonts/Poppins_Regular.json"
-                    size={0.2}
-                    height={0.1}
-                    curveSegments={12}
-                    bevelEnabled    
-                    bevelThickness={0.00002}
-                    bevelSize={0.01}
-                    bevelOffset={0}
-                    bevelSegments={1}
-                    letterSpacing={0.05}
-                    position={[0, -0.4, 0]}
-                >
-                    Small Towns.
+                    Big ideas deserve 
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
                 </Text3D>
                 <Text3D
@@ -67,9 +51,9 @@ const TextOne = () => {
                     bevelOffset={0}
                     bevelSegments={1}
                     letterSpacing={0.05}
-                    position={[0, -0.8, 0]}
+                    position={[0, -0.4, 0]}
                 >
-                    Global Impact. 
+                   Bigger stage.
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
                 </Text3D>
             </Center>
@@ -79,4 +63,4 @@ const TextOne = () => {
     );
 };
 
-export default TextOne;
+export default RobotLeftText;
