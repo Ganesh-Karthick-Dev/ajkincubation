@@ -78,7 +78,7 @@ const StackingCards = ({ projects = [] }) => {
         trigger: container,
         start: `top+=${index * 300} center`,
         end: `bottom-=${(cards.length - index) * 400} center`,
-        scroller: scrollerElement || window,
+        scroller: typeof window !== "undefined" ? (scrollerElement || window) : undefined,
         scrub: 2,
         onUpdate: (self) => {
           const progress = self.progress;

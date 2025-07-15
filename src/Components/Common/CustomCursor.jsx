@@ -5,8 +5,10 @@ const GLOW_SIZE = 24; // Outer glow diameter
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const glowRef = useRef(null);
-  const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-  const pos = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  // Safely access window for SSR
+  const isClient = typeof window !== 'undefined';
+  const mouse = useRef({ x: isClient ? window.innerWidth / 2 : 0, y: isClient ? window.innerHeight / 2 : 0 });
+  const pos = useRef({ x: isClient ? window.innerWidth / 2 : 0, y: isClient ? window.innerHeight / 2 : 0 });
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -14,15 +16,17 @@ const CustomCursor = () => {
   }, []);
 
   useEffect(() => {
+    if (!isClient) return;
     const handleMouseMove = (e) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
+    if (!isClient) return;
     let animationFrame;
     const animate = () => {
       pos.current.x += (mouse.current.x - pos.current.x) * 0.18;
@@ -37,7 +41,7 @@ const CustomCursor = () => {
     };
     animate();
     return () => cancelAnimationFrame(animationFrame);
-  }, []);
+  }, [isClient]);
 
   return (
     <>

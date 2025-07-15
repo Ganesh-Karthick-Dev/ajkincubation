@@ -90,12 +90,15 @@ const CardDesign = ({data}) => {
             
             // Call reset immediately and on window focus (handles tab switching bugs)
             resetToDefault()
-            window.addEventListener('focus', resetToDefault)
-            
+            if (typeof window !== 'undefined') {
+              window.addEventListener('focus', resetToDefault)
+            }
             // Cleanup on unmount
             return () => {
+              if (typeof window !== 'undefined') {
                 window.removeEventListener('focus', resetToDefault)
-                resetToDefault()
+              }
+              resetToDefault()
             }
         }
     })
