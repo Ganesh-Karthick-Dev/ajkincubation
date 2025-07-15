@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Center, Text3D, useMatcapTexture, Html } from '@react-three/drei';
+import { Center, Text3D, useMatcapTexture } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { val } from '@theatre/core';
 import { useFrame } from '@react-three/fiber';
@@ -28,34 +28,31 @@ const ContactUsNav = () => {
     return (
         <group
             ref={groupRef}
-            position={[5.932, 3.0, -50.9]}
-            rotation={[-0.193, 3.840 , -0.089]}
+            position={[5.332, 2.9, -50.5]}
+            rotation={[0.0123,-2.456,0.0143]}
         >
             <Center>
-                <Html
-                 center
-                 occlude
-                 distanceFactor={0.6}
-                 transform
-                 >
-                    <div 
-                    onClick={handleAbout}
-                    style={{
-                        fontFamily: 'Poppins, sans-serif',
-                        fontSize: '30rem',
-                        color: '#4e73ff',
-                        letterSpacing: '0.05em',
-                        fontWeight: 'bold',
-                        // textShadow: '0 2px 8px #CB4E88',
-                        background: 'white',
-                        padding: '0.5em 1em',
-                        borderRadius: '0.5em',
-                        border: '1px solid #4e73ff',
-                        // boxShadow: '0 2px 12px #F384C3'
-                    }}>
-                        ContactUs
-                    </div>
-                </Html>
+                {/* Card background */}
+                <mesh position={[2.523, 0.3, -0.0001]} scale={[1.253, 1.123, 1.223]}>
+                    <planeGeometry args={[5, 1.5]} />
+                    <meshStandardMaterial color="black" />
+                </mesh>
+                {/* 3D Text */}
+                <Text3D
+                    font={"/fonts/Poppins_Regular.json"}
+                    size={0.433}
+                    height={0.1}
+                    // onClick={handleAbout}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.02}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={5}
+                >
+                    ContactUs
+                    <meshStandardMaterial color="white" />
+                </Text3D>
             </Center>
         </group>
     );

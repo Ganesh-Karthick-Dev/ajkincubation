@@ -52,14 +52,14 @@ function  CanvesWrapper({ children }) {
           }}
         >
           <SheetProvider sheet={sheet}>
-            <ScrollbasedAnimation project={project} />
+            {/* <ScrollbasedAnimation project={project} />
             <PerspectiveCamera
               makeDefault
               position={[0, 2, 50]}
               fov={70}
               theatreKey="camera"
               lookAt={cameraLookAtRef}
-            />
+            /> */}
             <e.mesh
               theatreKey="camera_lookAt"
               visible="editor"
@@ -72,7 +72,7 @@ function  CanvesWrapper({ children }) {
             </e.mesh>
             <BaseEnvironment />
             {children}
-            {/* <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} /> */}
+            <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} />
             <ambientLight intensity={0.5} />
             <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport

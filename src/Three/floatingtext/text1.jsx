@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 
 const ANIM_SPEED = 0.2;
 const BASE_Y = 3.5;
-const HIDDEN_Y = 4.5; // BASE_Y + 1
+const HIDDEN_Y = 3.5; // BASE_Y + 1
 
 const TextOne = () => {
     const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
@@ -69,14 +69,14 @@ const TextOne = () => {
     return (
         <group
             ref={groupRef}
-            position={[0, HIDDEN_Y, -9.7]}
+            position={[0, HIDDEN_Y, -8.7]}
             rotation={[0, 5.1 , 0]}
             visible={false}
         >
-            <Center>
+           <Center>
                 <Text3D
                     font="/fonts/Poppins_Regular.json"
-                    size={0.15}
+                    size={0.2}
                     height={0.1}
                     curveSegments={12}
                     bevelEnabled
@@ -84,9 +84,41 @@ const TextOne = () => {
                     bevelSize={0.01}
                     bevelOffset={0}
                     bevelSegments={1}
-                    letterSpacing={0.03}
+                    letterSpacing={0.05}
                 >
-                    Big Dreams. Small Towns. Global Impact.
+                    Big Dreams.
+                    <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.2}
+                    height={0.1}
+                    curveSegments={12}
+                    bevelEnabled    
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.05}
+                    position={[0, -0.4, 0]}
+                >
+                    Small Towns.
+                    <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.2}
+                    height={0.1}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.05}
+                    position={[0, -0.8, 0]}
+                >
+                    Global Impact. 
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
                 </Text3D>
             </Center>

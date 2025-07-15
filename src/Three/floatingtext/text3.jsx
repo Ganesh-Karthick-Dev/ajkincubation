@@ -76,7 +76,7 @@ const TextThree = () => {
             <Center>
                 <Text3D
                     font="/fonts/Poppins_Regular.json"
-                    size={0.15}
+                    size={0.2}
                     height={0.1}
                     curveSegments={12}
                     bevelEnabled
@@ -84,10 +84,44 @@ const TextThree = () => {
                     bevelSize={0.01}
                     bevelOffset={0}
                     bevelSegments={1}
-                    letterSpacing={0.03}
+                    letterSpacing={0.05}
                 >
-                    Testing Text Three
+                    Build Fast. Think Bold.
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.4, 0]}
+                    
+                >
+                    Experience hands-on bootcamps that
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.7, 0]}
+                    
+                >
+                   turn raw ideas into real solutions. 
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
                 </Text3D>
             </Center>
         </group>

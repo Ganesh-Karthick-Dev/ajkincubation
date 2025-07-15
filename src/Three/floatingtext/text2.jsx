@@ -69,14 +69,14 @@ const TextTwo = () => {
     return (
         <group
             ref={groupRef}
-            position={[-1, HIDDEN_Y, -30.3]}
+            position={[3.834, HIDDEN_Y, -30.3]}
             rotation={[0, 0 , 0]}
             visible={false}
         >
             <Center>
                 <Text3D
                     font="/fonts/Poppins_Regular.json"
-                    size={0.15}
+                    size={0.2}
                     height={0.1}
                     curveSegments={12}
                     bevelEnabled
@@ -84,10 +84,44 @@ const TextTwo = () => {
                     bevelSize={0.01}
                     bevelOffset={0}
                     bevelSegments={1}
-                    letterSpacing={0.03}
+                    letterSpacing={0.05}
                 >
-                    From Idea to Launchpad. Fuel your vision with expert-led incubation and startup essentials.
+                    From Idea to Launchpad
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.4, 0]}
+                    
+                >
+                    Fuel your vision with expert-led incubation 
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.7, 0]}
+                    
+                >
+                   and startup essentials. 
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
                 </Text3D>
             </Center>
         </group>

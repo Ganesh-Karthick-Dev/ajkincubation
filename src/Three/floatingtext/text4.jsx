@@ -69,14 +69,14 @@ const TextFour = () => {
     return (
         <group
             ref={groupRef}
-            position={[-0.5924, HIDDEN_Y, -40.7]}
+            position={[-1.2124, HIDDEN_Y, -40.7]}
             rotation={[0, 0 , 0]}
             visible={false}
         >
              <Center>
                 <Text3D
                     font="/fonts/Poppins_Regular.json"
-                    size={0.15}
+                    size={0.1593}
                     height={0.1}
                     curveSegments={12}
                     bevelEnabled
@@ -84,10 +84,44 @@ const TextFour = () => {
                     bevelSize={0.01}
                     bevelOffset={0}
                     bevelSegments={1}
-                    letterSpacing={0.03}
+                    letterSpacing={0.05}
                 >
-                    Testing Text Four
+                    Mentors Who Move You Forward 
                     <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.4, 0]}
+                    
+                >
+                    1-on-1 sessions with startup experts
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
+                </Text3D>
+                <Text3D
+                    font="/fonts/Poppins_Regular.json"
+                    size={0.120}
+                    height={0}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.00002}
+                    bevelSize={0.01}
+                    bevelOffset={0}
+                    bevelSegments={1}
+                    letterSpacing={0.03}
+                    position={[0, -0.7, 0]}
+                    
+                >
+                   to sharpen your pitch, product, and path.
+                    <meshMatcapMaterial color="black" matcap={matcapTexture} />
                 </Text3D>
             </Center>
         </group>
