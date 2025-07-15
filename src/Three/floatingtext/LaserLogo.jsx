@@ -104,7 +104,7 @@ const LaserLogo = () => {
     return (
         <group
             ref={groupRef}
-            position={[-0.0623, 2.7 * SCALE, -60.7]}
+            position={[-0.0623, 2.7 * SCALE, -58.0]}
             rotation={[0, 0 , 0]}
         >
             {/* Top Straight Line */}

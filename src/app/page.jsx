@@ -33,6 +33,8 @@ import RobotLeftText from "@/Three/floatingtext/RobotLeftText";
 import RobotTopText from "@/Three/floatingtext/RobotTopText";
 import AboutNav from "@/Three/wallnavs/AboutNav";
 import LaserLogo from "@/Three/floatingtext/LaserLogo";
+import { Scanner } from "@/Three/showcaseroom/center-element/scanner";
+import { ScannerTop } from "@/Three/showcaseroom/center-element/scannertop";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -80,6 +82,8 @@ export default function Home() {
 
 
         {/* Floating Text */}
+        <Scanner />
+        <ScannerTop />
         <LaserLogo />
         <TitleText />
         <RobotLeftText />

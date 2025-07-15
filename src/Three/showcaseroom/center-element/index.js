@@ -6,7 +6,7 @@ export function CenterElementModel(props) {
   return (
     <group {...props} dispose={null}>
       <group
-         position={[-0.319, 5.871, -57.797]}
+         position={[-0.001, 5.871, -57.717]}
         rotation={[Math.PI / 2, 0, 3.138]}
         scale={[-3, -3, -0.312]}>
         <mesh
