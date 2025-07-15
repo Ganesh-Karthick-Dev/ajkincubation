@@ -104,7 +104,7 @@ const LaserLogo = () => {
     return (
         <group
             ref={groupRef}
-            position={[-0.0623, 2.7 * SCALE, -58.0]}
+            position={[-0.0743, 2.5 * SCALE, -58.0]}
             rotation={[0, 0 , 0]}
         >
             {/* Top Straight Line */}
@@ -166,7 +166,7 @@ const LaserLogo = () => {
                     {/* Animated highlight sweep */}
                     <mesh
                         ref={highlightRef}
-                        position={[0, 0, 0.07 * SCALE]}
+                        position={[0, 0, 0.09 * SCALE]}
                     >
                         <planeGeometry args={[0.35 * SCALE, 0.7 * SCALE]} />
                         <meshBasicMaterial
