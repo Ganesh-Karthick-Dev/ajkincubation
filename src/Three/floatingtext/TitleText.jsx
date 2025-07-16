@@ -96,7 +96,7 @@ const TitleText = () => {
                 <Text3D
                     font="/fonts/Poppins_Regular.json"
                     size={0.23}
-                    height={0.04}
+                    height={0}
                     curveSegments={3}
                     bevelEnabled
                     bevelThickness={0.00002}
