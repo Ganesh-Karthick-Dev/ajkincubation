@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, Float } from '@react-three/drei'
 
 export function BitcoinModel(props) {
   const { nodes, materials } = useGLTF('/models/showcaseroom/bitcoin.glb')
   return (
+    <Float rotationIntensity={0.0123} speed={1.75} > 
+
     <group {...props} dispose={null}>
       <mesh
         castShadow
@@ -15,6 +17,7 @@ export function BitcoinModel(props) {
         scale={0.121}
       />
     </group>
+    </Float>
   )
 }
 

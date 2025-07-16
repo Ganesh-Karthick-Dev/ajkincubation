@@ -53,7 +53,7 @@ export default function ScrollFan() {
     ScrollTrigger.create({
       trigger: container,
       start: "center center",
-      end: "+=1150", // Increased scroll distance by 20% for slower blade transitions
+      end: "+=1550", // Increased scroll distance by 20% for slower blade transitions
       scrub: 3,
       scroller: "#main-scroll-area", // Tell ScrollTrigger to use the LayoutWrapper's scroll container
       pin: true, // Pin the component in place while scrolling

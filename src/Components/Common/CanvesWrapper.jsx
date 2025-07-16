@@ -13,7 +13,7 @@ import { PerspectiveCamera, SheetProvider } from "@theatre/r3f";
 import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { editable as e } from "@theatre/r3f";
-import sequences from "@/../public/sequences/MainProject.theatre-project-state_2.json";
+import sequences from "@/../public/sequences/MainProject.theatre-project-state_3.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
 
 // Initialize Theatre.js studio in development mode only
@@ -22,10 +22,14 @@ import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnim
 //   studio.extend(extension);
 // }
 
-function  CanvesWrapper({ children }) {
+function CanvesWrapper({ children }) {
   const project = getProject("MainProject", { state: sequences });
   const sheet = project.sheet("HeroScene");
   const cameraLookAtRef = useRef(null);
+
+  // Duration overlay logic
+  const durationRef = useRef(0);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     // Prevent default scrolling behavior
@@ -35,8 +39,34 @@ function  CanvesWrapper({ children }) {
     };
   }, []);
 
+  useEffect(() => {
+    let frame;
+    function update() {
+      if (sheet && overlayRef.current) {
+        durationRef.current = sheet.sequence.position;
+        overlayRef.current.textContent = `Current Duration: ${durationRef.current.toFixed(2)}`;
+      }
+      frame = requestAnimationFrame(update);
+    }
+    update();
+    return () => cancelAnimationFrame(frame);
+  }, [sheet]);
+
   return (
     <div className="w-full h-full relative p-5">
+      <div ref={overlayRef} style={{
+        position: 'fixed',
+        top: 20,
+        left: 20,
+        color: 'white',
+        background: 'rgba(0,0,0,0.7)',
+        padding: '6px 12px',
+        borderRadius: '6px',
+        fontSize: '1.1em',
+        fontFamily: 'monospace',
+        zIndex: 1000,
+        pointerEvents: 'none',
+      }} />
       <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
         <Canvas
           camera={{ fov: 70, position: [0, 2, 50] }}
@@ -73,7 +103,7 @@ function  CanvesWrapper({ children }) {
             <BaseEnvironment />
             {children}
             {/* <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} /> */}
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={0.3} />
             <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport
                 axisColors={["red", "green", "blue"]}

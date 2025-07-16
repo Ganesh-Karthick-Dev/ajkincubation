@@ -1,12 +1,13 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, Float } from '@react-three/drei'
 
 export function MagnifierModel(props) {
   const { nodes, materials } = useGLTF('/models/showcaseroom/Magnifier.glb')
   return (
-    <group {...props} dispose={null}>
-      <mesh
-        castShadow
+    <Float floatIntensity={1.0} rotationIntensity={0.0123} speed={1.75} > 
+      <group {...props} dispose={null}>
+        <mesh
+          castShadow
         receiveShadow
         geometry={nodes.sd_default_0.geometry}
         material={materials['default']}
@@ -17,6 +18,7 @@ export function MagnifierModel(props) {
         {/* <axesHelper args={[10000]} /> */}
       </mesh>
     </group>
+    </Float>
   )
 }
 
