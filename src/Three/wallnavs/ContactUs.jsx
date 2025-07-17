@@ -112,6 +112,7 @@ const ContactUsNav = () => {
             ref={groupRef}
             position={[6.332, 2.1, -51.3]}
             rotation={[0.0223,-2.496,0.0143]}
+            onClick={handleService}
         >
             {/* Black border plane (slightly larger) */}
             <mesh position={[1, 0.3, -0.01]}>

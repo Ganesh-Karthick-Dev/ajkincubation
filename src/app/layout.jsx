@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="overflow-hidden">
-        {/* <StagewiseToolbar config={{ plugins: [ReactPlugin] }} /> 
-        <div className="w-full h-full bg-red-500">
+          {/* <StagewiseToolbar config={{ plugins: [ReactPlugin] }} /> 
+          <div className="w-full h-full bg-red-500">
 
-        </div> */}
+          </div> */}
         <NavBar />
         {children}
       </body>

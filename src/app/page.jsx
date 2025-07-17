@@ -1,7 +1,6 @@
 "use client";
 import CanvesWrapper from "@/Components/Common/CanvesWrapper";
 import Wall from "@/Three/Room/Wall";
-import { Loader } from "@react-three/drei";
 import { RoboRoom  } from "@/Three/Robo/RoboRoom";
 import { Robo } from "@/Three/Robo";
 import Idel from "@/Three/RoomWithRobo/Scene/Idel";
@@ -39,6 +38,12 @@ import ContactUsNav from "@/Three/wallnavs/ContactUs";
 import ServiceNav from "@/Three/wallnavs/ServiceNav";
 import ResourceNav from "@/Three/wallnavs/ResourceNav";
 import StartUpNav from "@/Three/wallnavs/StartUpNav";
+import DoorOneText from "@/Three/floatingtext/DoorOneText";
+import DoorTwoText from "@/Three/floatingtext/DoorTwoText";
+import DoorThreeText from "@/Three/floatingtext/DoorThreeText";
+import DoorFourText from "@/Three/floatingtext/DoorFourText";
+import { Suspense } from "react";
+import { CustomLoader } from "@/Components/Common/CustomerLoader";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -47,8 +52,8 @@ import StartUpNav from "@/Three/wallnavs/StartUpNav";
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      {/* <Loader /> */}
       <CanvesWrapper>
+      <Suspense fallback={<CustomLoader />}>
         <Idel />
         <Wall />
         <LaptopModel />
@@ -101,9 +106,17 @@ export default function Home() {
         <TextThree />
         <TextFour />
         <TextFive />
+
+
+        <DoorOneText />
+        <DoorTwoText />
+        <DoorThreeText />
+        <DoorFourText />
+
         {/* Floating Text */}
 
      
+      </Suspense>
       </CanvesWrapper>
     </div>
   );

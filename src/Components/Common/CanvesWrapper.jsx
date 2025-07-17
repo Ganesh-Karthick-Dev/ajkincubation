@@ -54,19 +54,19 @@ function CanvesWrapper({ children }) {
 
   return (
     <div className="w-full h-full relative p-5">
-      <div ref={overlayRef} style={{
-        position: 'fixed',
-        top: 20,
-        left: 20,
-        color: 'white',
-        background: 'rgba(0,0,0,0.7)',
-        padding: '6px 12px',
-        borderRadius: '6px',
-        fontSize: '1.1em',
-        fontFamily: 'monospace',
-        zIndex: 1000,
-        pointerEvents: 'none',
-      }} />
+        {/* <div ref={overlayRef} style={{
+          position: 'fixed',
+          top: 20,
+          left: 20,
+          color: 'white',
+          background: 'rgba(0,0,0,0.7)',
+          padding: '6px 12px',
+          borderRadius: '6px',
+          fontSize: '1.1em',
+          fontFamily: 'monospace',
+          zIndex: 800,
+          pointerEvents: 'none',
+        }} /> */}
       <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
         <Canvas
           camera={{ fov: 70, position: [0, 2, 50] }}

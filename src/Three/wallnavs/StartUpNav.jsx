@@ -45,6 +45,7 @@ const StartUpNav = () => {
             ref={groupRef}
             position={[-1.1, 2.1, -66.7]}
             rotation={[0, 0, 0]}
+            onClick={handleStartups}
         >
             {/* Black border plane (slightly larger) */}
             <mesh position={[1, 0.3, -0.01]}>

@@ -48,6 +48,7 @@ const AboutNav = () => {
             ref={groupRef}
             position={[-4.912, 2.2, -50.193]}
             rotation={[0.053, 2.550 , -0.029]}
+            onClick={handleAbout}
         >
             {/* Black border plane (slightly larger) */}
             <mesh position={[1, 0.3, -0.01]}>

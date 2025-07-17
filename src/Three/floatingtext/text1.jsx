@@ -15,62 +15,62 @@ const TextOne = () => {
     });
 
     // Only render if currentDuration is between 16.00 and 17.50
-    if (currentDuration < 16.0 || currentDuration > 17.5) return null;
+    if (currentDuration < 16.16 || currentDuration > 17.5) return null;
 
     return (
         <group>
             <group
-                position={[0, 3.5, -9.7]}
-                rotation={[0, 5.1 , 0]}
+                position={[-2, 3.1, -5.3]}
+                rotation={[0, 4.412 , 0]}
                 visible={true}
             >
                <Center>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
-                        size={0.2}
-                        height={0.1}
+                        size={0.1123}
+                        height={0}
                         curveSegments={12}
                         bevelEnabled
                         bevelThickness={0.00002}
                         bevelSize={0.01}
                         bevelOffset={0}
                         bevelSegments={1}
-                        letterSpacing={0.05}
+                        letterSpacing={0.03}
                     >
                         Big Dreams.
-                        <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                        {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
-                        size={0.2}
-                        height={0.1}
+                        size={0.1123}
+                        height={0}
                         curveSegments={12}
                         bevelEnabled    
                         bevelThickness={0.00002}
                         bevelSize={0.01}
                         bevelOffset={0}
                         bevelSegments={1}
-                        letterSpacing={0.05}
-                        position={[0, -0.4, 0]}
+                        letterSpacing={0.03}
+                        position={[0, -0.3, 0]}
                     >
                         Small Towns.
-                        <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                        {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
-                        size={0.2}
-                        height={0.1}
+                        size={0.1123}
+                        height={0}
                         curveSegments={12}
                         bevelEnabled
                         bevelThickness={0.00002}
                         bevelSize={0.01}
                         bevelOffset={0}
                         bevelSegments={1}
-                        letterSpacing={0.05}
-                        position={[0, -0.8, 0]}
+                        letterSpacing={0.03}
+                        position={[0, -0.6, 0]}
                     >
                         Global Impact. 
-                        <meshMatcapMaterial color="orange" matcap={matcapTexture} />
+                        {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                 </Center>
             </group>

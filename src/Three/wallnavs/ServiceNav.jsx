@@ -112,6 +112,7 @@ const ServiceNav = () => {
             ref={groupRef}
             position={[-9.002, 2.050, -59.5]}
             rotation={[0.000, 1.253, 0.000]}
+            onClick={handleService}
         >
             {/* Black border plane (slightly larger) */}
             <mesh position={[1, 0.3, -0.01]}>
