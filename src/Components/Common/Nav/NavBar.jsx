@@ -28,7 +28,7 @@ function NavBar() {
 
         <div className="menu__text mr-5 group-hover:hidden block">
           <span
-            className="text-lg font-bold"
+            className="text-lg font-bold font-audiowide"
             style={{
               background: "linear-gradient(90deg, #6b95ff, #4e73ff)",
               WebkitBackgroundClip: "text",

@@ -26,7 +26,7 @@ import TextOne from "@/Three/floatingtext/text1";
 import TextTwo from "@/Three/floatingtext/text2";
 import TextThree from "@/Three/floatingtext/text3";
 import TextFour from "@/Three/floatingtext/text4";
-import TextFive from "@/Three/floatingtext/text5";
+// import TextFive from "@/Three/floatingtext/text5";
 import TitleText from "@/Three/floatingtext/TitleText";
 import RobotLeftText from "@/Three/floatingtext/RobotLeftText";
 import RobotTopText from "@/Three/floatingtext/RobotTopText";
@@ -41,7 +41,7 @@ import StartUpNav from "@/Three/wallnavs/StartUpNav";
 import DoorOneText from "@/Three/floatingtext/DoorOneText";
 import DoorTwoText from "@/Three/floatingtext/DoorTwoText";
 import DoorThreeText from "@/Three/floatingtext/DoorThreeText";
-import DoorFourText from "@/Three/floatingtext/DoorFourText";
+// import DoorFourText from "@/Three/floatingtext/DoorFourText";
 import { Suspense } from "react";
 import { CustomLoader } from "@/Components/Common/CustomerLoader";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
@@ -105,13 +105,13 @@ export default function Home() {
         <TextTwo />
         <TextThree />
         <TextFour />
-        <TextFive />
+        {/* <TextFive /> */}
 
 
         <DoorOneText />
         <DoorTwoText />
         <DoorThreeText />
-        <DoorFourText />
+        {/* <DoorFourText /> */}
 
         {/* Floating Text */}
 

@@ -7,10 +7,6 @@ export function CustomLoader() {
   const { progress } = useProgress()
   const [isVisible, setIsVisible] = useState(true)
   const [displayProgress, setDisplayProgress] = useState(0)
-  const [startTime] = useState(Date.now())
-
-  // Minimum display time (3 seconds)
-  const MIN_DISPLAY_TIME = 3000
 
   // Smooth progress animation
   useEffect(() => {
@@ -25,19 +21,12 @@ export function CustomLoader() {
     return () => clearInterval(interval)
   }, [progress])
 
-  // Handle loader visibility with minimum display time
+  // Hide loader when progress reaches 100
   useEffect(() => {
     if (progress === 100) {
-      const elapsedTime = Date.now() - startTime
-      const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsedTime)
-
-      const timer = setTimeout(() => {
-        setIsVisible(false)
-      }, remainingTime + 500)
-
-      return () => clearTimeout(timer)
+      setIsVisible(false)
     }
-  }, [progress, startTime])
+  }, [progress])
 
   if (!isVisible) return null
 
@@ -87,7 +76,7 @@ export function CustomLoader() {
         </div>
 
         {/* Bottom progress indicator (optional thin line) */}
-        <div className="absolute bottom-[12.2rem] left-0 w-full h-2 bg-white/20">
+        <div className="absolute md:bottom-[12.2rem] bottom-[10.2rem] lg:bottom-[14.2rem] left-0 w-full h-2 bg-white/20">
           <div
             className="h-full bg-white transition-all duration-300 ease-out"
             style={{ width: `${displayProgress}%` }}
