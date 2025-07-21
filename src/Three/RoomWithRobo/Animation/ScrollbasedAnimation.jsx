@@ -124,7 +124,7 @@ function ScrollbasedAnimation({ project }) {
       e.preventDefault();
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY; // Inverted for natural feel
-      const scrollSpeed = 0.003; // Slightly faster for touch
+      const scrollSpeed = 0.01; // MUCH faster for touch
       
       const newTarget = Math.max(
         INTRO_DURATION,
@@ -143,7 +143,7 @@ function ScrollbasedAnimation({ project }) {
       
       // Add momentum for quick swipes
       if (touchDuration < 300) {
-        const velocity = 0.002; // Momentum factor
+        const velocity = 0.006; // MUCH faster momentum
         const momentum = velocity * (touchDuration / 100);
         
         const newTarget = Math.max(

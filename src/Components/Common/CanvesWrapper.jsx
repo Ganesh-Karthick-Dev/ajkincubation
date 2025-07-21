@@ -6,7 +6,7 @@ import {
   Grid,
   OrbitControls,
 } from "@react-three/drei";
-import React, { useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import BaseEnvironment from "./BaseEnvironment";
 import { getProject } from "@theatre/core";
 import { PerspectiveCamera, SheetProvider } from "@theatre/r3f";
@@ -16,6 +16,7 @@ import { editable as e } from "@theatre/r3f";
 import sequences from "@/../public/sequences/MainProject.theatre-project-state_3.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
 import { AdaptiveQuality, useQuality } from "./PerformanceMonitor";
+import { CustomLoader } from "./CustomerLoader";
 
 // Initialize Theatre.js studio in development mode only
 // if (process.env.NODE_ENV === 'development') {
@@ -94,6 +95,8 @@ function CanvesWrapper({ children }) {
             height: "100%",
           }}
         >
+          <Suspense fallback={<CustomLoader />}>
+            
           <AdaptiveQuality>
             <SheetProvider sheet={sheet}>
               <ScrollbasedAnimation project={project} />
@@ -110,7 +113,7 @@ function CanvesWrapper({ children }) {
                 position={[0, 2, 50]}
                 fov={70}
                 ref={cameraLookAtRef}
-              >
+                >
                 <octahedronGeometry args={[0.1, 0]} />
                 <meshStandardMaterial color="red" />
               </e.mesh>
@@ -121,10 +124,10 @@ function CanvesWrapper({ children }) {
             </SheetProvider>
             {/* <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport
-                axisColors={["red", "green", "blue"]}
+              axisColors={["red", "green", "blue"]}
                 labelColor="black"
-              />
-            </GizmoHelper> */}
+                />
+                </GizmoHelper> */}
             {/* <Grid
           position={[0, -0.65, 0]}
           args={[150, 200]}
@@ -133,6 +136,7 @@ function CanvesWrapper({ children }) {
           cellThickness={1}
           /> */}
           </AdaptiveQuality>
+          </Suspense>
         </Canvas>
       </div>
     </div>
