@@ -4,8 +4,10 @@ import { useLoader, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Text3D, Center, Float } from "@react-three/drei";
 import { useCurrentSheet } from "@theatre/r3f";
+import { useQuality } from "@/Components/Common/PerformanceMonitor";
 
 function Wall() {
+  const quality = useQuality();
   // Create video element and set up
   const [video] = useState(() => 
     Object.assign(document.createElement('video'), { 
@@ -28,18 +30,26 @@ function Wall() {
     videoTexture.minFilter = THREE.LinearFilter;
     videoTexture.magFilter = THREE.LinearFilter;
     return () => {
-      video.pause();
+      if (!video.paused) video.pause();
     };
   }, [video, videoTexture]);
 
+  // Use low-res textures for low quality
   const [colorMap, normalMap, roughnessMap, metalnessMap] = useLoader(
     THREE.TextureLoader,
-    [
-      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg",
-      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
-      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
-      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
-    ]
+    quality === 'low'
+      ? [
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg", // fallback to same, but you can add low-res if available
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
+        ]
+      : [
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg",
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
+          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
+        ]
   );
 
   // Set texture parameters
@@ -97,6 +107,18 @@ function Wall() {
     return geometry;
   }, []);
 
+  // Use simpler material for low quality
+  const wallMaterial = useMemo(() => {
+    if (quality === 'low') {
+      return new THREE.MeshLambertMaterial({ map: colorMap });
+    }
+    return new THREE.MeshStandardMaterial({
+      map: colorMap,
+      normalMap,
+      roughnessMap,
+      metalnessMap,
+    });
+  }, [quality, colorMap, normalMap, roughnessMap, metalnessMap]);
 
 
   const sheet = useCurrentSheet();

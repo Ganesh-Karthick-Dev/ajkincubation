@@ -2,11 +2,16 @@
 import React, { useEffect, useRef, useMemo } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { editable as e } from "@theatre/r3f";
+import { useQuality } from "@/Components/Common/PerformanceMonitor";
 
 export function Robo(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/Robo/robo.glb");
   const { actions, names, clips } = useAnimations(animations, group);
+  const quality = useQuality();
+  // Helper to pick material
+  const getMaterial = (origMat, color = '#cccccc') =>
+    quality === 'low' ? new THREE.MeshLambertMaterial({ color }) : origMat;
   
   // Memoize complex geometries and materials to prevent re-creation
   const memoizedNodes = useMemo(() => nodes, [nodes]);
@@ -36,7 +41,7 @@ export function Robo(props) {
                   castShadow
                   receiveShadow
                   geometry={memoizedNodes.Object_150.geometry}
-                  material={memoizedMaterials.glow}
+                  material={getMaterial(memoizedMaterials.glow)}
                   frustumCulled
                 />
               </group>
@@ -88,7 +93,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_100.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -102,14 +107,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_102.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_103"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_103.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -123,14 +128,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_105.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_106"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_106.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -159,7 +164,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_111.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -173,14 +178,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_113.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_114"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_114.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -194,14 +199,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_116.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_117"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_117.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -230,7 +235,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_122.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -244,14 +249,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_124.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_125"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_125.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -265,14 +270,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_127.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_128"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_128.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -286,14 +291,14 @@ export function Robo(props) {
                                 castShadow
                                 receiveShadow
                                 geometry={nodes.Object_130.geometry}
-                                material={materials["Material.004"]}
+                                material={getMaterial(materials["Material.004"])}
                               />
                               <mesh
                                 name="Object_131"
                                 castShadow
                                 receiveShadow
                                 geometry={nodes.Object_131.geometry}
-                                material={materials.red_glow}
+                                material={getMaterial(materials.red_glow)}
                               />
                             </group>
                           </group>
@@ -307,14 +312,14 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_133.geometry}
-                              material={materials.metal}
+                              material={getMaterial(materials.metal)}
                             />
                             <mesh
                               name="Object_134"
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_134.geometry}
-                              material={materials["Material.004"]}
+                              material={getMaterial(materials["Material.004"])}
                             />
                           </group>
                         </group>
@@ -328,14 +333,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_136.geometry}
-                            material={materials.metal}
+                            material={getMaterial(materials.metal)}
                           />
                           <mesh
                             name="Object_137"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_137.geometry}
-                            material={materials["Material.004"]}
+                            material={getMaterial(materials["Material.004"])}
                           />
                         </group>
                       </group>
@@ -349,14 +354,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_139.geometry}
-                          material={materials.metal}
+                          material={getMaterial(materials.metal)}
                         />
                         <mesh
                           name="Object_140"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_140.geometry}
-                          material={materials["Material.004"]}
+                          material={getMaterial(materials["Material.004"])}
                         />
                       </group>
                     </group>
@@ -366,14 +371,14 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_142.geometry}
-                        material={materials.metal}
+                        material={getMaterial(materials.metal)}
                       />
                       <mesh
                         name="Object_143"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_143.geometry}
-                        material={materials["Material.004"]}
+                        material={getMaterial(materials["Material.004"])}
                       />
                     </group>
                   </group>
@@ -427,7 +432,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_45.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -441,14 +446,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_47.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_48"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_48.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -462,14 +467,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_50.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_51"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_51.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -498,7 +503,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_56.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -512,14 +517,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_58.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_59"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_59.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -533,14 +538,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_61.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_62"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_62.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -569,7 +574,7 @@ export function Robo(props) {
                                       castShadow
                                       receiveShadow
                                       geometry={nodes.Object_67.geometry}
-                                      material={materials["Material.004"]}
+                                      material={getMaterial(materials["Material.004"])}
                                     />
                                   </group>
                                 </group>
@@ -583,14 +588,14 @@ export function Robo(props) {
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_69.geometry}
-                                    material={materials.metal}
+                                    material={getMaterial(materials.metal)}
                                   />
                                   <mesh
                                     name="Object_70"
                                     castShadow
                                     receiveShadow
                                     geometry={nodes.Object_70.geometry}
-                                    material={materials["Material.004"]}
+                                    material={getMaterial(materials["Material.004"])}
                                   />
                                 </group>
                               </group>
@@ -604,14 +609,14 @@ export function Robo(props) {
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_72.geometry}
-                                  material={materials.metal}
+                                  material={getMaterial(materials.metal)}
                                 />
                                 <mesh
                                   name="Object_73"
                                   castShadow
                                   receiveShadow
                                   geometry={nodes.Object_73.geometry}
-                                  material={materials["Material.004"]}
+                                  material={getMaterial(materials["Material.004"])}
                                 />
                               </group>
                             </group>
@@ -625,14 +630,14 @@ export function Robo(props) {
                                 castShadow
                                 receiveShadow
                                 geometry={nodes.Object_75.geometry}
-                                material={materials["Material.004"]}
+                                material={getMaterial(materials["Material.004"])}
                               />
                               <mesh
                                 name="Object_76"
                                 castShadow
                                 receiveShadow
                                 geometry={nodes.Object_76.geometry}
-                                material={materials.red_glow}
+                                material={getMaterial(materials.red_glow)}
                               />
                             </group>
                           </group>
@@ -646,14 +651,14 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_78.geometry}
-                              material={materials.metal}
+                              material={getMaterial(materials.metal)}
                             />
                             <mesh
                               name="Object_79"
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_79.geometry}
-                              material={materials["Material.004"]}
+                              material={getMaterial(materials["Material.004"])}
                             />
                           </group>
                         </group>
@@ -667,14 +672,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_81.geometry}
-                            material={materials.metal}
+                            material={getMaterial(materials.metal)}
                           />
                           <mesh
                             name="Object_82"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_82.geometry}
-                            material={materials["Material.004"]}
+                            material={getMaterial(materials["Material.004"])}
                           />
                         </group>
                       </group>
@@ -688,14 +693,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_84.geometry}
-                          material={materials.metal}
+                          material={getMaterial(materials.metal)}
                         />
                         <mesh
                           name="Object_85"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_85.geometry}
-                          material={materials["Material.004"]}
+                          material={getMaterial(materials["Material.004"])}
                         />
                       </group>
                     </group>
@@ -705,14 +710,14 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_87.geometry}
-                        material={materials.metal}
+                        material={getMaterial(materials.metal)}
                       />
                       <mesh
                         name="Object_88"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_88.geometry}
-                        material={materials["Material.004"]}
+                        material={getMaterial(materials["Material.004"])}
                       />
                     </group>
                   </group>
@@ -745,7 +750,7 @@ export function Robo(props) {
                   castShadow
                   receiveShadow
                   geometry={nodes.Object_167.geometry}
-                  material={materials["glow.001"]}
+                  material={getMaterial(materials["glow.001"])}
                 />
               </group>
               <group
@@ -758,7 +763,7 @@ export function Robo(props) {
                   castShadow
                   receiveShadow
                   geometry={nodes.Object_165.geometry}
-                  material={materials["glow.001"]}
+                  material={getMaterial(materials["glow.001"])}
                 />
               </group>
               <group name="floor_77" position={[0, 6.232, 0]} scale={1.111} />
@@ -790,7 +795,7 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_315.geometry}
-                        material={materials.white}
+                        material={getMaterial(materials.white)}
                       />
                     </group>
                     <group
@@ -818,7 +823,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_282.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -832,7 +837,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_284.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -846,7 +851,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_286.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -875,7 +880,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_291.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -889,7 +894,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_293.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -903,7 +908,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_295.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -932,7 +937,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_300.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -946,7 +951,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_302.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -960,7 +965,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_304.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -989,7 +994,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_309.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -1003,7 +1008,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_311.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -1017,7 +1022,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_313.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -1044,7 +1049,7 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_274.geometry}
-                        material={materials.white}
+                        material={getMaterial(materials.white)}
                       />
                     </group>
                     <group
@@ -1072,7 +1077,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_250.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -1086,7 +1091,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_252.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -1100,7 +1105,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_254.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -1129,7 +1134,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_259.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -1143,7 +1148,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_261.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -1157,7 +1162,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_263.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -1186,7 +1191,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_268.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -1200,7 +1205,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_270.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -1214,7 +1219,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_272.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -1243,7 +1248,7 @@ export function Robo(props) {
                               castShadow
                               receiveShadow
                               geometry={nodes.Object_241.geometry}
-                              material={materials.grey}
+                              material={getMaterial(materials.grey)}
                             />
                           </group>
                         </group>
@@ -1257,7 +1262,7 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_243.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                         </group>
                       </group>
@@ -1271,7 +1276,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_245.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                       </group>
                     </group>
@@ -1293,14 +1298,14 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_232.geometry}
-                        material={materials.grey}
+                        material={getMaterial(materials.grey)}
                       />
                       <mesh
                         name="Object_233"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_233.geometry}
-                        material={materials.white}
+                        material={getMaterial(materials.white)}
                       />
                     </group>
                   </group>
@@ -1327,14 +1332,14 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_226.geometry}
-                        material={materials.grey}
+                        material={getMaterial(materials.grey)}
                       />
                       <mesh
                         name="Object_227"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_227.geometry}
-                        material={materials.white}
+                        material={getMaterial(materials.white)}
                       />
                     </group>
                   </group>
@@ -1370,14 +1375,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_185.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                         <mesh
                           name="Object_186"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_186.geometry}
-                          material={materials.white}
+                          material={getMaterial(materials.white)}
                         />
                       </group>
                       <group
@@ -1395,14 +1400,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_182.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                           <mesh
                             name="Object_183"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_183.geometry}
-                            material={materials.white}
+                            material={getMaterial(materials.white)}
                           />
                         </group>
                       </group>
@@ -1422,14 +1427,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_177.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                         <mesh
                           name="Object_178"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_178.geometry}
-                          material={materials.white}
+                          material={getMaterial(materials.white)}
                         />
                       </group>
                       <group
@@ -1447,14 +1452,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_174.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                           <mesh
                             name="Object_175"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_175.geometry}
-                            material={materials.white}
+                            material={getMaterial(materials.white)}
                           />
                         </group>
                       </group>
@@ -1475,14 +1480,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_196.geometry}
-                          material={materials["white.001"]}
+                          material={getMaterial(materials["white.001"])}
                         />
                         <mesh
                           name="Object_197"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_197.geometry}
-                          material={materials.black}
+                          material={getMaterial(materials.black)}
                         />
                       </group>
                       <group
@@ -1495,14 +1500,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_199.geometry}
-                          material={materials["white.001"]}
+                          material={getMaterial(materials["white.001"])}
                         />
                         <mesh
                           name="Object_200"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_200.geometry}
-                          material={materials.black}
+                          material={getMaterial(materials.black)}
                         />
                       </group>
                       <group
@@ -1515,7 +1520,7 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_202.geometry}
-                          material={materials["grey.001"]}
+                          material={getMaterial(materials["grey.001"])}
                         />
                       </group>
                       <mesh
@@ -1523,49 +1528,49 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_188.geometry}
-                        material={materials["white.001"]}
+                        material={getMaterial(materials["white.001"])}
                       />
                       <mesh
                         name="Object_189"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_189.geometry}
-                        material={materials.black}
+                        material={getMaterial(materials.black)}
                       />
                       <mesh
                         name="Object_190"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_190.geometry}
-                        material={materials["grey.001"]}
+                        material={getMaterial(materials["grey.001"])}
                       />
                       <mesh
                         name="Object_191"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_191.geometry}
-                        material={materials.glass}
+                        material={getMaterial(materials.glass)}
                       />
                       <mesh
                         name="Object_192"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_192.geometry}
-                        material={materials.material}
+                        material={getMaterial(materials.material)}
                       />
                       <mesh
                         name="Object_193"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_193.geometry}
-                        material={materials.logo}
+                        material={getMaterial(materials.logo)}
                       />
                       <mesh
                         name="Object_194"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_194.geometry}
-                        material={materials.control}
+                        material={getMaterial(materials.control)}
                       />
                     </group>
                   </group>
@@ -1584,14 +1589,14 @@ export function Robo(props) {
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_221.geometry}
-                        material={materials["grey.001"]}
+                        material={getMaterial(materials["grey.001"])}
                       />
                       <mesh
                         name="Object_222"
                         castShadow
                         receiveShadow
                         geometry={nodes.Object_222.geometry}
-                        material={materials["white.001"]}
+                        material={getMaterial(materials["white.001"])}
                       />
                     </group>
                     <group
@@ -1609,14 +1614,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_218.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                         <mesh
                           name="Object_219"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_219.geometry}
-                          material={materials.white}
+                          material={getMaterial(materials.white)}
                         />
                       </group>
                       <group
@@ -1634,14 +1639,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_215.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                           <mesh
                             name="Object_216"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_216.geometry}
-                            material={materials.white}
+                            material={getMaterial(materials.white)}
                           />
                         </group>
                       </group>
@@ -1661,14 +1666,14 @@ export function Robo(props) {
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_210.geometry}
-                          material={materials.grey}
+                          material={getMaterial(materials.grey)}
                         />
                         <mesh
                           name="Object_211"
                           castShadow
                           receiveShadow
                           geometry={nodes.Object_211.geometry}
-                          material={materials.white}
+                          material={getMaterial(materials.white)}
                         />
                       </group>
                       <group
@@ -1686,14 +1691,14 @@ export function Robo(props) {
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_207.geometry}
-                            material={materials.grey}
+                            material={getMaterial(materials.grey)}
                           />
                           <mesh
                             name="Object_208"
                             castShadow
                             receiveShadow
                             geometry={nodes.Object_208.geometry}
-                            material={materials.white}
+                            material={getMaterial(materials.white)}
                           />
                         </group>
                       </group>
@@ -1714,21 +1719,21 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_11.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
           <mesh
             name="Object_12"
             castShadow
             receiveShadow
             geometry={nodes.Object_12.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
           <mesh
             name="Object_13"
             castShadow
             receiveShadow
             geometry={nodes.Object_13.geometry}
-            material={materials.red_glow}
+            material={getMaterial(materials.red_glow)}
           />
         </group>
         <group
@@ -1741,14 +1746,14 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_16.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
           <mesh
             name="Object_17"
             castShadow
             receiveShadow
             geometry={nodes.Object_17.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
         </group>
         <group
@@ -1761,14 +1766,14 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_20.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
           <mesh
             name="Object_21"
             castShadow
             receiveShadow
             geometry={nodes.Object_21.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
         </group>
         <group
@@ -1781,14 +1786,14 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_24.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
           <mesh
             name="Object_25"
             castShadow
             receiveShadow
             geometry={nodes.Object_25.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
         </group>
         <group
@@ -1801,14 +1806,14 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_28.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
           <mesh
             name="Object_29"
             castShadow
             receiveShadow
             geometry={nodes.Object_29.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
         </group>
         <group
@@ -1821,14 +1826,14 @@ export function Robo(props) {
             castShadow
             receiveShadow
             geometry={nodes.Object_32.geometry}
-            material={materials["Material.004"]}
+            material={getMaterial(materials["Material.004"])}
           />
           <mesh
             name="Object_33"
             castShadow
             receiveShadow
             geometry={nodes.Object_33.geometry}
-            material={materials.metal}
+            material={getMaterial(materials.metal)}
           />
         </group>
         <group name="Cylinder010_12" />

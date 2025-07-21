@@ -1,5 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, createContext, useContext } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
+
+// Quality Context for global access
+const QualityContext = createContext('high');
+export const useQuality = () => useContext(QualityContext);
 
 export function PerformanceMonitor({ 
   onPerformanceChange, 
@@ -146,9 +150,9 @@ export function AdaptiveQuality({ children }) {
   }, [quality, gl]);
 
   return (
-    <>
+    <QualityContext.Provider value={quality}>
       <PerformanceMonitor onPerformanceChange={handlePerformanceChange} />
       {children}
-    </>
+    </QualityContext.Provider>
   );
 }

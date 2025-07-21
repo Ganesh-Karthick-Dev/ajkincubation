@@ -3,9 +3,14 @@ import React, { forwardRef, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 import { editable as e } from "@theatre/r3f";
+import { useQuality } from "@/Components/Common/PerformanceMonitor";
 
 export const Room = forwardRef((props, ref) => {
   const { nodes, materials } = useGLTF("/models/Room/scene.gltf");
+  const quality = useQuality();
+  // Helper to pick material
+  const getMaterial = (origMat, color = '#cccccc') =>
+    quality === 'low' ? new THREE.MeshLambertMaterial({ color }) : origMat;
   return (
     <group {...props} dispose={null} ref={ref}>
       <group name="cf456c283db24aeca1e4d07c7ae17a5bfbx" scale={0.01}>
@@ -14,42 +19,42 @@ export const Room = forwardRef((props, ref) => {
           castShadow
           receiveShadow
           geometry={nodes.Center_Table_Scifi_Center_Table_mat_0.geometry}
-          material={materials.Scifi_Center_Table_mat}
+          material={getMaterial(materials.Scifi_Center_Table_mat)}
         />
         <mesh
           name="Floor_Scifi_Floor_mat_0"
           castShadow
           receiveShadow
           geometry={nodes.Floor_Scifi_Floor_mat_0.geometry}
-          material={materials.Scifi_Floor_mat}
+          material={getMaterial(materials.Scifi_Floor_mat)}
         />
         <mesh
           name="Roof_Scifi_Roof_mat_0"
           castShadow
           receiveShadow
           geometry={nodes.Roof_Scifi_Roof_mat_0.geometry}
-          material={materials.Scifi_Roof_mat}
+          material={getMaterial(materials.Scifi_Roof_mat)}
         />
         <mesh
           name="Light3_Scifi_Tunnel_Loop_M_0"
           castShadow
           receiveShadow
           geometry={nodes.Light3_Scifi_Tunnel_Loop_M_0.geometry}
-          material={materials.Scifi_Tunnel_Loop_M}
+          material={getMaterial(materials.Scifi_Tunnel_Loop_M)}
         />
         <mesh
           name="Hollow2_Scifi_Tunnel_Loop_M_0"
           castShadow
           receiveShadow
           geometry={nodes.Hollow2_Scifi_Tunnel_Loop_M_0.geometry}
-          material={materials.Scifi_Tunnel_Loop_M}
+          material={getMaterial(materials.Scifi_Tunnel_Loop_M)}
         />
         <mesh
           name="Frame_Scifi_Tunnel_Loop_M_0"
           castShadow
           receiveShadow
           geometry={nodes.Frame_Scifi_Tunnel_Loop_M_0.geometry}
-          material={materials.Scifi_Tunnel_Loop_M}
+          material={getMaterial(materials.Scifi_Tunnel_Loop_M)}
         />
         <mesh
           name="Light2_Scifi_Tunnel_Loop_M_0"

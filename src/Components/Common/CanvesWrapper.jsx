@@ -15,7 +15,7 @@ import studio from "@theatre/studio";
 import { editable as e } from "@theatre/r3f";
 import sequences from "@/../public/sequences/MainProject.theatre-project-state_3.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
-import { AdaptiveQuality } from "./PerformanceMonitor";
+import { AdaptiveQuality, useQuality } from "./PerformanceMonitor";
 
 // Initialize Theatre.js studio in development mode only
 // if (process.env.NODE_ENV === 'development') {
@@ -31,6 +31,9 @@ function CanvesWrapper({ children }) {
   // Duration overlay logic
   const durationRef = useRef(0);
   const overlayRef = useRef(null);
+
+  // Use quality context
+  const quality = typeof window !== 'undefined' && window.__r3f_qualityLevel ? window.__r3f_qualityLevel : undefined;
 
   useEffect(() => {
     // Prevent default scrolling behavior
@@ -71,16 +74,16 @@ function CanvesWrapper({ children }) {
       <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
         <Canvas
           camera={{ fov: 70, position: [0, 2, 50] }}
-          gl={{ 
-            antialias: typeof window !== 'undefined' ? window.devicePixelRatio <= 1 : true,
+          gl={{
+            antialias: quality === 'low' ? false : (typeof window !== 'undefined' ? window.devicePixelRatio <= 1 : true),
             preserveDrawingBuffer: false,
-            powerPreference: "high-performance",
+            powerPreference: quality === 'low' ? 'default' : 'high-performance',
             alpha: false,
             stencil: false,
             depth: true
           }}
-          dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1}
-          shadows={typeof window !== 'undefined' && window.devicePixelRatio > 1 ? "soft" : "basic"}
+          dpr={quality === 'low' ? 1 : (typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1)}
+          shadows={quality === 'low' ? false : (typeof window !== 'undefined' && window.devicePixelRatio > 1 ? "soft" : "basic")}
           performance={{ min: 0.1, max: 1, debounce: 200 }}
           frameloop="always"
           style={{
@@ -91,8 +94,8 @@ function CanvesWrapper({ children }) {
             height: "100%",
           }}
         >
-          <SheetProvider sheet={sheet}>
-            <AdaptiveQuality>
+          <AdaptiveQuality>
+            <SheetProvider sheet={sheet}>
               <ScrollbasedAnimation project={project} />
               <PerspectiveCamera
                 makeDefault
@@ -115,7 +118,7 @@ function CanvesWrapper({ children }) {
               {children}
               {/* <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} /> */}
               <ambientLight intensity={0.3} />
-            </AdaptiveQuality>
+            </SheetProvider>
             {/* <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport
                 axisColors={["red", "green", "blue"]}
@@ -129,7 +132,7 @@ function CanvesWrapper({ children }) {
           cellSize={1}
           cellThickness={1}
           /> */}
-          </SheetProvider>
+          </AdaptiveQuality>
         </Canvas>
       </div>
     </div>
