@@ -44,6 +44,8 @@ import DoorThreeText from "@/Three/floatingtext/DoorThreeText";
 // import DoorFourText from "@/Three/floatingtext/DoorFourText";
 import { Suspense } from "react";
 import { CustomLoader } from "@/Components/Common/CustomerLoader";
+import RoboName from "@/Three/floatingtext/RoboName";
+import BannerOne from "@/Three/centerroom/BannerOne";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -107,10 +109,14 @@ export default function Home() {
         <TextFour />
         {/* <TextFive /> */}
 
+        {/* Banner */}
+        {/* <BannerOne /> */}
+
 
         <DoorOneText />
         <DoorTwoText />
         <DoorThreeText />
+        <RoboName />
         {/* <DoorFourText /> */}
 
         {/* Floating Text */}

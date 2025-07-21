@@ -1,32 +1,35 @@
 "use client"
 
 import { Html, useProgress } from "@react-three/drei"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export function CustomLoader() {
   const { progress } = useProgress()
   const [isVisible, setIsVisible] = useState(true)
-  const [displayProgress, setDisplayProgress] = useState(0)
+  const [display, setDisplay] = useState(0)
+  const animProgress = useRef(0)
+  const rafRef = useRef()
 
-  // Smooth progress animation
   useEffect(() => {
-    const interval = setInterval(() => {
-      setDisplayProgress((prev) => {  
-        const target = progress
-        const diff = target - prev
-        return prev + diff * 0.08 // Smooth animation
-      })
-    }, 50)
-
-    return () => clearInterval(interval)
-  }, [progress])
-
-  // Hide loader when progress reaches 100
-  useEffect(() => {
-    if (progress === 100) {
-      setIsVisible(false)
+    function animate() {
+      // Always animate toward 100 if progress is 100
+      const target = progress === 100 ? 100 : progress
+      animProgress.current += (target - animProgress.current) * 0.2
+      if (Math.abs(target - animProgress.current) < 0.5) {
+        animProgress.current = target
+      }
+      setDisplay(animProgress.current)
+      if (animProgress.current < 100) {
+        rafRef.current = requestAnimationFrame(animate)
+      } else {
+        setIsVisible(false)
+      }
     }
-  }, [progress])
+    if (isVisible) {
+      rafRef.current = requestAnimationFrame(animate)
+    }
+    return () => rafRef.current && cancelAnimationFrame(rafRef.current)
+  }, [progress, isVisible])
 
   if (!isVisible) return null
 
@@ -57,7 +60,7 @@ export function CustomLoader() {
         </div>
 
         {/* Top right text */}
-        <div className="absolute top-3 right-3 md:top-6 md:right-6 lg:top-8 lg:right-[100px]">
+        <div className="absolute top-[150px] right-3 md:top-6 md:right-6 lg:top-[200px] lg:right-[80px]">
           <div className="text-white text-xs md:text-sm lg:text-base font-medium tracking-wider">
             LAUNCHING 3D
             <span className="ml-1 md:ml-2 inline-block w-1 h-1 md:w-2 md:h-2 bg-white rounded-full animate-pulse"></span>
@@ -75,16 +78,16 @@ export function CustomLoader() {
                 lineHeight: 0.8,
               }}
             >
-              {Math.round(displayProgress)}%
+              {Math.round(display)}%
             </span>
           </div>
         </div>
 
         {/* Bottom progress indicator (optional thin line) */}
-        <div className="absolute bottom-[5.1rem] md:bottom-[10.2rem] lg:bottom-[12.2rem] xl:bottom-[14.2rem] left-0 w-full h-1 md:h-2 bg-white/20">
+        <div className="absolute bottom-[10.1rem] md:bottom-[10.2rem] lg:bottom-[12.2rem] xl:bottom-[14.2rem] left-0 w-full h-1 md:h-2 bg-white/20">
           <div
             className="h-full bg-white transition-all duration-300 ease-out"
-            style={{ width: `${displayProgress}%` }}
+            style={{ width: `${display}%` }}
           />
         </div>
       </div>
