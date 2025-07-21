@@ -42,7 +42,7 @@ import DoorOneText from "@/Three/floatingtext/DoorOneText";
 import DoorTwoText from "@/Three/floatingtext/DoorTwoText";
 import DoorThreeText from "@/Three/floatingtext/DoorThreeText";
 // import DoorFourText from "@/Three/floatingtext/DoorFourText";
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { CustomLoader } from "@/Components/Common/CustomerLoader";
 import RoboName from "@/Three/floatingtext/RoboName";
 import BannerOne from "@/Three/centerroom/BannerOne";
@@ -52,22 +52,39 @@ import BannerOne from "@/Three/centerroom/BannerOne";
 // import { Model } from "@/Three/model";
 
 export default function Home() {
+  // Memoize all model components
+  const laptopModel = useMemo(() => <LaptopModel />, []);
+  const scifiBoxModel = useMemo(() => <ScifiBoxModel />, []);
+  const magnifierModel = useMemo(() => <MagnifierModel />, []);
+  const mobileControllerModel = useMemo(() => <MobileControllerModel />, []);
+  const floatingObjectModel = useMemo(() => <FloatingObjectModel />, []);
+  const faceScannerModel = useMemo(() => <FaceScannerModel />, []);
+  const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
+  const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
+  const restaurantModel = useMemo(() => <RestaurantModel />, []);
+  const smallRoboModel = useMemo(() => <SmallRoboModel />, []);
+  const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
+  const bulbModel = useMemo(() => <BulbModel />, []);
+  const vaultModel = useMemo(() => <VaultModel />, []);
+  const bitcoinModel = useMemo(() => <BitcoinModel />, []);
+  const centerElementModel = useMemo(() => <CenterElementModel />, []);
+
   return (
     <div className="w-full h-screen">
       <CanvesWrapper>
       {/* <Suspense fallback={<CustomLoader />}> */}
         <Idel />
         <Wall />
-        <LaptopModel />
-        <ScifiBoxModel />
-        <MagnifierModel />
-        <MobileControllerModel />
-        <FloatingObjectModel />/
-        <FaceScannerModel />
-        <HumanoidRobotModel />
-        <ControlCenterModel />
+        {laptopModel}
+        {scifiBoxModel}
+        {magnifierModel}
+        {mobileControllerModel}
+        {floatingObjectModel}
+        {faceScannerModel}
+        {humanoidRobotModel}
+        {controlCenterModel}
         {/* <Building1Model1 /> */}
-        <RestaurantModel />
+        {restaurantModel}
         {/* <Building3Model /> */}
         {/* <FactoryModel /> */}
         {/* <Model/> */}
@@ -77,13 +94,13 @@ export default function Home() {
         {/* <spotLight position={[-20, 0, 10]} color="white" angle={0.15} decay={0} penumbra={-1} intensity={30} /> 
         <spotLight position={[20, -10, 10]} color="white" angle={0.2} decay={0} penumbra={-1} intensity={20} /> */}
 
-        <SmallRoboModel />
-        <CoffeeBoxModel />
-        <BulbModel />
-        <VaultModel />
-        <BitcoinModel />
+        {smallRoboModel}
+        {coffeeBoxModel}
+        {bulbModel}
+        {vaultModel}
+        {bitcoinModel}
         {/* <MoneyModel /> */}
-        <CenterElementModel />
+        {centerElementModel}
 
 
 
