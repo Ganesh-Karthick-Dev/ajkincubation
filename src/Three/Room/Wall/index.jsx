@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Text3D, Center, Float } from "@react-three/drei";
+import { useCurrentSheet } from "@theatre/r3f";
 
 function Wall() {
   // Create video element and set up
@@ -78,6 +79,7 @@ function Wall() {
     const hole = new THREE.Path();
     hole.moveTo(holePoints[0][0], holePoints[0][1]); // Start at first point
 
+
     // Connect all points in sequence
     for (let i = 1; i < holePoints.length; i++) {
       hole.lineTo(holePoints[i][0], holePoints[i][1]);
@@ -94,6 +96,18 @@ function Wall() {
 
     return geometry;
   }, []);
+
+
+
+  const sheet = useCurrentSheet();
+  const [currentDuration, setCurrentDuration] = useState(0);
+
+  useFrame(() => {
+      if (sheet) {
+          setCurrentDuration(sheet.sequence.position);
+      }
+  });
+
 
   return (
     <group>
@@ -146,6 +160,24 @@ function Wall() {
             AIIF Ignites 
             <meshBasicMaterial toneMapped={false} map={videoTexture} />
           </Text3D>
+          {currentDuration > 4.00 && currentDuration < 5.00 && (
+            <Text3D
+            font="/fonts/Azonix_Regular.json"
+            size={1}
+            height={0}
+            curveSegments={12}
+            bevelEnabled
+            bevelThickness={0.1}
+            bevelSize={0.02}
+            bevelOffset={0}
+            bevelSegments={5}
+            letterSpacing={0.15}
+            position={[1, 0, 0]}
+          >
+            Scroll to see imagination turn into impact.
+            <meshBasicMaterial toneMapped={false} map={videoTexture} />
+          </Text3D>
+          )}
         </Center>
       </group>
     </group>

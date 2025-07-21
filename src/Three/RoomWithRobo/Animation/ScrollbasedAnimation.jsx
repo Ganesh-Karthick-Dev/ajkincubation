@@ -107,8 +107,66 @@ function ScrollbasedAnimation({ project }) {
       scrollRef.current.target = newTarget;
     };
 
+    // Touch event handlers for mobile devices
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    const handleTouchStart = (e) => {
+      if (!introPlayed || !projectReady) return;
+      
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    };
+
+    const handleTouchMove = (e) => {
+      if (!introPlayed || !projectReady) return;
+
+      e.preventDefault();
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY; // Inverted for natural feel
+      const scrollSpeed = 0.003; // Slightly faster for touch
+      
+      const newTarget = Math.max(
+        INTRO_DURATION,
+        Math.min(totalDuration, scrollRef.current.target + deltaY * scrollSpeed)
+      );
+      
+      scrollRef.current.target = newTarget;
+      touchStartY = touchY; // Update for continuous tracking
+    };
+
+    const handleTouchEnd = (e) => {
+      if (!introPlayed || !projectReady) return;
+      
+      const touchEndTime = Date.now();
+      const touchDuration = touchEndTime - touchStartTime;
+      
+      // Add momentum for quick swipes
+      if (touchDuration < 300) {
+        const velocity = 0.002; // Momentum factor
+        const momentum = velocity * (touchDuration / 100);
+        
+        const newTarget = Math.max(
+          INTRO_DURATION,
+          Math.min(totalDuration, scrollRef.current.target + momentum)
+        );
+        
+        scrollRef.current.target = newTarget;
+      }
+    };
+
+    // Add event listeners
     window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
   }, [totalDuration, introPlayed, projectReady]);
 
   useFrame((state, delta) => {

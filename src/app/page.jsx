@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className="w-full h-screen">
       <CanvesWrapper>
-      <Suspense fallback={<CustomLoader />}>
+      {/* <Suspense fallback={<CustomLoader />}> */}
         <Idel />
         <Wall />
         <LaptopModel />
@@ -116,7 +116,7 @@ export default function Home() {
         {/* Floating Text */}
 
      
-      </Suspense>
+      {/* </Suspense> */}
       </CanvesWrapper>
     </div>
   );

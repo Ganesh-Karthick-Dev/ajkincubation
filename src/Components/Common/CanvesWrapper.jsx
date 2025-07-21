@@ -53,7 +53,7 @@ function CanvesWrapper({ children }) {
   }, [sheet]);
 
   return (
-    <div className="w-full h-full relative p-5">
+    <div className="w-full h-full relative p-2 md:p-3 lg:p-5 ">
         {/* <div ref={overlayRef} style={{
           position: 'fixed',
           top: 20,
