@@ -6,7 +6,7 @@ import {
   Grid,
   OrbitControls,
 } from "@react-three/drei";
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import BaseEnvironment from "./BaseEnvironment";
 import { getProject } from "@theatre/core";
 import { PerspectiveCamera, SheetProvider } from "@theatre/r3f";
@@ -35,6 +35,33 @@ function CanvesWrapper({ children }) {
 
   // Use quality context
   const quality = typeof window !== 'undefined' && window.__r3f_qualityLevel ? window.__r3f_qualityLevel : undefined;
+
+  // Responsive camera state
+  const [cameraSettings, setCameraSettings] = useState({
+    position: [0, 2, 50],
+    fov: 70,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      if (typeof window !== 'undefined' && window.innerWidth < 768) {
+        // Mobile
+        setCameraSettings({
+          position: [0, 2, 80], // Move camera back for mobile
+          fov: 90, // Wider field of view for mobile
+        });
+      } else {
+        // Desktop
+        setCameraSettings({
+          position: [0, 2, 50],
+          fov: 70,
+        });
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Prevent default scrolling behavior
@@ -74,7 +101,7 @@ function CanvesWrapper({ children }) {
         }} /> */}
       <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
         <Canvas
-          camera={{ fov: 70, position: [0, 2, 50] }}
+          camera={{ fov: cameraSettings.fov, position: cameraSettings.position }}
           gl={{
             antialias: quality === 'low' ? false : (typeof window !== 'undefined' ? window.devicePixelRatio <= 1 : true),
             preserveDrawingBuffer: false,
@@ -102,16 +129,16 @@ function CanvesWrapper({ children }) {
               <ScrollbasedAnimation project={project} />
               <PerspectiveCamera
                 makeDefault
-                position={[0, 2, 50]}
-                fov={70}
+                position={cameraSettings.position}
+                fov={cameraSettings.fov}
                 theatreKey="camera"
                 lookAt={cameraLookAtRef}
               />
               <e.mesh
                 theatreKey="camera_lookAt"
                 visible="editor"
-                position={[0, 2, 50]}
-                fov={70}
+                position={cameraSettings.position}
+                fov={cameraSettings.fov}
                 ref={cameraLookAtRef}
                 >
                 <octahedronGeometry args={[0.1, 0]} />
