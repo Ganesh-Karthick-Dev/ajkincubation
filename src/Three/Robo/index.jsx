@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { editable as e } from "@theatre/r3f";
 
@@ -7,6 +7,10 @@ export function Robo(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/Robo/robo.glb");
   const { actions, names, clips } = useAnimations(animations, group);
+  
+  // Memoize complex geometries and materials to prevent re-creation
+  const memoizedNodes = useMemo(() => nodes, [nodes]);
+  const memoizedMaterials = useMemo(() => materials, [materials]);
 
   useEffect(() => {
     console.log({ actions, names, animations, clips });
@@ -31,8 +35,9 @@ export function Robo(props) {
                   name="Object_150"
                   castShadow
                   receiveShadow
-                  geometry={nodes.Object_150.geometry}
-                  material={materials.glow}
+                  geometry={memoizedNodes.Object_150.geometry}
+                  material={memoizedMaterials.glow}
+                  frustumCulled
                 />
               </group>
               <group name="Empty001_74">

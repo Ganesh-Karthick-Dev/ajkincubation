@@ -1,8 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { useGLTF, Float } from '@react-three/drei'
 
 export function BulbModel(props) {
   const { nodes, materials } = useGLTF('/models/showcaseroom/Bulb.glb')
+  
+  const memoizedMaterials = useMemo(() => materials, [materials])
+  const memoizedNodes = useMemo(() => nodes, [nodes])
   return (
       <Float floatIntensity={1.5} rotationIntensity={0.0123} speed={1.75} >
     <group {...props} dispose={null}>
@@ -14,8 +17,9 @@ export function BulbModel(props) {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Sphere_0_1.geometry}
-            material={materials['Material.005']}
+            geometry={memoizedNodes.Sphere_0_1.geometry}
+            material={memoizedMaterials['Material.005']}
+            frustumCulled
           />
           <mesh
             castShadow

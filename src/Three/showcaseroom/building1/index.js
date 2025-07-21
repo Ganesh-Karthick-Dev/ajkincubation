@@ -1,8 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Building1Model1(props) {
   const { nodes, materials } = useGLTF('/models/showcaseroom/Building.glb')
+  
+  const memoizedMaterials = useMemo(() => materials, [materials])
+  const memoizedNodes = useMemo(() => nodes, [nodes])
   return (
     <group {...props} dispose={null}>
       <group
@@ -14,8 +17,9 @@ export function Building1Model1(props) {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube068.geometry}
-          material={materials['03 - Default.001']}
+          geometry={memoizedNodes.Cube068.geometry}
+          material={memoizedMaterials['03 - Default.001']}
+          frustumCulled
         />
         <mesh
           castShadow
