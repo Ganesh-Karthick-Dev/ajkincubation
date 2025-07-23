@@ -190,61 +190,78 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="w-full">
+    <footer className="w-full mb-[10px]">
       {/* Main Footer Container */}
-      <div ref={footerRef} className="bg-[#2a2a2a] rounded-[40px] mx-4 relative overflow-hidden">
+      <div ref={footerRef} className="bg-[#2a2a2a] rounded-[20px] sm:rounded-[30px] md:rounded-[40px] mx-2 sm:mx-4 relative overflow-hidden">
 
         {/* Footer Content */}
-        <div className="px-12 pt-12 pb-6 relative z-10">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 pt-6 sm:pt-8 md:pt-12 pb-4 sm:pb-6 relative z-10">
           {/* Logo Section */}
-          <div className="mb-16">
-            <div className="w-[183px] h-[49px] rounded-lg flex items-center justify-center">
-             <Image src={'/webp/aiif_logo_colur_720 1.webp'} alt='logo' width={1080} height={1080} />
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <div className="w-[120px] h-[32px] sm:w-[150px] sm:h-[40px] md:w-[183px] md:h-[49px] rounded-lg flex items-center justify-center">
+             <Image src={'/webp/aiif_logo_colur_720 1.webp'} alt='logo' width={1080} height={1080} className="w-full h-full object-contain" />
             </div>
           </div>
 
           {/* Navigation and Contact Container */}
-          <div className="flex justify-between items-start mb-12">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-8 sm:mb-10 md:mb-12 space-y-8 lg:space-y-0">
             {/* Navigation Links */}
-            <div className="space-y-6">
-              {/* First Row */}
-              <div className="flex items-center space-x-2">
-                <a href={navigationLinks[0].href} className="nav-link text-[#4e73ff] font-audiowide text-lg transition-colors">
-                  {navigationLinks[0].name}
-                </a>
-                <span className="text-[#3c403c] text-xl font-extralight">/</span>
-                <a href={navigationLinks[1].href} className="nav-link text-[#4e73ff] font-audiowide text-lg transition-colors">
-                  {navigationLinks[1].name}
-                </a>
-                <span className="text-[#3c403c] text-xl font-extralight">/</span>
-                <a href={navigationLinks[2].href} className="nav-link text-[#4e73ff] font-audiowide text-base transition-colors">
-                  {navigationLinks[2].name}
-                </a>
-                <span className="text-[#3c403c] text-xl font-extralight">/</span>
+            <div className="space-y-4 sm:space-y-6">
+              {/* Mobile: Stack links vertically */}
+              <div className="sm:hidden space-y-3">
+                {navigationLinks.map((link, index) => (
+                  <div key={index} className="flex items-center">
+                    <a href={link.href} className="nav-link text-[#4e73ff] font-audiowide text-sm transition-colors">
+                      {link.name}
+                    </a>
+                    {index < navigationLinks.length - 1 && (
+                      <span className="text-[#3c403c] text-lg font-extralight ml-2">/</span>
+                    )}
+                  </div>
+                ))}
               </div>
-              
-              {/* Second Row */}
-              <div className="flex items-center space-x-2">
-                <a href={navigationLinks[3].href} className="nav-link text-[#4e73ff] font-audiowide text-base transition-colors">
-                  {navigationLinks[3].name}
-                </a>
-                <span className="text-[#3c403c] text-xl font-extralight">/</span>
-                <a href={navigationLinks[4].href} className="nav-link text-[#4e73ff] font-audiowide text-base transition-colors">
-                  {navigationLinks[4].name}
-                </a>
-                <span className="text-[#3c403c] text-xl font-extralight">/</span>
-                <a href={navigationLinks[5].href} className="nav-link text-[#4e73ff] font-audiowide text-base transition-colors">
-                  {navigationLinks[5].name}
-                </a>
+
+              {/* Tablet and up: Two rows layout */}
+              <div className="hidden sm:block">
+                {/* First Row */}
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-2 mb-4 md:mb-6">
+                  <a href={navigationLinks[0].href} className="nav-link text-[#4e73ff] font-audiowide text-sm sm:text-base md:text-lg transition-colors">
+                    {navigationLinks[0].name}
+                  </a>
+                  <span className="text-[#3c403c] text-lg md:text-xl font-extralight">/</span>
+                  <a href={navigationLinks[1].href} className="nav-link text-[#4e73ff] font-audiowide text-sm sm:text-base md:text-lg transition-colors">
+                    {navigationLinks[1].name}
+                  </a>
+                  <span className="text-[#3c403c] text-lg md:text-xl font-extralight">/</span>
+                  <a href={navigationLinks[2].href} className="nav-link text-[#4e73ff] font-audiowide text-xs sm:text-sm md:text-base transition-colors">
+                    {navigationLinks[2].name}
+                  </a>
+                  <span className="text-[#3c403c] text-lg md:text-xl font-extralight">/</span>
+                </div>
+                
+                {/* Second Row */}
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+                  <a href={navigationLinks[3].href} className="nav-link text-[#4e73ff] font-audiowide text-xs sm:text-sm md:text-base transition-colors">
+                    {navigationLinks[3].name}
+                  </a>
+                  <span className="text-[#3c403c] text-lg md:text-xl font-extralight">/</span>
+                  <a href={navigationLinks[4].href} className="nav-link text-[#4e73ff] font-audiowide text-xs sm:text-sm md:text-base transition-colors">
+                    {navigationLinks[4].name}
+                  </a>
+                  <span className="text-[#3c403c] text-lg md:text-xl font-extralight">/</span>
+                  <a href={navigationLinks[5].href} className="nav-link text-[#4e73ff] font-audiowide text-xs sm:text-sm md:text-base transition-colors">
+                    {navigationLinks[5].name}
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Contact Information */}
-            <div className="text-right space-y-4">
+            <div className="text-left lg:text-right space-y-3 sm:space-y-4">
               {/* Email Section */}
               <div>
-                <div className="text-[#4e73ff] font-audiowide text-sm mb-2">Email</div>
-                <div className="text-[#adb3ab] font-audiowide text-2xl">
+                <div className="text-[#4e73ff] font-audiowide text-xs sm:text-sm mb-1 sm:mb-2">Email</div>
+                <div className="text-[#adb3ab] font-audiowide text-sm sm:text-lg md:text-xl lg:text-2xl break-all">
                   <span className="text-[#3c403c]">(</span>
                     aiif@ajkcas.ac.in
                   <span className="text-[#3c403c]">)</span>
@@ -253,8 +270,8 @@ const Footer = () => {
 
               {/* Location Section */}
               <div>
-                <div className="text-zinc-500 font-medium text-sm mb-2">Location</div>
-                <div className="text-[#adb3ab] font-audiowide text-sm leading-relaxed">
+                <div className="text-zinc-500 font-medium text-xs sm:text-sm mb-1 sm:mb-2">Location</div>
+                <div className="text-[#adb3ab] font-audiowide text-xs sm:text-sm leading-relaxed">
                 AJK College of Arts and Science, Navakkarai, <br />
                 Coimbatore
                 </div>
@@ -265,17 +282,17 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="bg-[#4e73ff] rounded-2xl mx-6 h-[160px] relative bottom-[30px] overflow-hidden z-20">
+        <div className="bg-[#4e73ff] rounded-xl sm:rounded-2xl mx-2 sm:mx-4 md:mx-6 h-[100px] sm:h-[120px] md:h-[160px] relative bottom-[15px] sm:bottom-[20px] md:bottom-[30px] overflow-hidden z-20">
           {/* Background overlay */}
-          <div className="absolute inset-0  opacity-70"></div>
+          <div className="absolute inset-0 opacity-70"></div>
           
           {/* Content */}
-          <div className="relative h-full flex items-center justify-between px-16 z-10">
+          <div className="relative h-full flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-0 z-10">
             {/* Left side - Explore section */}
-            <div className="flex items-center space-x-6">
-              <div className="w-6 h-[1px] "></div>
+            <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 mb-4 sm:mb-0">
+              <div className="w-3 sm:w-4 md:w-6 h-[1px] bg-white/20"></div>
               <div>
-                <h3 className="text-white font-audiowide text-xl leading-tight tracking-tight">
+                <h3 className="text-white font-audiowide text-sm sm:text-base md:text-lg lg:text-xl leading-tight tracking-tight">
                   Explore<br />
                   our success
                 </h3>
@@ -283,15 +300,14 @@ const Footer = () => {
             </div>
 
             {/* Right side - Copyright */}
-            <div className="text-white font-audiowide text-lg flex flex-row items-center gap-[30px]">
+            <div className="text-white font-audiowide text-xs sm:text-sm md:text-base lg:text-lg flex flex-row items-center gap-[15px] sm:gap-[20px] md:gap-[30px]">
               <p>© 2025 — Copyright</p>
-            <RxArrowTopRight className=' w-[50px] h-[50px]' />
+              <RxArrowTopRight className="w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]" />
             </div>
 
-
-            {/* Decorative lines */}
-            <div className="absolute top-0 right-48 w-[1px] h-6"></div>
-            <div className="absolute bottom-0 right-48 w-[1px] h-6 "></div>
+            {/* Decorative lines - Hidden on mobile */}
+            <div className="hidden md:block absolute top-0 right-32 lg:right-48 w-[1px] h-6 bg-white/20"></div>
+            <div className="hidden md:block absolute bottom-0 right-32 lg:right-48 w-[1px] h-6 bg-white/20"></div>
           </div>
         </div>
         

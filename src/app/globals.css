@@ -49,8 +49,11 @@
     background-color: #e5e5e5;
   }
 
-body, * {
-  cursor: url('/svg/arrowhead-rounded-outline.svg') 6 4, auto;
+/* Custom cursor only for md devices and up */
+@media (min-width: 768px) {
+  body, * {
+    cursor: url('/svg/arrowhead-rounded-outline.svg') 6 4, auto;
+  }
 }
 
 ::selection{

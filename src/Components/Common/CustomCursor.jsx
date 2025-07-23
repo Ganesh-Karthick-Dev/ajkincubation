@@ -10,10 +10,21 @@ const CustomCursor = () => {
   const mouse = useRef({ x: isClient ? window.innerWidth / 2 : 0, y: isClient ? window.innerHeight / 2 : 0 });
   const pos = useRef({ x: isClient ? window.innerWidth / 2 : 0, y: isClient ? window.innerHeight / 2 : 0 });
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (!isClient) return;
+    
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkScreenSize();
     setVisible(true);
-  }, []);
+    
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, [isClient]);
 
   useEffect(() => {
     if (!isClient) return;
@@ -42,6 +53,11 @@ const CustomCursor = () => {
     animate();
     return () => cancelAnimationFrame(animationFrame);
   }, [isClient]);
+
+  // Don't render cursor on mobile devices
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>
