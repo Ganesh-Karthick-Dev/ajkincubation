@@ -1,5 +1,6 @@
 import LayoutWrapper from '@/Components/Common/LayoutWrapper';
 import ContactForm from '../../Components/Common/ContactForm';
+import ContactHero from './ContactHero';
 
 export default function ContactPage() {
   return (
@@ -13,6 +14,9 @@ export default function ContactPage() {
         
         <ContactForm />
       </div>
+
+      <ContactHero />
+
     </div>
     </LayoutWrapper>
     </>

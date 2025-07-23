@@ -1,6 +1,6 @@
 import LayoutWrapper from '@/Components/Common/LayoutWrapper'
 import React from 'react'
-import StackingCard from '../../Components/stacking-card.jsx'
+import BentoGrid from '../../Components/BentoGrid.jsx'
 
 const page = () => {
   return (
@@ -10,8 +10,8 @@ const page = () => {
         <h1 className='text-6xl font-bold text-center'>Resource</h1>
 
         <div className='mb-[5rem]'>
-          {/* here - stacking cards */}
-          <StackingCard />
+          {/* Bento Grid Layout */}
+          <BentoGrid />
         </div>
     </div>
     </LayoutWrapper>

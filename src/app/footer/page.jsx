@@ -190,7 +190,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="w-full mb-[10px]">
+    <footer className="w-full mb-[50px]">
       {/* Main Footer Container */}
       <div ref={footerRef} className="bg-[#2a2a2a] rounded-[20px] sm:rounded-[30px] md:rounded-[40px] mx-2 sm:mx-4 relative overflow-hidden">
 
@@ -290,7 +290,7 @@ const Footer = () => {
           <div className="relative h-full flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-0 z-10">
             {/* Left side - Explore section */}
             <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 mb-4 sm:mb-0">
-              <div className="w-3 sm:w-4 md:w-6 h-[1px] bg-white/20"></div>
+              <div className="w-3 sm:w-4 md:w-6 hidden md:block h-[3px] bg-white/20"></div>
               <div>
                 <h3 className="text-white font-audiowide text-sm sm:text-base md:text-lg lg:text-xl leading-tight tracking-tight">
                   Explore<br />

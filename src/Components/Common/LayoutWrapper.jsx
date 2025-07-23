@@ -15,7 +15,7 @@ const LayoutWrapper = ({children}) => {
     <>
       <CustomCursor />
       <div className={`w-full h-[100vh] relative p-5 ${pathname.split("/")[1] == "" ? "bg-[#e5e5e5]" : "bg-white"}`}>
-        <div id="main-scroll-area" className="w-full h-full relative  rounded-[3rem] overflow-auto scrollbar-hide pt-[5rem] bg-white bg-dotted-pattern">
+        <div id="main-scroll-area" className="w-full h-full relative  rounded-[3rem] overflow-auto scrollbar-hide pt-[4rem] bg-white bg-dotted-pattern">
           {children}
           <Footer />
         </div>
