@@ -260,7 +260,7 @@ const Footer = () => {
             <div className="text-left lg:text-right space-y-3 sm:space-y-4">
               {/* Email Section */}
               <div>
-                <div className="text-[#4e73ff] font-audiowide text-xs sm:text-sm mb-1 sm:mb-2">Email</div>
+                <div className="text-zinc-500  font-audiowide text-xs sm:text-sm mb-1 sm:mb-2">Email</div>
                 <div className="text-[#adb3ab] font-audiowide text-sm sm:text-lg md:text-xl lg:text-2xl break-all">
                   <span className="text-[#3c403c]">(</span>
                     aiif@ajkcas.ac.in
