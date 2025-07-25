@@ -3,6 +3,7 @@ import LayoutWrapper from '@/Components/Common/LayoutWrapper'
 import React, { useRef } from 'react'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import RoboSection from './RoboSection';
 
 
 const CardDesign = ({ data }) => {
@@ -361,6 +362,11 @@ const page = () => {
 
 
 
+                    </div>
+
+
+                    <div >
+                        <RoboSection />
                     </div>
 
                 </div>
