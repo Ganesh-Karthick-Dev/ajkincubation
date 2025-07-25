@@ -1,14 +1,14 @@
 import { Drone } from '@/Three/staticpages/drone'
-import React, { Suspense, useState, useEffect } from 'react'
+import React, { Suspense, useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Environment } from '@react-three/drei'
+import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei'
 
 const RoboSection = () => {
-    const [fov, setFov] = useState(55)
+    const fovRef = useRef(55)
 
     useEffect(() => {
         const handleResize = () => {
-            setFov(window.innerWidth >= 768 ? 55 : 80)
+            fovRef.current = window.innerWidth >= 768 ? 55 : 80
         }
 
         // Set initial FOV
@@ -43,10 +43,14 @@ const RoboSection = () => {
                 {/* middle side */}
                 <div className="h-[70vh] md:h-[400px] w-full col-span-12 md:col-span-6">
                     <Canvas
-                        camera={{ position: [0, 0, 0], fov: fov }}
                         style={{ width: '100%', height: '100%' }}
                     >
                         <Suspense fallback={null}>
+                            <PerspectiveCamera 
+                                makeDefault 
+                                position={[0, 0, 0]} 
+                                fov={fovRef.current} 
+                            />
                             <OrbitControls />
                             <Drone />
                             <Environment preset="city" />

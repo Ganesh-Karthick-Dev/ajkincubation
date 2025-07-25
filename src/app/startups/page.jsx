@@ -8,7 +8,7 @@ import RoboSection from './RoboSection';
 
 const CardDesign = ({ data }) => {
     return (
-        <div className='w-full max-w-[280px] sm:max-w-[210px] h-[150px] sm:h-[300px] flex flex-col gap-2 sm:gap-[10px] p-2 sm:p-0 '>
+        <div className='w-full md:max-w-[310px] h-[150px] sm:h-[300px] flex flex-col gap-2 sm:gap-[10px] p-2 sm:p-0 '>
             <p className='text-lg sm:text-xl lg:text-2xl font-medium text-[#00CA40] leading-tight'>{data.title}</p>
             <p className='text-sm sm:text-base lg:text-lg text-[#929292] leading-normal tracking-wide'>{data.description}</p>
         </div>
