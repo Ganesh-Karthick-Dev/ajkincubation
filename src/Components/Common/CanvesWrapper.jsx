@@ -48,7 +48,7 @@ function CanvesWrapper({ children }) {
         // Mobile
         setCameraSettings({
           position: [0, 2, 80], // Move camera back for mobile
-          fov: 90, // Wider field of view for mobile
+          fov: 120, // Wider field of view for mobile
         });
       } else {
         // Desktop

@@ -108,7 +108,7 @@ const LaserLogo = () => {
             rotation={[0, 0 , 0]}
         >
             {/* Top Straight Line */}
-            <mesh position={[0, 0.5 * SCALE, 0]}>
+            {/* <mesh position={[0, 0.5 * SCALE, 0]}>
                 <planeGeometry args={[1.6 * SCALE, 0.03 * SCALE]} />
                 <meshBasicMaterial
                     color={0x00ffff}
@@ -116,9 +116,9 @@ const LaserLogo = () => {
                     opacity={0.45}
                     blending={THREE.AdditiveBlending}
                 />
-            </mesh>
+            </mesh> */}
             {/* Bottom Straight Line */}
-            <mesh position={[0, -0.7 * SCALE, 0]}>
+            {/* <mesh position={[0, -0.7 * SCALE, 0]}>
                 <planeGeometry args={[1.6 * SCALE, 0.03 * SCALE]} />
                 <meshBasicMaterial
                     color={0x00ffff}
@@ -126,26 +126,26 @@ const LaserLogo = () => {
                     opacity={0.45}
                     blending={THREE.AdditiveBlending}
                 />
-            </mesh>
+            </mesh> */}
             {/* Top Memory Pulses */}
-            {memoryPulseRefs.current.top.map((ref, i) => (
-                <mesh
-                    ref={ref}
-                    key={"top-pulse-" + i}
-                    position={[0, 0.5 * SCALE, 0.01 * SCALE]}
-                >
-                    <planeGeometry args={[0.22 * SCALE, 0.06 * SCALE]} />
-                    <meshBasicMaterial
-                        color={0x00ffff}
-                        transparent
-                        opacity={0.7}
-                        blending={THREE.AdditiveBlending}
-                        depthWrite={false}
-                    />
-                </mesh>
-            ))}
+                {/* {memoryPulseRefs.current.top.map((ref, i) => (
+                    <mesh
+                        ref={ref}
+                        key={"top-pulse-" + i}
+                        position={[0, 0.5 * SCALE, 0.01 * SCALE]}
+                    >
+                        <planeGeometry args={[0.22 * SCALE, 0.06 * SCALE]} />
+                        <meshBasicMaterial
+                            color={0x00ffff}
+                            transparent
+                            opacity={0.7}
+                            blending={THREE.AdditiveBlending}
+                            depthWrite={false}
+                        />
+                    </mesh>
+                ))} */}
             {/* Bottom Memory Pulses */}
-            {memoryPulseRefs.current.bottom.map((ref, i) => (
+            {/* {memoryPulseRefs.current.bottom.map((ref, i) => (
                 <mesh
                     ref={ref}
                     key={"bottom-pulse-" + i}
@@ -160,11 +160,11 @@ const LaserLogo = () => {
                         depthWrite={false}
                     />
                 </mesh>
-            ))}
+            ))} */}
             <Center>
                 <group>
                     {/* Animated highlight sweep */}
-                    <mesh
+                    {/* <mesh
                         ref={highlightRef}
                         position={[0, 0, 0.09 * SCALE]}
                     >
@@ -175,7 +175,7 @@ const LaserLogo = () => {
                             opacity={0.25}
                             blending={THREE.AdditiveBlending}
                         />
-                    </mesh>
+                    </mesh> */}
                     {/* Richer AIIF: layered text for outline and glow */}
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
@@ -227,7 +227,7 @@ const LaserLogo = () => {
                         <meshStandardMaterial color="#fff" emissive="#fff" emissiveIntensity={0.7} metalness={0.2} roughness={0.7} transparent opacity={0.18} />
                     </Text3D>
                     {/* Scattering particles from scan line */}
-                    {particleRefs.current.map((ref, i) => (
+                    {/* {particleRefs.current.map((ref, i) => (
                         <mesh
                             ref={ref}
                             key={i}
@@ -242,7 +242,7 @@ const LaserLogo = () => {
                                 depthWrite={false}
                             />
                         </mesh>
-                    ))}
+                    ))} */}
                 </group>
             </Center>
         </group>

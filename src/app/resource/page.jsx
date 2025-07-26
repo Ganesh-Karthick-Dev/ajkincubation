@@ -7,16 +7,16 @@ const page = () => {
   return (
     <>
     <LayoutWrapper>
-    <div className="container mx-auto font-outfit mt-[4rem]">
-        <h1 className='text-6xl font-bold text-center'>Resource</h1>
+    <div className="container mx-auto font-outfit mt-[2rem]">
+        <h1 className='text-6xl font-bold text-center mb-[2rem]'>Resource</h1>
 
         <div className='mb-[5rem]'>
           {/* Bento Grid Layout */}
           <BentoGrid />
         </div>
 
-        <div>
-          <p className='text-4xl font-bold text-center'>Sample Title</p>
+        <div className=' mt-[2rem]'>
+          
           <OtherSection />
         </div>
 

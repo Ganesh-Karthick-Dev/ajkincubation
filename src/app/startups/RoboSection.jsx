@@ -23,7 +23,9 @@ const RoboSection = () => {
 
     return (
         <>
-            <div className="grid grid-cols-12 gap-4 my-[100px] ">
+                <h1 className=' my-[70px]  text-center text-4xl font-bold'>Grow Your Startup with Expert Backing</h1>
+            <div className="grid grid-cols-12 gap-4 ">
+
 
                 {/* left side */}
                 <div className=" col-span-12 md:col-span-3 flex flex-col gap-5 justify-evenly">
