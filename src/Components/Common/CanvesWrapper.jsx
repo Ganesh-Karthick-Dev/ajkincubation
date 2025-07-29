@@ -17,6 +17,7 @@ import sequences from "@/../public/sequences/MainProject.theatre-project-state_3
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
 import { AdaptiveQuality, useQuality } from "./PerformanceMonitor";
 import { CustomLoader } from "./CustomerLoader";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 // Initialize Theatre.js studio in development mode only
 // if (process.env.NODE_ENV === 'development') {
@@ -148,6 +149,9 @@ function CanvesWrapper({ children }) {
               {children}
               {/* <OrbitControls rotateSpeed={0.3} zoomSpeed={0.9} panSpeed={0.3} /> */}
               <ambientLight intensity={0.3} />
+              {/* <EffectComposer>
+                <Bloom intensity={0.33423} luminanceThreshold={0} luminanceSmoothing={0.9} layers={[1]} />
+              </EffectComposer> */}
             </SheetProvider>
             {/* <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
               <GizmoViewport

@@ -133,7 +133,7 @@
 
 
 import React, { useState } from 'react';
-import { Center, Text3D, useMatcapTexture } from '@react-three/drei';
+import { Center, Outlines, Text3D, useMatcapTexture } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { useFrame } from '@react-three/fiber';
 
@@ -162,17 +162,19 @@ const TextTwo = () => {
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
                         size={0.2123}
-                        height={0}
-                        curveSegments={12}
+                        height={0.033}
+                        curveSegments={3}
                         bevelEnabled
                         bevelThickness={0.00002}
                         bevelSize={0.01}
                         bevelOffset={0}
                         bevelSegments={1}
                         letterSpacing={0.03}
+                        position={[0.123, 0, 0]}
                     >
                         From Idea to Launchpad
-                        {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
+                        <meshMatcapMaterial color="#00f5ff" />
+                        <Outlines thickness={2.07} color="#afe8e8" />
                     </Text3D>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
@@ -201,7 +203,7 @@ const TextTwo = () => {
                         bevelOffset={0}
                         bevelSegments={1}
                         letterSpacing={0.03}
-                        position={[0, -0.7, 0]}
+                        position={[1, -0.7, 0]}
                     >
                         and startup essentials.
                     </Text3D>

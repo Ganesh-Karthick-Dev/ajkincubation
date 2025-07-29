@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, Text3D, useMatcapTexture } from '@react-three/drei';
+import { Center, Outlines, Text3D, useMatcapTexture } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { useFrame } from '@react-three/fiber';
 
@@ -28,8 +28,8 @@ const DoorOneText = () => {
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
                         size={0.6123}
-                        height={0}
-                        curveSegments={12}
+                        height={0.033}
+                        curveSegments={3}
                         bevelEnabled
                         bevelThickness={0.00002}
                         bevelSize={0.01}
@@ -38,7 +38,8 @@ const DoorOneText = () => {
                         letterSpacing={0.03}
                     >
                         Ideas
-                        {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
+                        <meshMatcapMaterial color="#00f5ff" />
+                        <Outlines thickness={2.07} color="#afe8e8" />
                     </Text3D>
                 </Center>
             </group>

@@ -1,11 +1,43 @@
-import React, { useState } from 'react';
-import { Center, Text3D, useMatcapTexture } from '@react-three/drei';
+import React, { useState, useMemo } from 'react';
+import { Center, Text3D } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 const RoboName = () => {
 
-    const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
+    // Create shader material for gradient
+    const gradientMaterial = useMemo(() => {
+        return new THREE.ShaderMaterial({
+            uniforms: {
+                topColor: { value: new THREE.Color(0x00ff88) }, // Green
+                bottomColor: { value: new THREE.Color(0x0088ff) }, // Blue
+                offset: { value: 33 },
+                exponent: { value: 0.6 }
+            },
+            vertexShader: `
+                varying vec3 vWorldPosition;
+                void main() {
+                    vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+                    vWorldPosition = worldPosition.xyz;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 topColor;
+                uniform vec3 bottomColor;
+                uniform float offset;
+                uniform float exponent;
+                varying vec3 vWorldPosition;
+                void main() {
+                    float h = normalize(vWorldPosition + offset).y;
+                    vec3 color = mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0));
+                    gl_FragColor = vec4(color, 1.0);
+                }
+            `,
+        });
+    }, []);
+
     const sheet = useCurrentSheet();
     const [currentDuration, setCurrentDuration] = useState(0);
 
@@ -36,7 +68,7 @@ const RoboName = () => {
                         letterSpacing={0.03}
                     >
                         A I I F
-                        {/* <meshMatcapMaterial color="#4e73ff" matcap={matcapTexture} /> */}
+                        <primitive object={gradientMaterial} />
                     </Text3D>
                 </Center>
             </group>
