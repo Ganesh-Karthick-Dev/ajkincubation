@@ -2191,6 +2191,8 @@ export const RoomWithRobo = React.forwardRef((props, ref) => {
                     receiveShadow
                     geometry={nodes.Wall__Scifi_Wall_mat_0.geometry}
                     material={materials["Scifi_Wall_mat.001"]}
+                    material-emissiveIntensity={0}
+                    material-toneMapped={true}
                   />
                   <mesh
                     name="Wall__Scifi_Window_Glass_0"
@@ -2198,6 +2200,8 @@ export const RoomWithRobo = React.forwardRef((props, ref) => {
                     receiveShadow
                     geometry={nodes.Wall__Scifi_Window_Glass_0.geometry}
                     material={materials["Scifi_Window_Glass.001"]}
+                    material-emissiveIntensity={0}
+                    material-toneMapped={true}
                   />
                 </group>
               </group>

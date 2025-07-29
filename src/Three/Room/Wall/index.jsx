@@ -132,24 +132,25 @@ function Wall() {
 
 
   return (
-    <group>
-      <mesh position={[0, 2.4, 34.3]} rotation={[0, 0, 0]}>
+    <group >
+      <mesh position={[0, 2.4234, 34.3]} rotation={[0, 0, 0]}>
         <primitive object={wallGeometry} />
         <meshStandardMaterial
-          map={colorMap}
-          normalMap={normalMap}
-          roughnessMap={roughnessMap}
-          metalnessMap={metalnessMap}
-          envMapIntensity={1}
-          side={THREE.DoubleSide}
+          // map={colorMap}
+          // normalMap={normalMap}
+          // roughnessMap={roughnessMap}
+          // metalnessMap={metalnessMap}
+          // envMapIntensity={1}
+          // side={THREE.DoubleSide}
+        color="#587fff"
         />
       </mesh>
 
-      <group position={[-11, 5.5, 34.1]}>
+      <group position={[-11.423, 6.1, 34.1]} rotation={[0, 0, 0.0093]}>
         <Center>
           <Text3D
-            font="/fonts/Roman.json"
-            size={0.5}
+            font="/fonts/Poppins_Regular.json"
+            size={0.4}
             height={0.4}
             curveSegments={12}
             bevelEnabled
@@ -165,11 +166,11 @@ function Wall() {
         </Center>
       </group>
 
-      <group position={[-11, 3.9, 34.2]}>
+          <group position={[-11.423, 4.5123, 34.512]} rotation={[0, 0, -0.0093]}>
         <Center>
           <Text3D
             font="/fonts/Azonix_Regular.json"
-            size={1}
+            size={0.923}
             height={0.4}
             curveSegments={12}
             bevelEnabled
@@ -182,24 +183,25 @@ function Wall() {
             AIIF Ignites 
             <meshBasicMaterial toneMapped={false} map={videoTexture} />
           </Text3D>
-          {currentDuration > 4.00 && currentDuration < 5.00 && (
-            <Text3D
-            font="/fonts/Azonix_Regular.json"
-            size={1}
+
+
+          <Text3D
+            font="/fonts/Poppins_Regular.json"
+            position={[5, -0.456, 1]} 
+            size={0.1}
             height={0}
             curveSegments={12}
             bevelEnabled
-            bevelThickness={0.1}
-            bevelSize={0.02}
+            bevelThickness={0.0005}
+            bevelSize={0.01}
             bevelOffset={0}
-            bevelSegments={5}
-            letterSpacing={0.15}
-            position={[1, 0, 0]}
+            bevelSegments={2}
+            letterSpacing={0.05}
           >
             Scroll to see imagination turn into impact.
-            <meshBasicMaterial toneMapped={false} map={videoTexture} />
+            {/* <meshBasicMaterial toneMapped={false} map={videoTexture} /> */}
           </Text3D>
-          )}
+
         </Center>
       </group>
     </group>

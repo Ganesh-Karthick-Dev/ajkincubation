@@ -62,11 +62,11 @@
 
 
 
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, useState } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Text3D, Center } from '@react-three/drei';
+import { Text3D, Center, Outlines } from '@react-three/drei';
 import { useRouter } from 'next/navigation';
 
 const CARD_WIDTH = 5;
@@ -101,6 +101,8 @@ const ContactUsNav = () => {
     const router = useRouter();
     const groupRef = useRef();
     const gradientTexture = useGradientTexture();
+    const [isHovered, setIsHovered] = useState(false);
+
 
     const handleService = () => {
         console.log("Service");
@@ -113,14 +115,16 @@ const ContactUsNav = () => {
             position={[6.332, 2.1, -51.3]}
             rotation={[0.0223,-2.496,0.0143]}
             onClick={handleService}
+            onPointerEnter={() => setIsHovered(true)}
+            onPointerLeave={() => setIsHovered(false)}
         >
             {/* Black border plane (slightly larger) */}
-            <mesh position={[1, 0.3, -0.01]}>
+            {/* <mesh position={[1, 0.3, -0.01]}>
                 <planeGeometry args={[CARD_WIDTH + BORDER_SIZE, CARD_HEIGHT + BORDER_SIZE]} />
                 <meshBasicMaterial color="black" />
-            </mesh>
+            </mesh> */}
             {/* Main card plane with gradient and gloss */}
-            <mesh position={[1, 0.3, 0]}>
+            {/* <mesh position={[1, 0.3, 0]}>
                 <planeGeometry args={[CARD_WIDTH, CARD_HEIGHT]} />
                 <meshPhysicalMaterial
                     map={gradientTexture}
@@ -131,7 +135,7 @@ const ContactUsNav = () => {
                     reflectivity={0.25}
                     transparent={false}
                 />
-            </mesh>
+            </mesh> */}
             {/* Centered 3D Text with TV broadcast look, stacked vertically */}
             <Center position={[1.023, 0.393, 0.08]}>
           
@@ -148,7 +152,12 @@ const ContactUsNav = () => {
                     position={[1.223, -0.323, 0]}
                 >
                             Contact Us
-                    <meshStandardMaterial color="#e6f0ff" emissive="#b3d1ff" emissiveIntensity={2.5} />
+                    <meshStandardMaterial 
+                        color={isHovered ? "#0066ff" : "#e6f0ff"} 
+                        emissive={isHovered ? "#0044cc" : "#b3d1ff"} 
+                        emissiveIntensity={2.5} 
+                    />
+                    <Outlines thickness={2.07} color={isHovered ? "white" : "yellow"} />
                 </Text3D>
           
             </Center>

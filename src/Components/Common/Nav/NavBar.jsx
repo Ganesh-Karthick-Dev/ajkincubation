@@ -10,6 +10,7 @@ import { gsap } from "gsap";
 function NavBar() {
   const pathname = usePathname(); // Gets current path like "/contact", "/about", etc.
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const modalRef = useRef(null);
   const overlayRef = useRef(null);
   const navItemsRef = useRef(null);
@@ -93,7 +94,26 @@ function NavBar() {
 
   const handleLinkClick = () => {
     setIsModalOpen(false);
+    setIsDesktopMenuOpen(false); // Also close desktop menu when clicking a link
   };
+
+  const handleDesktopMenuToggle = () => {
+    setIsDesktopMenuOpen(!isDesktopMenuOpen);
+  };
+
+  // Close desktop menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDesktopMenuOpen && !event.target.closest('.desktop-menu-container')) {
+        setIsDesktopMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDesktopMenuOpen]);
 
   return (
     <>
@@ -109,13 +129,13 @@ function NavBar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className={` ${pathname.split("/")[1] == "" ? "menu__continer" : "bg-white"} group cursor-pointer  relative h-full bg-[#e5e5e5] pr-5 md:pr-12 pl-5  w-fit flex items-center justify-center rounded-bl-[28px] hidden lg:flex`}>
+        <div className={` ${pathname.split("/")[1] == "" ? "menu__continer" : "bg-white"} desktop-menu-container cursor-pointer relative h-full bg-[#e5e5e5] pr-5 md:pr-12 pl-5 w-fit flex items-center justify-center rounded-bl-[28px] hidden lg:flex`}>
           <span
-            className="group-hover:block mr-5 hidden  text-lg font-bold w-[20px] h-[20px] rounded-full"
+            className={`${isDesktopMenuOpen ? "block" : "hidden"} mr-5 text-lg font-bold w-[20px] h-[20px] rounded-full`}
             style={{ background: "linear-gradient(90deg, #6b95ff, #4e73ff)" }}
           />
 
-          <div className="menu__text mr-1 md:mr-5 group-hover:hidden block">
+          <div className={`menu__text mr-1 md:mr-5 ${isDesktopMenuOpen ? "hidden" : "block"}`}>
             <span
               className="text-lg font-bold font-audiowide"
               style={{
@@ -128,48 +148,58 @@ function NavBar() {
             </span>
           </div>
 
-          <div className="menu__items font-audiowide items-center justify-center gap-[3rem] flex group-hover:w-[60rem] overflow-hidden w-0 transition-all duration-1000 ease-in-out">
+          <div className={`menu__items font-audiowide items-center justify-center gap-[3rem] flex overflow-hidden transition-all duration-1000 ease-in-out ${isDesktopMenuOpen ? "w-[60rem]" : "w-0"}`}>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/"
+              onClick={handleLinkClick}
             >
               Home
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/about"
+              onClick={handleLinkClick}
             >
               About us
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/service"
+              onClick={handleLinkClick}
             >
              Programs & Services
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/startups"
+              onClick={handleLinkClick}
             >
               Startups TN
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/resource"
+              onClick={handleLinkClick}
             >
               Resource
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/contact"
+              onClick={handleLinkClick}
             >
               Contact us
             </Link>
           </div>
 
-          <div className="menu__button ml-5">
+          <div className="menu__button ml-5" onClick={handleDesktopMenuToggle}>
             <div className="menu__button__icon">
-              <Menu className="w-[1.5rem] h-[1.5rem] text-black" />
+              {isDesktopMenuOpen ? (
+                <X className="w-[1.5rem] h-[1.5rem] text-black" />
+              ) : (
+                <Menu className="w-[1.5rem] h-[1.5rem] text-black" />
+              )}
             </div>
           </div>
         </div>
