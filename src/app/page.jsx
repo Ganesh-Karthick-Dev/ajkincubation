@@ -62,12 +62,12 @@ import { GlobeSpin } from "@/Three/showcaseroom/newmodels/GlobeSpin";
 export default function Home() {
   // Memoize all model components
   // const laptopModel = useMemo(() => <LaptopModel />, []);
-  const scifiBoxModel = useMemo(() => <ScifiBoxModel />, []);
+  // const scifiBoxModel = useMemo(() => <ScifiBoxModel />, []);
   const magnifierModel = useMemo(() => <MagnifierModel />, []);
   const mobileControllerModel = useMemo(() => <MobileControllerModel />, []);
   const floatingObjectModel = useMemo(() => <FloatingObjectModel />, []);
   const faceScannerModel = useMemo(() => <FaceScannerModel />, []);
-  const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
+  // const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
   const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
   const smallRoboModel = useMemo(() => <SmallRoboModel />, []);
   const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
@@ -88,12 +88,13 @@ export default function Home() {
         <Idel />
         <Wall />
         {/* {laptopModel} */}
-        {scifiBoxModel}
+        {/* {scifiBoxModel} */}
+        
         {magnifierModel}
         {mobileControllerModel}
         {floatingObjectModel}
         {faceScannerModel}
-        {humanoidRobotModel}
+        {/* {humanoidRobotModel} */}
         {controlCenterModel}
         {/* {restaurantModel} */}
     

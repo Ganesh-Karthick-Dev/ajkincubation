@@ -144,7 +144,7 @@ export const Room = forwardRef((props, ref) => {
           position={[0, 0, 0]} //360
         />
 
-        <e.mesh
+        {/* <e.mesh
           theatreKey="frontDoor_left"
           name="Tunnel_Exit_L_Door_Scifi_Tunnel_Door_0"
           castShadow
@@ -153,7 +153,7 @@ export const Room = forwardRef((props, ref) => {
           material={materials.Scifi_Tunnel_Door}
           // position={[-235, 0, 0]}
           // rotation={[2, 0, 0]}
-        />
+        /> */}
         {/* front door end */}
         <group>
           <e.mesh
@@ -219,6 +219,8 @@ export const Room = forwardRef((props, ref) => {
             receiveShadow
             geometry={nodes.Tunnel_door_R2_Scifi_Tunnel_Door_0.geometry}
             material={materials.Scifi_Tunnel_Door}
+            position={[0, 10, 0]}
+            rotation={[0, 2, 0]}
           />
           <e.mesh
             theatreKey="backDoor_left"

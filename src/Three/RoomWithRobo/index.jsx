@@ -1967,6 +1967,7 @@ export const RoomWithRobo = React.forwardRef((props, ref) => {
                         nodes.Tunnel_Exit_L_Door_Scifi_Tunnel_Door_0.geometry
                       }
                       material={materials["Scifi_Tunnel_Door.001"]}
+                      position={[0, 0, -30]}
                     />
                   </e.group>
                   <e.group
