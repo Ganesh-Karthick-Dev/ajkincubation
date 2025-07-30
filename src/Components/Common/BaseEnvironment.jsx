@@ -31,6 +31,21 @@ function BaseEnvironment() {
         </mesh>
       </group>
       <Environment preset="city" background />
+      
+      {/* Enhanced ambient lighting for better visibility - controlled by DynamicLighting when scroll > 38.5 */}
+      {/* <ambientLight intensity={0.6} color="#ffffff" /> */}
+      
+      {/* Soft directional light for depth */}
+      <directionalLight
+        position={[10, 10, 5]}
+        intensity={0.8}
+        color="#ffffff"
+        castShadow
+      />
+      
+      {/* Additional fill lights for better illumination */}
+      <pointLight position={[-10, 5, 10]} intensity={0.4} color="#e6f3ff" />
+      <pointLight position={[10, 5, -10]} intensity={0.4} color="#fff5e6" />
     </>
   );
 }

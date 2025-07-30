@@ -130,19 +130,18 @@
 
 // export default TextThree;
 
-import React, { useState } from 'react';
-import { Center, Outlines, Text3D, useMatcapTexture } from '@react-three/drei';
+import React, { useRef } from 'react';
+import { Center, Outlines, Text3D } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { useFrame } from '@react-three/fiber';
 
 const TextThree = () => {
-    const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
     const sheet = useCurrentSheet();
-    const [currentDuration, setCurrentDuration] = useState(0);
+    const currentDurationRef = useRef(0);
 
     useFrame(() => {
         if (sheet) {
-            setCurrentDuration(sheet.sequence.position);
+            currentDurationRef.current = sheet.sequence.position;
         }
     });
 

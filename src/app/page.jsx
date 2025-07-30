@@ -46,6 +46,14 @@ import { Suspense, useMemo } from "react";
 import { CustomLoader } from "@/Components/Common/CustomerLoader";
 import RoboName from "@/Three/floatingtext/RoboName";
 import BannerOne from "@/Three/centerroom/BannerOne";
+import { Books } from "@/Three/showcaseroom/newmodels/Books";
+import { AnimatedBook } from "@/Three/showcaseroom/newmodels/AnimatedBook";
+import { Pen } from "@/Three/showcaseroom/newmodels/Pen";
+import { ContactPhone } from "@/Three/showcaseroom/newmodels/CotactPhone";
+import { AboutCollage } from "@/Three/showcaseroom/newmodels/AboutCollage";
+import AjkCollageNameText from "@/Three/floatingtext/AjkCollageNameText";
+import { GlobeSpin } from "@/Three/showcaseroom/newmodels/GlobeSpin";
+// import WallTouchUp from "@/Three/touchups/WallTouchUp";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
 // import { CloudEffect } from "@/Three/Room/Scene/CloudEffect";
@@ -53,7 +61,7 @@ import BannerOne from "@/Three/centerroom/BannerOne";
 
 export default function Home() {
   // Memoize all model components
-  const laptopModel = useMemo(() => <LaptopModel />, []);
+  // const laptopModel = useMemo(() => <LaptopModel />, []);
   const scifiBoxModel = useMemo(() => <ScifiBoxModel />, []);
   const magnifierModel = useMemo(() => <MagnifierModel />, []);
   const mobileControllerModel = useMemo(() => <MobileControllerModel />, []);
@@ -61,13 +69,17 @@ export default function Home() {
   const faceScannerModel = useMemo(() => <FaceScannerModel />, []);
   const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
   const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
-  const restaurantModel = useMemo(() => <RestaurantModel />, []);
   const smallRoboModel = useMemo(() => <SmallRoboModel />, []);
   const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
-  const bulbModel = useMemo(() => <BulbModel />, []);
-  const vaultModel = useMemo(() => <VaultModel />, []);
-  const bitcoinModel = useMemo(() => <BitcoinModel />, []);
+
   const centerElementModel = useMemo(() => <CenterElementModel />, []);
+
+  const booksModel = useMemo(() => <Books />, []);
+  const animatedBookModel = useMemo(() => <AnimatedBook />, []);
+  const penModel = useMemo(() => <Pen />, []);
+  const contactPhoneModel = useMemo(() => <ContactPhone />, []);
+  const aboutCollageModel = useMemo(() => <AboutCollage />, []);
+  const globeSpinModel = useMemo(() => <GlobeSpin />, []);
 
   return (
     <div className="w-full h-screen">
@@ -75,7 +87,7 @@ export default function Home() {
       {/* <Suspense fallback={<CustomLoader />}> */}
         <Idel />
         <Wall />
-        {laptopModel}
+        {/* {laptopModel} */}
         {scifiBoxModel}
         {magnifierModel}
         {mobileControllerModel}
@@ -83,25 +95,22 @@ export default function Home() {
         {faceScannerModel}
         {humanoidRobotModel}
         {controlCenterModel}
-        {/* <Building1Model1 /> */}
-        {restaurantModel}
-        {/* <Building3Model /> */}
-        {/* <FactoryModel /> */}
-        {/* <Model/> */}
-        {/* <Scientists /> */}
-        {/* <CloudEffect />
-         <spotLight position={[0, 40, 0]} decay={0} distance={45} penumbra={1} intensity={100} /> */}
-        {/* <spotLight position={[-20, 0, 10]} color="white" angle={0.15} decay={0} penumbra={-1} intensity={30} /> 
-        <spotLight position={[20, -10, 10]} color="white" angle={0.2} decay={0} penumbra={-1} intensity={20} /> */}
+        {/* {restaurantModel} */}
+    
 
         {smallRoboModel}
-        {coffeeBoxModel}
-        {bulbModel}
-        {vaultModel}
-        {bitcoinModel}
-        {/* <MoneyModel /> */}
+        {coffeeBoxModel} 
+        {/* {bulbModel} */}
+        {/* {vaultModel} */}
+        {/* {bitcoinModel} */}
+        {booksModel}
+        {animatedBookModel}
+        {penModel }
+        {contactPhoneModel}
+        {aboutCollageModel}
+        {globeSpinModel}
         {centerElementModel}
-
+        <AjkCollageNameText />
 
 
         {/* Navs */}
@@ -137,6 +146,10 @@ export default function Home() {
         {/* <DoorFourText /> */}
 
         {/* Floating Text */}
+
+
+        {/* touchups */}
+        {/* <WallTouchUp /> */}
 
      
       {/* </Suspense> */}

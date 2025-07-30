@@ -26,6 +26,7 @@ function ScrollbasedAnimation({ project }) {
   const [introPlayed, setIntroPlayed] = useState(false);
   const [projectReady, setProjectReady] = useState(false);
   const totalDuration = val(sheet.sequence.pointer.length);
+  const MAX_SCROLL_DURATION = 39; // Limit scrolling to duration 39
   const INTRO_DURATION = 4; // Duration of intro animation
   const INTRO_ANIMATION_DURATION = 6.5; // Increased duration for slower animation
   const INITIAL_DELAY = 100; // Increased initial delay
@@ -101,7 +102,7 @@ function ScrollbasedAnimation({ project }) {
       
       const newTarget = Math.max(
         INTRO_DURATION,
-        Math.min(totalDuration, scrollRef.current.target + deltaY)
+        Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + deltaY)
       );
       
       scrollRef.current.target = newTarget;
@@ -128,7 +129,7 @@ function ScrollbasedAnimation({ project }) {
       
       const newTarget = Math.max(
         INTRO_DURATION,
-        Math.min(totalDuration, scrollRef.current.target + deltaY * scrollSpeed)
+        Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + deltaY * scrollSpeed)
       );
       
       scrollRef.current.target = newTarget;
@@ -148,7 +149,7 @@ function ScrollbasedAnimation({ project }) {
         
         const newTarget = Math.max(
           INTRO_DURATION,
-          Math.min(totalDuration, scrollRef.current.target + momentum)
+          Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + momentum)
         );
         
         scrollRef.current.target = newTarget;
@@ -167,7 +168,7 @@ function ScrollbasedAnimation({ project }) {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [totalDuration, introPlayed, projectReady]);
+  }, [MAX_SCROLL_DURATION, introPlayed, projectReady]);
 
   useFrame((state, delta) => {
     if (!sheet || !projectReady || !introPlayed) return;
@@ -180,7 +181,7 @@ function ScrollbasedAnimation({ project }) {
     
     scrollRef.current.current = Math.max(
       INTRO_DURATION,
-      Math.min(totalDuration, scrollRef.current.current)
+      Math.min(MAX_SCROLL_DURATION, scrollRef.current.current)
     );
     
     sheet.sequence.position = scrollRef.current.current;

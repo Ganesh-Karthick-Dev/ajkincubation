@@ -2,6 +2,8 @@ import React, { useRef, useMemo, useState } from 'react';
 import { Text3D, Center, Outlines } from '@react-three/drei';
 import * as THREE from 'three';
 import { useRouter } from 'next/navigation';
+import { useCurrentSheet } from '@theatre/r3f';
+import { useFrame } from '@react-three/fiber';
 
 const CARD_WIDTH = 6;
 const CARD_HEIGHT = 2.5;
@@ -40,6 +42,19 @@ const StartUpNav = () => {
     const handleStartups = () => {
         router.push("/startups");
     };
+
+    const sheet = useCurrentSheet();
+    const [currentDuration, setCurrentDuration] = useState(0);
+    
+
+    useFrame(() => {
+        if (sheet) {
+            setCurrentDuration(sheet.sequence.position);
+        }
+    });
+
+    // Only render if currentDuration is between 16.00 and 17.50
+    if (currentDuration >= 38.06) return null;
 
     return (
         <group

@@ -22,7 +22,7 @@ import { NavBar } from "@/Components/Common/Nav/NavBar";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="overflow-hidden">
+      <body className="overflow-hidden" suppressHydrationWarning={true}>
           {/* <StagewiseToolbar config={{ plugins: [ReactPlugin] }} /> 
           <div className="w-full h-full bg-red-500">
 

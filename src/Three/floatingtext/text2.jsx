@@ -132,24 +132,23 @@
 
 
 
-import React, { useState } from 'react';
-import { Center, Outlines, Text3D, useMatcapTexture } from '@react-three/drei';
+import React, { useRef } from 'react';
+import { Center, Outlines, Text3D } from '@react-three/drei';
 import { useCurrentSheet } from '@theatre/r3f';
 import { useFrame } from '@react-three/fiber';
 
 const TextTwo = () => {
-    const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
     const sheet = useCurrentSheet();
-    const [currentDuration, setCurrentDuration] = useState(0);
+    const currentDurationRef = useRef(0);
 
     useFrame(() => {
         if (sheet) {
-            setCurrentDuration(sheet.sequence.position);
+            currentDurationRef.current = sheet.sequence.position;
         }
     });
 
     // Only render if currentDuration is between 16.00 and 17.50
-    // if (currentDuration < 21.16 || currentDuration > 30.41) return null;
+    // if (currentDurationRef.current < 21.16 || currentDurationRef.current > 30.41) return null;
 
     return (
         <group>

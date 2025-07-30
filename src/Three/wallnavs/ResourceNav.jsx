@@ -127,11 +127,12 @@
 
 
 import React, { useRef, useEffect, useMemo, useState } from 'react';
-import { useThree } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Text3D, Center, Outlines } from '@react-three/drei';
 import { useRouter } from 'next/navigation';
+import { useCurrentSheet } from '@theatre/r3f';
 
 const CARD_WIDTH = 5;
 const CARD_HEIGHT = 2.3;
@@ -172,6 +173,19 @@ const ServiceNav = () => {
         console.log("Service");
         router.push("/service");
     };
+
+    const sheet = useCurrentSheet();
+    const [currentDuration, setCurrentDuration] = useState(0);
+    
+
+    useFrame(() => {
+        if (sheet) {
+            setCurrentDuration(sheet.sequence.position);
+        }
+    });
+
+    // Only render if currentDuration is between 16.00 and 17.50
+    if (currentDuration >= 38.06) return null;
 
     return (
         <group

@@ -45,14 +45,26 @@ const LaserLogo = () => {
     const [matcapTexture] = useMatcapTexture("CB4E88_F99AD6_F384C3_ED75B9");
     const groupRef = useRef();
     const materialRef = useRef();
+    const lightRef = useRef();
 
     useFrame((state) => {
         const time = state.clock.elapsedTime;
         
-        // Simple blinking effect
+        // Enhanced pulsing effect for better focus
         if (materialRef.current) {
-            materialRef.current.emissiveIntensity = 0.8 + Math.sin(time * 3) * 0.4;
-            materialRef.current.time = time;
+            const pulse = 0.8 + Math.sin(time * 2.5) * 0.3;
+            materialRef.current.emissive.setHex(0x4e73ff);
+            materialRef.current.emissiveIntensity = pulse;
+        }
+        
+        // Animated spotlight for dramatic effect
+        if (lightRef.current) {
+            lightRef.current.intensity = 2 + Math.sin(time * 2) * 0.5;
+        }
+        
+        // Subtle floating animation
+        if (groupRef.current) {
+            groupRef.current.position.y = 3.3 + Math.sin(time * 1.5) * 0.05;
         }
     });
 
@@ -62,29 +74,78 @@ const LaserLogo = () => {
             position={[0.043, 3.3, -58.0]}
             rotation={[0, 0, 0]}
         >
+            {/* Dramatic spotlight focused on the logo */}
+            <spotLight
+                ref={lightRef}
+                position={[0, 6, -55]}
+                target-position={[0.043, 3.3, -58.0]}
+                angle={0.3}
+                penumbra={0.5}
+                intensity={2.5}
+                color="#4e73ff"
+                castShadow
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+            />
+            
+            {/* Additional rim lighting */}
+            <pointLight 
+                position={[2, 4, -56]} 
+                intensity={1.2} 
+                color="#00ff88" 
+                distance={8}
+            />
+            <pointLight 
+                position={[-2, 4, -56]} 
+                intensity={1.2} 
+                color="#0088ff" 
+                distance={8}
+            />
+            
             <Center>
                 <group>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
-                        size={0.32}
-                        height={0.13}
-                        curveSegments={12}
+                        size={0.38}
+                        height={0.18}
+                        curveSegments={16}
                         bevelEnabled
-                        bevelThickness={0.0001}
-                        bevelSize={0.02}
+                        bevelThickness={0.005}
+                        bevelSize={0.03}
                         bevelOffset={0}
-                        bevelSegments={2}
-                        letterSpacing={0.05}
+                        bevelSegments={4}
+                        letterSpacing={0.08}
                         position={[0, 0.7, -0.03]}
                     >
                         AIIF
-                        <gradientMaterial
+                        <meshStandardMaterial 
                             ref={materialRef}
-                            topColor={new THREE.Color('#90EE90')}
-                            bottomColor={new THREE.Color('#ADD8E6')}
+                            color="#4e73ff" 
+                            emissive="#4e73ff"
                             emissiveIntensity={0.8}
+                            metalness={0.7}
+                            roughness={0.2}
+                            envMapIntensity={1.5}
                         />
-                        <Outlines thickness={2.07} color={"grey"} />
+                        <Outlines thickness={3.5} color="#00ff88" opacity={0.9} />
+                    </Text3D>
+                    
+                    {/* Additional glow effect using a larger transparent version */}
+                    <Text3D
+                        font="/fonts/Poppins_Regular.json"
+                        size={0.42}
+                        height={0.02}
+                        curveSegments={8}
+                        bevelEnabled={false}
+                        letterSpacing={0.08}
+                        position={[0, 0.7, -0.05]}
+                    >
+                        AIIF
+                        <meshBasicMaterial 
+                            color="#4e73ff" 
+                            transparent 
+                            opacity={0.3}
+                        />
                     </Text3D>
                 </group>
             </Center>
