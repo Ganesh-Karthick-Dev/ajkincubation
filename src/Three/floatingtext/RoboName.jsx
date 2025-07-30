@@ -6,35 +6,31 @@ import * as THREE from 'three';
 
 const RoboName = () => {
 
-    // Create shader material for gradient
+    // Working gradient shader for Text3D
     const gradientMaterial = useMemo(() => {
         return new THREE.ShaderMaterial({
             uniforms: {
-                topColor: { value: new THREE.Color(0x00ff88) }, // Green
-                bottomColor: { value: new THREE.Color(0x0088ff) }, // Blue
-                offset: { value: 33 },
-                exponent: { value: 0.6 }
+                topColor: { value: new THREE.Color('#aaffaa') }, // Light green
+                bottomColor: { value: new THREE.Color('#4488ff') } // Blue
             },
             vertexShader: `
-                varying vec3 vWorldPosition;
+                varying vec3 vPosition;
                 void main() {
-                    vec4 worldPosition = modelMatrix * vec4(position, 1.0);
-                    vWorldPosition = worldPosition.xyz;
+                    vPosition = position;
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
                 }
             `,
             fragmentShader: `
                 uniform vec3 topColor;
                 uniform vec3 bottomColor;
-                uniform float offset;
-                uniform float exponent;
-                varying vec3 vWorldPosition;
+                varying vec3 vPosition;
                 void main() {
-                    float h = normalize(vWorldPosition + offset).y;
-                    vec3 color = mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0));
+                    float mixValue = (vPosition.y + 0.1) / 0.2; // Adjust based on text height
+                    mixValue = clamp(mixValue, 0.0, 1.0);
+                    vec3 color = mix(bottomColor, topColor, mixValue);
                     gl_FragColor = vec4(color, 1.0);
                 }
-            `,
+            `
         });
     }, []);
 
@@ -50,14 +46,14 @@ const RoboName = () => {
     return (
         <group>
             <group
-                position={[-0.323, 3.092, -6.05812]}
+                position={[-0.523, 3.092, -6.05812]}
                 rotation={[0, 0 , 0]}
                 visible={true}
             >
                <Center>
                     <Text3D
                         font="/fonts/Poppins_Regular.json"
-                        size={0.1223}
+                        size={0.1723}
                         height={0.041}
                         curveSegments={12}
                         bevelEnabled
@@ -66,9 +62,9 @@ const RoboName = () => {
                         bevelOffset={0}
                         bevelSegments={1}
                         letterSpacing={0.03}
+                        material={gradientMaterial}
                     >
-                        A I I F
-                        <primitive object={gradientMaterial} />
+                        AIIF
                     </Text3D>
                 </Center>
             </group>

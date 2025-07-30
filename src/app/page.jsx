@@ -55,6 +55,9 @@ import AjkCollageNameText from "@/Three/floatingtext/AjkCollageNameText";
 import { GlobeSpin } from "@/Three/showcaseroom/newmodels/GlobeSpin";
 import { ImageDisplayModel } from "@/Three/showcaseroom/imagedisplay";
 import { TextRight } from "@/Three/showcaseroom/imagedisplay/textright";
+import { StartupRocket } from "@/Three/showcaseroom/newmodels/StartupRocket";
+import { Router } from "@/Three/showcaseroom/newmodels/Router";
+import { WifiModel } from "@/Three/showcaseroom/newmodels/WifiModel";
 // import WallTouchUp from "@/Three/touchups/WallTouchUp";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
@@ -65,12 +68,12 @@ export default function Home() {
   // Memoize all model components
   // const laptopModel = useMemo(() => <LaptopModel />, []);
   // const scifiBoxModel = useMemo(() => <ScifiBoxModel />, []);
-  const magnifierModel = useMemo(() => <MagnifierModel />, []);
-  const mobileControllerModel = useMemo(() => <MobileControllerModel />, []);
+  // const magnifierModel = useMemo(() => <MagnifierModel />, []);
+  // const mobileControllerModel = useMemo(() => <MobileControllerModel />, []);
   const floatingObjectModel = useMemo(() => <FloatingObjectModel />, []);
   const faceScannerModel = useMemo(() => <FaceScannerModel />, []);
   // const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
-  const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
+  // const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
   const smallRoboModel = useMemo(() => <SmallRoboModel />, []);
   const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
 
@@ -79,11 +82,14 @@ export default function Home() {
   const booksModel = useMemo(() => <Books />, []);
   const animatedBookModel = useMemo(() => <AnimatedBook />, []);
   const penModel = useMemo(() => <Pen />, []);
-  const contactPhoneModel = useMemo(() => <ContactPhone />, []);
+  // const contactPhoneModel = useMemo(() => <ContactPhone />, []);
   const aboutCollageModel = useMemo(() => <AboutCollage />, []);
   const globeSpinModel = useMemo(() => <GlobeSpin />, []);
   const imageDisplayModel = useMemo(() => <ImageDisplayModel />, []);
   const textRightModel = useMemo(() => <TextRight />, []);
+  const startupRocketModel = useMemo(() => <StartupRocket />, []);
+  const routerModel = useMemo(() => <Router />, []);
+  const wifiModel = useMemo(() => <WifiModel />, []);
 
   return (
     <div className="w-full h-screen">
@@ -93,13 +99,13 @@ export default function Home() {
         <Wall />
         {/* {laptopModel} */}
         {/* {scifiBoxModel} */}
-        
-        {magnifierModel}
-        {mobileControllerModel}
+
+        {/* {magnifierModel} */}
+        {/* {mobileControllerModel} */}
         {floatingObjectModel}
         {faceScannerModel}
         {/* {humanoidRobotModel} */}
-        {controlCenterModel}
+        {/* {controlCenterModel} */}
         {/* {restaurantModel} */}
     
 
@@ -110,13 +116,17 @@ export default function Home() {
         {/* {bitcoinModel} */}
         {booksModel}
         {animatedBookModel}
+
         {penModel }
-        {contactPhoneModel}
+        {/* {contactPhoneModel} */}
         {aboutCollageModel}
         {globeSpinModel}
         {imageDisplayModel}
         {textRightModel}
+        {startupRocketModel}
         {centerElementModel}
+        {routerModel}
+        {wifiModel}
         <AjkCollageNameText />
 
 
