@@ -53,6 +53,8 @@ import { ContactPhone } from "@/Three/showcaseroom/newmodels/CotactPhone";
 import { AboutCollage } from "@/Three/showcaseroom/newmodels/AboutCollage";
 import AjkCollageNameText from "@/Three/floatingtext/AjkCollageNameText";
 import { GlobeSpin } from "@/Three/showcaseroom/newmodels/GlobeSpin";
+import { ImageDisplayModel } from "@/Three/showcaseroom/imagedisplay";
+import { TextRight } from "@/Three/showcaseroom/imagedisplay/textright";
 // import WallTouchUp from "@/Three/touchups/WallTouchUp";
 // import { Building3Model } from "@/Three/showcaseroom/building1/building3";
 // import { FactoryModel } from "@/Three/showcaseroom/factory";
@@ -80,6 +82,8 @@ export default function Home() {
   const contactPhoneModel = useMemo(() => <ContactPhone />, []);
   const aboutCollageModel = useMemo(() => <AboutCollage />, []);
   const globeSpinModel = useMemo(() => <GlobeSpin />, []);
+  const imageDisplayModel = useMemo(() => <ImageDisplayModel />, []);
+  const textRightModel = useMemo(() => <TextRight />, []);
 
   return (
     <div className="w-full h-screen">
@@ -110,6 +114,8 @@ export default function Home() {
         {contactPhoneModel}
         {aboutCollageModel}
         {globeSpinModel}
+        {imageDisplayModel}
+        {textRightModel}
         {centerElementModel}
         <AjkCollageNameText />
 
