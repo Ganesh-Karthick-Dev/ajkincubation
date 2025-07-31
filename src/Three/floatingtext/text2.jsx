@@ -159,7 +159,7 @@ const TextTwo = () => {
             >
                <Center>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.2123}
                         height={0.033}
                         curveSegments={3}
@@ -176,7 +176,7 @@ const TextTwo = () => {
                         <Outlines thickness={2.07} color="#afe8e8" />
                     </Text3D>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.1123}
                         height={0}
                         curveSegments={12}
@@ -186,13 +186,13 @@ const TextTwo = () => {
                         bevelOffset={0}
                         bevelSegments={1}
                         letterSpacing={0.03}
-                        position={[0, -0.4, 0]}
+                        position={[-0.212, -0.4, 0]}
                     >
                         Fuel your vision with expert-led incubation 
                         {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.1123}
                         height={0}
                         curveSegments={12}

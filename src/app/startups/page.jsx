@@ -166,7 +166,7 @@ const page = () => {
             }
 
             // Dice roll reveal animation
-            const diceTexts = ["StartupTN", "Test 2", "Test 3", "Test 4"];
+            const diceTexts = ["StartupTN", "EDIA", "IIC", "MS&ME"];
             let currentIndex = 0;
 
             const rollReveal = () => {

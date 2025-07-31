@@ -149,7 +149,7 @@ function Wall() {
       <group position={[-11.423, 6.1, 34.1]} rotation={[0, 0, 0.0093]}>
         <Center>
           <Text3D
-            font="/fonts/Poppins_Regular.json"
+            font="/fonts/Audiowide_Regular.json"
             size={0.4}
             height={0.4}
             curveSegments={12}
@@ -186,7 +186,7 @@ function Wall() {
 
 
           <Text3D
-            font="/fonts/Poppins_Regular.json"
+            font="/fonts/Audiowide_Regular.json"
             position={[5, -0.456, 1]} 
             size={0.1}
             height={0}

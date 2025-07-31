@@ -26,7 +26,7 @@ const TitleText = () => {
             >
                <Center>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.2}
                         height={0}
                         curveSegments={12}
@@ -41,7 +41,7 @@ const TitleText = () => {
                         {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.2}
                         height={0}
                         curveSegments={12}

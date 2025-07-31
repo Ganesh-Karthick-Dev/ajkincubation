@@ -75,7 +75,7 @@ export default function Home() {
   // const humanoidRobotModel = useMemo(() => <HumanoidRobotModel />, []);
   // const controlCenterModel = useMemo(() => <ControlCenterModel />, []);
   const smallRoboModel = useMemo(() => <SmallRoboModel />, []);
-  const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
+  // const coffeeBoxModel = useMemo(() => <CoffeeBoxModel />, []);
 
   const centerElementModel = useMemo(() => <CenterElementModel />, []);
 
@@ -110,7 +110,7 @@ export default function Home() {
     
 
         {smallRoboModel}
-        {coffeeBoxModel} 
+        {/* {coffeeBoxModel}  */}
         {/* {bulbModel} */}
         {/* {vaultModel} */}
         {/* {bitcoinModel} */}

@@ -154,7 +154,7 @@ const ServiceNav = () => {
             {/* Centered 3D Text with TV broadcast look, stacked vertically */}
             <Center position={[1.123, 0.393, 0.08]}>
                 <Text3D
-                    font={"/fonts/Poppins_Regular.json"}
+                    font={"/fonts/Audiowide_Regular.json"}    
                     size={0.5}
                     height={0.212}
                     curveSegments={12}

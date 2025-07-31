@@ -78,7 +78,7 @@ const AboutNav = () => {
                 style={{cursor: 'pointer'}}
             >
                 <Text3D
-                    font={"/fonts/Poppins_Regular.json"}
+                    font={"/fonts/Audiowide_Regular.json"}    
                     size={0.5}
                     height={0.212}
                     curveSegments={2}

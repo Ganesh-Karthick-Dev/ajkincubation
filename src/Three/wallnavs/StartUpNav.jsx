@@ -86,7 +86,7 @@ const StartUpNav = () => {
             {/* Centered 3D Text with TV broadcast look */}
             <Center position={[1, 0.3, 0.08]} onClick={handleStartups} style={{cursor: 'pointer'}}>
                 <Text3D
-                    font={"/fonts/Poppins_Regular.json"}
+                    font={"/fonts/Audiowide_Regular.json"}    
                     size={0.5}
                     height={0}
                     curveSegments={12}

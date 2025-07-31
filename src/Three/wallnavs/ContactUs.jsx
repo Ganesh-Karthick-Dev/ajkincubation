@@ -140,7 +140,7 @@ const ContactUsNav = () => {
             <Center position={[1.023, 0.393, 0.08]}>
           
                 <Text3D
-                    font={"/fonts/Poppins_Regular.json"}
+                    font={"/fonts/Audiowide_Regular.json"}    
                     size={0.5}
                     height={0}
                     curveSegments={12}

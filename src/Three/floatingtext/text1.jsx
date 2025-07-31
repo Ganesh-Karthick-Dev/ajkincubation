@@ -27,7 +27,7 @@ const TextOne = () => {
             >
                <Center>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.1123}
                         height={0}
                         curveSegments={12}
@@ -42,7 +42,7 @@ const TextOne = () => {
                         {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.1123}
                         height={0}
                         curveSegments={12}
@@ -58,7 +58,7 @@ const TextOne = () => {
                         {/* <meshMatcapMaterial color="white" matcap={matcapTexture} /> */}
                     </Text3D>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.1123}
                         height={0}
                         curveSegments={12}

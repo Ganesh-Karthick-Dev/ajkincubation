@@ -26,7 +26,7 @@ const DoorFourText = () => {
             >
                <Center>
                     <Text3D
-                        font="/fonts/Poppins_Regular.json"
+                        font="/fonts/Audiowide_Regular.json"
                         size={0.6123}
                         height={0}
                         curveSegments={12}

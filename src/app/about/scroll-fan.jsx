@@ -247,13 +247,13 @@ export default function ScrollFan() {
                       style={{
                         left: "500px", // Increased spacing to clear the logo circles
                         top: "-30px",
-                        width: "800px",
+                        width: "600px",
                         height: "60px",
                         transform: `rotate(${-angle}deg)`, // Initial rotation
                       }}
                     >
                       <div className="w-full h-full flex items-center justify-center">
-                        <h3 className="text-5xl font-medium text-gray-800">{blade.title}</h3>
+                        <h3 className="text-4xl font-medium text-gray-800">{blade.title}</h3>
                       </div>
                     </div>
                   </div>
