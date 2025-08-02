@@ -113,8 +113,8 @@ export default function ScrollFan() {
           const progress = self.progress
           rotation = -progress * 60 // 2 * 30, so all 3 blades pass through the right side
 
-          // Rotate only the text elements, not the entire fan container
-          gsap.set(fanRef.current, { rotation: rotation })
+          // Rotate only the text elements, not the entire fan container with smooth transition
+          gsap.to(fanRef.current, { rotation: rotation, duration: 0.1, ease: "none" })
 
           // Calculate which text should be visible based on rotation
           let activeText = 0 // Start with the first text blade (index 0)
@@ -269,7 +269,7 @@ export default function ScrollFan() {
               <div className="w-[250px] h-[250px] rounded-full border-2 border-gray-300 bg-white flex items-center justify-center shadow-lg">
                 {/* AIIF Logo */}
                 <div className="text-center">
-                  <Image src="/logo.png" alt="AIIF Logo" width={1080} height={1080} className="" />
+                  <Image src="/webp/target.webp" alt="AIIF Logo" width={1080} height={1080} className="" />
                 </div>
               </div>
             </div>

@@ -27,6 +27,12 @@ export function FactoryModel(props) {
 //   console.log(position, rotation, scale)
 
   const { nodes, materials } = useGLTF('/models/showcaseroom/Factory.glb')
+  
+  // Fixed values from commented leva controls
+  const position = [4.479, 1.581, -51.729]
+  const rotation = [4.5, -0.1, 0]
+  const scale = [0.01167, -0.0133, 0.0134]
+  
   return (
     <group {...props} dispose={null}>
       <group 
@@ -35,15 +41,15 @@ export function FactoryModel(props) {
         scale={scale}
       >
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={false}
+          receiveShadow={false}
           geometry={nodes.Object_2.geometry}
           material={materials.Factory}
         />
         <axesHelper args={[1000]} />
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={false}
+          receiveShadow={false}
           geometry={nodes.Object_3.geometry}
           material={materials.Silo}
         />

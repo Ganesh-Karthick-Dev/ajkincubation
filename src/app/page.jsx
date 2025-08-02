@@ -44,6 +44,7 @@ import DoorThreeText from "@/Three/floatingtext/DoorThreeText";
 // import DoorFourText from "@/Three/floatingtext/DoorFourText";
 import { Suspense, useMemo } from "react";
 import { CustomLoader } from "@/Components/Common/CustomerLoader";
+import { ModelPreloader } from "@/Components/Common/ModelPreloader";
 import RoboName from "@/Three/floatingtext/RoboName";
 import BannerOne from "@/Three/centerroom/BannerOne";
 import { Books } from "@/Three/showcaseroom/newmodels/Books";
@@ -93,6 +94,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen">
+      <ModelPreloader />
       <CanvesWrapper>
       {/* <Suspense fallback={<CustomLoader />}> */}
         <Idel />

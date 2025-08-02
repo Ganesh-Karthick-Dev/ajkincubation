@@ -28,8 +28,8 @@ function ScrollbasedAnimation({ project }) {
   const totalDuration = val(sheet.sequence.pointer.length);
   const MAX_SCROLL_DURATION = 39; // Limit scrolling to duration 39
   const INTRO_DURATION = 4; // Duration of intro animation
-  const INTRO_ANIMATION_DURATION = 6.5; // Increased duration for slower animation
-  const INITIAL_DELAY = 100; // Increased initial delay
+  const INTRO_ANIMATION_DURATION = 0.5; // Fast intro - just 0.5 seconds
+  const INITIAL_DELAY = 0; // No delay - immediate start
 
   // Wait for project to be ready
   useEffect(() => {
@@ -40,56 +40,20 @@ function ScrollbasedAnimation({ project }) {
     });
   }, [project]);
 
-  // Handle intro animation after project is ready
+  // Quick intro animation setup
   useEffect(() => {
     if (!sheet || !projectReady || introPlayed) return;
 
-    let startTime = null;
-    let animationFrame = null;
-
-    const animateIntro = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = (timestamp - startTime) / 1000; // Convert to seconds
-      const progress = Math.min(elapsed / INTRO_ANIMATION_DURATION, 1);
-      
-      // Apply gentler easing for smoother motion
-      const easedProgress = easeInOutQuint(progress);
-      const currentPosition = easedProgress * INTRO_DURATION;
-      
-      // Add small smoothing to the position update
-      const smoothness = 0.1;
-      const currentAnimPos = sheet.sequence.position;
-      const newPosition = currentAnimPos + (currentPosition - currentAnimPos) * smoothness;
-
-      console.log(`totalDuration: ${totalDuration}`);
-      console.log(`currentDuration: ${sheet.sequence.position}`);
-      
-      
-      sheet.sequence.position = newPosition;
-      scrollRef.current.current = newPosition;
-      scrollRef.current.target = newPosition;
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animateIntro);
-      } else {
-        // Ensure we end exactly at INTRO_DURATION
-        sheet.sequence.position = INTRO_DURATION;
-        scrollRef.current.current = INTRO_DURATION;
-        scrollRef.current.target = INTRO_DURATION;
-        setIntroPlayed(true);
-      }
-    };
-
-    // Add a longer delay before starting the intro animation
+    // Set initial position immediately and enable interaction
+    sheet.sequence.position = INTRO_DURATION;
+    scrollRef.current.current = INTRO_DURATION;
+    scrollRef.current.target = INTRO_DURATION;
+    
+    // Enable interaction immediately after a very short delay
     setTimeout(() => {
-      animationFrame = requestAnimationFrame(animateIntro);
-    }, INITIAL_DELAY);
+      setIntroPlayed(true);
+    }, 200); // Just 200ms for scene to settle
 
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
   }, [sheet, projectReady, introPlayed]);
 
   useEffect(() => {

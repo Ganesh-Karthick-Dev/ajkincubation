@@ -36,8 +36,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 0.025, 1]}>
                 <mesh
                   name="Object_8"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_8.geometry}
                   material={materials['Material.002']}
                 />
@@ -45,8 +45,8 @@ export function AnimatedBook(props) {
               <group name="cover-r_35" position={[0.09, 0.025, 0]} scale={[0.71, 0.025, 1]}>
                 <mesh
                   name="Object_6"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_6.geometry}
                   material={materials['Material.004']}
                 />
@@ -58,8 +58,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_12"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_12.geometry}
                   material={materials.material_0}
                 />
@@ -71,8 +71,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_14"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_14.geometry}
                   material={materials.material_0}
                 />
@@ -84,8 +84,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_16"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_16.geometry}
                   material={materials.material_0}
                 />
@@ -97,8 +97,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_18"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_18.geometry}
                   material={materials.material_0}
                 />
@@ -110,8 +110,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_20"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_20.geometry}
                   material={materials.material_0}
                 />
@@ -123,8 +123,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_22"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_22.geometry}
                   material={materials.material_0}
                 />
@@ -136,8 +136,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_24"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_24.geometry}
                   material={materials.material_0}
                 />
@@ -149,8 +149,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_26"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_26.geometry}
                   material={materials.material_0}
                 />
@@ -162,8 +162,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_28"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_28.geometry}
                   material={materials.material_0}
                 />
@@ -175,8 +175,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_30"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_30.geometry}
                   material={materials.material_0}
                 />
@@ -188,8 +188,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_32"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_32.geometry}
                   material={materials.material_0}
                 />
@@ -201,8 +201,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_34"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_34.geometry}
                   material={materials.material_0}
                 />
@@ -214,8 +214,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_36"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_36.geometry}
                   material={materials.material_0}
                 />
@@ -227,8 +227,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_38"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_38.geometry}
                   material={materials.material_0}
                 />
@@ -240,8 +240,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_40"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_40.geometry}
                   material={materials.material_0}
                 />
@@ -253,8 +253,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_42"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_42.geometry}
                   material={materials['Material.005']}
                 />
@@ -266,8 +266,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_44"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_44.geometry}
                   material={materials['Material.006']}
                 />
@@ -279,8 +279,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_46"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_46.geometry}
                   material={materials.material_0}
                 />
@@ -292,8 +292,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_48"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_48.geometry}
                   material={materials.material_0}
                 />
@@ -305,8 +305,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_50"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_50.geometry}
                   material={materials.material_0}
                 />
@@ -318,8 +318,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_52"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_52.geometry}
                   material={materials.material_0}
                 />
@@ -331,8 +331,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_54"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_54.geometry}
                   material={materials.material_0}
                 />
@@ -344,8 +344,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_56"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_56.geometry}
                   material={materials.material_0}
                 />
@@ -357,8 +357,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_58"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_58.geometry}
                   material={materials.material_0}
                 />
@@ -370,8 +370,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_60"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_60.geometry}
                   material={materials.material_0}
                 />
@@ -383,8 +383,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_62"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_62.geometry}
                   material={materials.material_0}
                 />
@@ -396,8 +396,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_64"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_64.geometry}
                   material={materials.material_0}
                 />
@@ -409,8 +409,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_66"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_66.geometry}
                   material={materials.material_0}
                 />
@@ -422,8 +422,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_68"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_68.geometry}
                   material={materials.material_0}
                 />
@@ -435,8 +435,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_70"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_70.geometry}
                   material={materials.material_0}
                 />
@@ -448,8 +448,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_72"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_72.geometry}
                   material={materials.material_0}
                 />
@@ -461,8 +461,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_74"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_74.geometry}
                   material={materials.material_0}
                 />
@@ -474,8 +474,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_76"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_76.geometry}
                   material={materials.material_0}
                 />
@@ -487,8 +487,8 @@ export function AnimatedBook(props) {
                 scale={[0.71, 1, 1]}>
                 <mesh
                   name="Object_10"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_10.geometry}
                   material={materials['Material.001']}
                 />
@@ -500,8 +500,8 @@ export function AnimatedBook(props) {
                 scale={[0.09, 0.025, 1]}>
                 <mesh
                   name="Object_4"
-                  castShadow
-                  receiveShadow
+                  castShadow={false}
+                  receiveShadow={false}
                   geometry={nodes.Object_4.geometry}
                   material={materials['Material.003']}
                 />

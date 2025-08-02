@@ -8,67 +8,74 @@ import { useFrame } from '@react-three/fiber'
 
 export function GlobeSpin(props) {
   const groupRef = useRef()
+  const lastUpdateRef = useRef(0)
   const { nodes, materials } = useGLTF('/models/NewModels/compressed_globespin.glb')
   
   useFrame((state, delta) => {
+    const time = state.clock.elapsedTime
+    
+    // Throttle to 30fps for better performance
+    if (time - lastUpdateRef.current < 0.033) return
+    lastUpdateRef.current = time
+    
     if (groupRef.current) {
-      groupRef.current.rotation.x += delta * 0.5 // Adjust speed by changing the multiplier
+      groupRef.current.rotation.x += delta * 0.35 // Optimized speed
     }
   })
   return (
     <group {...props} dispose={null} position={[-7.009, 0.539, -60.089]} scale={0.0113}>
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box001_Box001_basematerial_0.geometry}
         material={materials.basematerial}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box001_Box001_heatshield_0.geometry}
         material={materials.heatshield}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box004_bridge_0.geometry}
         material={materials.bridge}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box006_blocks_0.geometry}
         material={materials.blocks}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box008_backmetal_0.geometry}
         material={materials.backmetal}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box009_blue_dongle_0.geometry}
         material={materials.blue_dongle}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Box010_dongles_0.geometry}
         material={materials.dongles}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes['Cylinder008_13_-_Default_0'].geometry}
         material={materials['13_-_Default']}
         position={[2.196, 18.596, 8.278]}
@@ -76,30 +83,30 @@ export function GlobeSpin(props) {
         scale={[0.455, 0.455, 1]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.lens_glass_0.geometry}
         material={materials.glass}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Loft002_pipes_0.geometry}
         material={materials.pipes}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes.Loft005_Loft005_06___Default_0.geometry}
         material={materials['06___Default']}
         rotation={[-Math.PI / 2, 0, 0]}
       />
       <mesh
        ref={groupRef}
-        castShadow
-        receiveShadow
+        castShadow={false}
+        receiveShadow={false}
         geometry={nodes['Sphere001_Material_#55_0'].geometry}
         material={materials.Material_55}
         position={[2.157, 66.812, 8.268]}

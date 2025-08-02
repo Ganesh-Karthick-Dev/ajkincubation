@@ -6,6 +6,7 @@ import {
   Grid,
   OrbitControls,
 } from "@react-three/drei";
+import * as THREE from "three";
 import React, { Suspense, useEffect, useRef, useState, Component } from "react";
 import BaseEnvironment from "./BaseEnvironment";
 import { getProject } from "@theatre/core";
@@ -15,8 +16,8 @@ import studio from "@theatre/studio";
 import { editable as e } from "@theatre/r3f";
 import sequences from "@/../public/sequences/MainProject.theatre-project-state_3.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
-import { AdaptiveQuality, useQuality } from "./PerformanceMonitor";
 import { CustomLoader } from "./CustomerLoader";
+import { SimpleLoader } from "./SimpleLoader";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import DynamicLighting from "@/Three/lighting/DynamicLighting";
 
@@ -75,8 +76,8 @@ function CanvesWrapper({ children }) {
   // Null safety check for children
   const safeChildren = children || null;
   
-  // Use quality context with hydration safety
-  const [quality, setQuality] = useState('medium');
+  // Fixed high quality settings for best performance
+  const quality = 'high';
   
   // Responsive camera state
   const [cameraSettings, setCameraSettings] = useState({
@@ -88,11 +89,6 @@ function CanvesWrapper({ children }) {
     setIsClient(true);
   }, []);
   
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setQuality(window.__r3f_qualityLevel || 'medium');
-    }
-  }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -144,11 +140,7 @@ function CanvesWrapper({ children }) {
   }, [sheet]);
   
   if (!isClient) {
-    return (
-      <div className="w-full h-full flex items-center justify-center bg-gray-900 rounded-[3rem]">
-        <div className="text-white">Loading 3D Scene...</div>
-      </div>
-    );
+    return <SimpleLoader />;
   }
 
   return (
@@ -174,16 +166,18 @@ function CanvesWrapper({ children }) {
           <Canvas
           camera={{ fov: cameraSettings.fov, position: cameraSettings.position }}
           gl={{
-            antialias: quality === 'low' ? false : (typeof window !== 'undefined' ? window.devicePixelRatio <= 1 : true),
+            antialias: true,
             preserveDrawingBuffer: false,
-            powerPreference: quality === 'low' ? 'default' : 'high-performance',
+            powerPreference: 'high-performance',
             alpha: false,
             stencil: false,
-            depth: true
+            depth: true,
+            logarithmicDepthBuffer: false,
+            premultipliedAlpha: false
           }}
-          dpr={quality === 'low' ? 1 : (typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1)}
-          shadows={quality === 'low' ? false : (typeof window !== 'undefined' && window.devicePixelRatio > 1 ? "soft" : "basic")}
-          performance={{ min: 0.1, max: 1, debounce: 200 }}
+          dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 2}
+          shadows="soft"
+          performance={{ min: 0.5, max: 1, debounce: 100 }}
           frameloop="always"
           style={{
             position: "absolute",
@@ -195,7 +189,6 @@ function CanvesWrapper({ children }) {
         >
           <Suspense fallback={<CustomLoader />}>
             
-          <AdaptiveQuality>
             <SheetProvider sheet={sheet}>
               <ScrollbasedAnimation project={project} />
               <PerspectiveCamera
@@ -236,7 +229,6 @@ function CanvesWrapper({ children }) {
           cellSize={1}
           cellThickness={1}
           /> */}
-          </AdaptiveQuality>
           </Suspense>
           </Canvas>
         </div>

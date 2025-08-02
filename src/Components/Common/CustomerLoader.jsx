@@ -14,15 +14,16 @@ export function CustomLoader() {
     function animate() {
       // Always animate toward 100 if progress is 100
       const target = progress === 100 ? 100 : progress
-      animProgress.current += (target - animProgress.current) * 0.2
-      if (Math.abs(target - animProgress.current) < 0.5) {
+      animProgress.current += (target - animProgress.current) * 0.4 // Faster animation
+      if (Math.abs(target - animProgress.current) < 0.1) { // More precise
         animProgress.current = target
       }
       setDisplay(animProgress.current)
       if (animProgress.current < 100) {
         rafRef.current = requestAnimationFrame(animate)
       } else {
-        setIsVisible(false)
+        // Hide loader immediately when 100% is reached
+        setTimeout(() => setIsVisible(false), 100) // Very short delay
       }
     }
     if (isVisible) {

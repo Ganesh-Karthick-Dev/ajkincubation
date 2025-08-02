@@ -4,10 +4,9 @@ import { useLoader, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Text3D, Center, Float } from "@react-three/drei";
 import { useCurrentSheet } from "@theatre/r3f";
-import { useQuality } from "@/Components/Common/PerformanceMonitor";
 
 function Wall() {
-  const quality = useQuality();
+  // Fixed quality for better performance
   // Create video element and set up
   const [video] = useState(() => 
     Object.assign(document.createElement('video'), { 
@@ -22,34 +21,31 @@ function Wall() {
   // Create video texture
   const [videoTexture] = useState(() => new THREE.VideoTexture(video));
   
-  // Play video when component mounts
+  // Play video when component mounts with proper cleanup
   useEffect(() => {
     video.play();
     // Use the new approach for color space
     videoTexture.colorSpace = THREE.SRGBColorSpace;
     videoTexture.minFilter = THREE.LinearFilter;
     videoTexture.magFilter = THREE.LinearFilter;
+    
     return () => {
+      // Proper cleanup to prevent memory leaks
       if (!video.paused) video.pause();
+      video.currentTime = 0;
+      videoTexture.dispose();
     };
   }, [video, videoTexture]);
 
-  // Use low-res textures for low quality
+  // Use optimized textures for better performance
   const [colorMap, normalMap, roughnessMap, metalnessMap] = useLoader(
     THREE.TextureLoader,
-    quality === 'low'
-      ? [
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg", // fallback to same, but you can add low-res if available
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
-        ]
-      : [
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg",
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
-          "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
-        ]
+    [
+      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_BaseColor.jpg",
+      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Normal.png",
+      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Roughness.jpg",
+      "/textures/Wall/Poliigon_PlasticMoldDryBlast_7495_Metallic.jpg",
+    ]
   );
 
   // Set texture parameters
@@ -107,18 +103,15 @@ function Wall() {
     return geometry;
   }, []);
 
-  // Use simpler material for low quality
+  // Optimized material for good performance
   const wallMaterial = useMemo(() => {
-    if (quality === 'low') {
-      return new THREE.MeshLambertMaterial({ map: colorMap });
-    }
     return new THREE.MeshStandardMaterial({
       map: colorMap,
       normalMap,
       roughnessMap,
       metalnessMap,
     });
-  }, [quality, colorMap, normalMap, roughnessMap, metalnessMap]);
+  }, [colorMap, normalMap, roughnessMap, metalnessMap]);
 
 
   const sheet = useCurrentSheet();

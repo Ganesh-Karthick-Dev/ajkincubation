@@ -50,16 +50,16 @@ const LaserLogo = () => {
     useFrame((state) => {
         const time = state.clock.elapsedTime;
         
-        // Enhanced pulsing effect for better focus
+        // Reduced pulsing effect to prevent excessive brightness
         if (materialRef.current) {
-            const pulse = 0.8 + Math.sin(time * 2.5) * 0.3;
+            const pulse = 0.4 + Math.sin(time * 2.5) * 0.2; // Lower base and variation
             materialRef.current.emissive.setHex(0x4e73ff);
             materialRef.current.emissiveIntensity = pulse;
         }
         
-        // Animated spotlight for dramatic effect
+        // Reduced animated spotlight intensity
         if (lightRef.current) {
-            lightRef.current.intensity = 2 + Math.sin(time * 2) * 0.5;
+            lightRef.current.intensity = 1.0 + Math.sin(time * 2) * 0.2; // Much lower intensity
         }
         
         // Subtle floating animation
@@ -74,30 +74,28 @@ const LaserLogo = () => {
             position={[0.043, 3.3, -58.0]}
             rotation={[0, 0, 0]}
         >
-            {/* Dramatic spotlight focused on the logo */}
+            {/* Reduced spotlight intensity to prevent excessive brightness */}
             <spotLight
                 ref={lightRef}
                 position={[0, 6, -55]}
                 target-position={[0.043, 3.3, -58.0]}
                 angle={0.3}
                 penumbra={0.5}
-                intensity={2.5}
+                intensity={1.2}
                 color="#4e73ff"
-                castShadow
-                shadow-mapSize-width={1024}
-                shadow-mapSize-height={1024}
+                castShadow={false}
             />
             
-            {/* Additional rim lighting */}
+            {/* Reduced rim lighting to prevent excessive brightness */}
             <pointLight 
                 position={[2, 4, -56]} 
-                intensity={1.2} 
+                intensity={0.4} 
                 color="#00ff88" 
                 distance={8}
             />
             <pointLight 
                 position={[-2, 4, -56]} 
-                intensity={1.2} 
+                intensity={0.4} 
                 color="#0088ff" 
                 distance={8}
             />
@@ -120,12 +118,12 @@ const LaserLogo = () => {
                         AIIF
                         <meshStandardMaterial 
                             ref={materialRef}
-                            color="#4e73ff" 
+                            color="#6e93ff" 
                             emissive="#4e73ff"
-                            emissiveIntensity={0.8}
-                            metalness={0.7}
-                            roughness={0.2}
-                            envMapIntensity={1.5}
+                            emissiveIntensity={0.9}
+                            metalness={0.6}
+                            roughness={0.3}
+                            envMapIntensity={1.2}
                         />
                         <Outlines thickness={3.5} color="#00ff88" opacity={0.9} />
                     </Text3D>
