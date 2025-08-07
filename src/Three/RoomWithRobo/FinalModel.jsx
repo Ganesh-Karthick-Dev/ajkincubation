@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { editable as e, useCurrentSheet } from "@theatre/r3f";
 import { useFrame } from "@react-three/fiber";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const FinalModel = React.forwardRef((props, ref) => {
   const animationRef = useRef();
@@ -16,6 +16,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
   const { actions, clips, names } = useAnimations(animations, animationRef);
   const sheet = useCurrentSheet();
   const [doorPosition, setDoorPosition] = useState([-1.303, 2.198, 30.913]);
+  const router = useRouter();
 
   useEffect(() => {
     actions.Animation.play();
@@ -40,12 +41,31 @@ export const FinalModel = React.forwardRef((props, ref) => {
     }
   });
 
-  // const router = useRouter();
+  const handleWallClick = () => {
+    console.log("Wall clicked - navigating to about page");
+    router.push("/about");
+  };
 
-  // const handlePopupAction = (content) => {
-  //   console.log("handlePopupAction");
-  //   router.push(`/${content}`);
-  // };
+  const handleServiceClick = () => {
+    console.log("Service clicked - navigating to service page");
+    router.push("/service");
+  };
+
+  const handleStartupClick = () => {
+    console.log("Startup clicked - navigating to startups page");
+    router.push("/startups");
+  };
+
+  const handleResourceClick = () => {
+    console.log("Resource clicked - navigating to resource page");
+    router.push("/resource");
+  };
+
+  const handleContactClick = () => {
+    console.log("Contact clicked - navigating to contact page");
+    router.push("/contact");
+  };
+
   
   return (
     <group ref={ref} {...props} dispose={null}>
@@ -1362,6 +1382,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
           material={materials["Material.028"]}
           position={[5.573, 2.244, -50.45]}
           scale={0.01}
+          onClick={handleContactClick}
         />
         <mesh
           name="Wall__Scifi_Wall_mat_0526"
@@ -1371,6 +1392,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
           material={materials["Scifi_Wall_mat.007"]}
           position={[0, 2.244, -66.796]}
           scale={0.01}
+          onClick={handleStartupClick}
         />
         <mesh
           name="Wall__Scifi_Wall_mat_0876"
@@ -1380,7 +1402,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
           material={materials["Scifi_Wall_mat.005"]}
           position={[-5.573, 2.244, -50.45]}
           scale={0.01}
-          
+          onClick={handleWallClick}
         />
         <mesh
           name="Wall__Scifi_Window_Glass_0"
@@ -1399,6 +1421,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
           material={materials["Material.024"]}
           position={[-8.796, 2.244, -60.506]}
           scale={0.01}
+          onClick={handleServiceClick}
         />
         <mesh
           name="Wall__Scifi_Window_Glass_0005"
@@ -1408,6 +1431,7 @@ export const FinalModel = React.forwardRef((props, ref) => {
           material={materials["Material.025"]}
           position={[8.789, 2.244, -60.506]}
           scale={0.01}
+          onClick={handleResourceClick}
         />
         <mesh
           name="Text"
