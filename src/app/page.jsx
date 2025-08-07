@@ -78,6 +78,7 @@ import { ProgramsService } from "@/Three/showcaseroom/newmodels/ProgramsService"
 import { SecondPic } from "@/Three/showcaseroom/newmodels/SecondPic";
 import { ThirdPic } from "@/Three/showcaseroom/newmodels/ThirdPic";
 import { FourthPic } from "@/Three/showcaseroom/newmodels/FourthPic";
+import { BlackObect } from "@/Three/showcaseroom/newmodels/BlackObect";
 
 
 export default function Home() {
@@ -200,6 +201,7 @@ export default function Home() {
   const secondPicModel = useMemo(() => <SecondPic />, []);
   const thirdPicModel = useMemo(() => <ThirdPic />, []);
   const fourthPicModel = useMemo(() => <FourthPic />, []);
+  const blackObectModel = useMemo(() => <BlackObect />, []);
   // const sixStepsOneModel = useMemo(() => <SixStepsOne />, []);
   // const sixStepAiifModel = useMemo(() => <SixStepAiif />, []);
 
@@ -346,6 +348,7 @@ export default function Home() {
         {secondPicModel}
         {thirdPicModel}
         {fourthPicModel}
+        {blackObectModel}
         {/* {sixStepsOneModel}
         {sixStepAiifModel} */}
         {/* <AjkCollageNameText /> */}
@@ -499,7 +502,7 @@ export default function Home() {
       </CanvesWrapper>
 
       {/* Scroll Indicator UI - Outside Canvas */}
-      {/* <ScrollIndicatorUI isVisible={scrollIndicatorVisible} /> */}
+      <ScrollIndicatorUI isVisible={scrollIndicatorVisible} />
 
       {/* Glass Popup - Outside Canvas */}
       {popupRender && (

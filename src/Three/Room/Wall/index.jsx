@@ -164,13 +164,13 @@ function Wall() {
           <Text3D
             font="/fonts/Ethnocentric_Regular.json"
             size={0.723}
-            height={0.0023}
-            curveSegments={12}
+            height={0.0013}
+            curveSegments={32}
             bevelEnabled
-            bevelThickness={0.1}
-            bevelSize={0.02}
+            bevelThickness={0.002}
+            bevelSize={0.008}
             bevelOffset={0}
-            bevelSegments={5}
+            bevelSegments={8}
             letterSpacing={0.15}
           >
             AIIF Ignites 
