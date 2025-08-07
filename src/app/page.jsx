@@ -1,6 +1,7 @@
 "use client";
 import CanvesWrapper from "@/Components/Common/CanvesWrapper";
 import Wall from "@/Three/Room/Wall";
+import MobileWall from "@/Three/Room/Wall/MobileWall";
 // import { RoboRoom  } from "@/Three/Robo/RoboRoom";
 // import { Robo } from "@/Three/Robo";
 import Idel from "@/Three/RoomWithRobo/Scene/Idel";
@@ -79,6 +80,7 @@ import { SecondPic } from "@/Three/showcaseroom/newmodels/SecondPic";
 import { ThirdPic } from "@/Three/showcaseroom/newmodels/ThirdPic";
 import { FourthPic } from "@/Three/showcaseroom/newmodels/FourthPic";
 import { BlackObect } from "@/Three/showcaseroom/newmodels/BlackObect";
+import PatchWall from "@/Three/Room/Wall/PatchWall";
 
 
 export default function Home() {
@@ -86,6 +88,7 @@ export default function Home() {
   const [popupRender, setPopupRender] = useState(false);
   const [activeController, setActiveController] = useState(null);
   const [scrollIndicatorVisible, setScrollIndicatorVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [popupContent, setPopupContent] = useState({
     title: "",
     description: "",
@@ -110,6 +113,17 @@ export default function Home() {
     loadFont();
   }, []);
 
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // GSAP Animation for popup
   useEffect(() => {
@@ -310,7 +324,8 @@ export default function Home() {
       <CanvesWrapper>
       {/* <Suspense fallback={<CustomLoader />}> */}
         <Idel />
-        <Wall />
+        {isMobile ? <MobileWall /> : <Wall />}
+        <PatchWall />
         {/* {laptopModel} */}
         {/* {scifiBoxModel} */}
 
