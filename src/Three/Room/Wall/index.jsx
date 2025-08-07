@@ -125,7 +125,7 @@ function Wall() {
 
 
   return (
-    <group >
+    <group position={[0,0,0.5353]}>
       <mesh position={[0, 2.4234, 34.3]} rotation={[0, 0, 0]}>
         <primitive object={wallGeometry} />
         <meshStandardMaterial
@@ -159,12 +159,12 @@ function Wall() {
         </Center>
       </group>
 
-          <group position={[-11.423, 4.5123, 34.512]} rotation={[0, 0, -0.0093]}>
+          <group position={[-11.323, 5.0123, 34.512]} rotation={[0, 0, -0.00]}>
         <Center>
           <Text3D
-            font="/fonts/Azonix_Regular.json"
-            size={0.923}
-            height={0.4}
+            font="/fonts/Ethnocentric_Regular.json"
+            size={0.723}
+            height={0.0023}
             curveSegments={12}
             bevelEnabled
             bevelThickness={0.1}
@@ -178,7 +178,7 @@ function Wall() {
           </Text3D>
 
 
-          <Text3D
+          {/* <Text3D
             font="/fonts/Audiowide_Regular.json"
             position={[5, -0.456, 1]} 
             size={0.1}
@@ -192,8 +192,8 @@ function Wall() {
             letterSpacing={0.05}
           >
             Scroll to see imagination turn into impact.
-            {/* <meshBasicMaterial toneMapped={false} map={videoTexture} /> */}
-          </Text3D>
+            <meshBasicMaterial toneMapped={false} map={videoTexture} />
+          </Text3D> */}
 
         </Center>
       </group>

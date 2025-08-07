@@ -10,6 +10,7 @@ import WhyWeExist from "./WhyWeExist";
 import ScrollFan from "./scroll-fan";
 import Image from "next/image";
 import FinalSection from "./FinalSection";
+import HorizontalScrollingCards from "./HorizontalScrollingCards";
 
 // Register GSAP with React
 gsap.registerPlugin(useGSAP);
@@ -64,7 +65,7 @@ function page() {
           </div>
 
           {/* section 2 - video */}
-          <div className="my-[1.5rem] w-full h-[180px] md:h-[350px] rounded-[3rem] md:rounded-[2rem] relative overflow-hidden">
+          <div className="my-[1.5rem] w-full h-[180px] md:h-[400px] rounded-[3rem] md:rounded-[2rem] relative overflow-hidden">
             
             {/* Left curtain */}
             <div 
@@ -79,11 +80,13 @@ function page() {
             />
 
             <Image
-              src="/webp/7379608_32265_updated.webp"
-              alt="aboutus"
-              width={1000}
-              height={1000}
-              className="w-full h-full object-contain md:object-cover rounded-[2rem]"
+              src="/webp/young-businessman-wearing.webp"
+              alt="About AJK Innovation Incubator Foundation"
+              width={1920}
+              height={1080}
+              priority
+              quality={95}
+              className="w-full h-full object-cover rounded-[2rem]"
             />
 
             

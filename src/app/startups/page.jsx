@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import RoboSection from './RoboSection';
+import Image from 'next/image';
 
 
 const CardDesign = ({ data }) => {
@@ -28,6 +29,7 @@ const page = () => {
     const circleRef = useRef(null);
     const diceTextRef = useRef(null);
     const diceShadowRef = useRef(null);
+    const diceImageRef = useRef(null);
 
     useGSAP(() => {
         const container = containerRef.current;
@@ -38,6 +40,7 @@ const page = () => {
         const circle = circleRef.current;
         const diceText = diceTextRef.current;
         const diceShadow = diceShadowRef.current;
+        const diceImage = diceImageRef.current;
 
                 // Check if device supports hover (not touch-only)
         const supportsHover = window.matchMedia('(hover: hover)').matches;
@@ -46,7 +49,7 @@ const page = () => {
         const isMobile = window.innerWidth < 768; // md breakpoint
         const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-        if (container && lightBlue && card && text && shadow && circle && diceText && diceShadow) {
+        if (container && lightBlue && card && text && shadow && circle && diceText && diceShadow && diceImage) {
             // Only add complex 3D animations on devices that support hover
             if (supportsHover && !isMobile) {
                 // Hover animation - create layered 3D separation
@@ -166,27 +169,36 @@ const page = () => {
             }
 
             // Dice roll reveal animation
-            const diceTexts = ["StartupTN", "EDIA", "IIC", "MS&ME"];
+            const diceTexts = [{name : "StartupTN", image : "/webp/startup/startup.webp"}, {name : "EDIA", image : "/webp/startup/EDIA.webp"}, {name : "IIC", image : "/webp/startup/iic.webp"}, {name : "MS&ME", image : "/webp/startup/ms&me.webp"}];
             let currentIndex = 0;
 
+            // Set initial text and image to match the first item
+            if (diceText && diceShadow && diceImage) {
+                diceText.textContent = diceTexts[0].name;
+                diceShadow.textContent = diceTexts[0].name;
+                diceImage.src = diceTexts[0].image;
+            }
+
             const rollReveal = () => {
-                // Move current text up and out
-                gsap.to([diceText, diceShadow], {
+                // Move current text and image up and out
+                gsap.to([diceText, diceShadow, diceImage], {
                     duration: 0.5,
                     y: -50,
                     opacity: 0,
                     ease: "power2.inOut",
                     onComplete: () => {
-                        // Update text content for both main text and shadow
+                        // Update text content for both main text and shadow, and image
                         currentIndex = (currentIndex + 1) % diceTexts.length;
-                        diceText.textContent = diceTexts[currentIndex];
-                        diceShadow.textContent = diceTexts[currentIndex];
+                        console.log(`Changing to: ${diceTexts[currentIndex].name} with logo: ${diceTexts[currentIndex].image}`);
+                        diceText.textContent = diceTexts[currentIndex].name;
+                        diceShadow.textContent = diceTexts[currentIndex].name;
+                        diceImage.src = diceTexts[currentIndex].image;
                         
                         // Reset position to below (hidden)
-                        gsap.set([diceText, diceShadow], { y: 50, opacity: 0 });
+                        gsap.set([diceText, diceShadow, diceImage], { y: 50, opacity: 0 });
                         
-                        // Slide new text up from below
-                        gsap.to([diceText, diceShadow], {
+                        // Slide new text and image up from below
+                        gsap.to([diceText, diceShadow, diceImage], {
                             duration: 0.5,
                             y: 0,
                             opacity: 1,
@@ -314,15 +326,24 @@ const page = () => {
                                 {/* Layer 3: Black Circle (Between shadow and text, behind upTN only) */}
                                 <div
                                     ref={circleRef}
-                                    className='w-16 h-16 sm:w-20 sm:h-20 lg:w-[120px] lg:h-[120px] bg-black rounded-full absolute pointer-events-none hidden sm:block'
+                                    className='w-16 h-16 sm:w-20 sm:h-20 lg:w-[120px] lg:h-[120px] bg-white rounded-full absolute pointer-events-none hidden sm:block'
                                     style={{
-                                        top: 'calc(28% - 8px)',
-                                        left: 'calc(50% + 20px)',
+                                        top: 'calc(22% - 10px)',
+                                        right: '5%',
                                         transformStyle: 'preserve-3d',
                                         transformOrigin: 'center center',
                                         zIndex: 3
                                     }}
                                 >
+                                    <img 
+                                        ref={diceImageRef}
+                                        src="/webp/startup/startup.webp" 
+                                        alt="logo" 
+                                        width={100}
+                                        height={100}
+                                        quality={100}
+                                        className="w-[7.5rem] h-[7.5rem] object-contain rounded-full"
+                                    />
                                 </div>
 
                                 {/* Layer 4: Main Text (Top Layer) */}

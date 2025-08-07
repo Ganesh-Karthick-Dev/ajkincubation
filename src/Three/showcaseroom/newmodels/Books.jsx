@@ -9,7 +9,7 @@ export function Books(props) {
   const { nodes, materials } = useGLTF('/models/NewModels/compressed_books.glb')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} position={[7.019, 0.571, -60.417]} scale={0.129}>
+      <group rotation={[-Math.PI / 2, 0, 0]} position={[7.019, 0.441, -60.417]} scale={0.129}>
         <mesh
           castShadow
           receiveShadow

@@ -46,7 +46,7 @@ const RoboName = () => {
     return (
         <group>
             <group
-                position={[-0.523, 3.092, -6.05812]}
+                position={[-0.423, 3.092, -5.53812]}
                 rotation={[0, 0 , 0]}
                 visible={true}
             >

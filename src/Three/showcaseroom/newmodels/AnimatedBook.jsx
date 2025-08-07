@@ -26,7 +26,7 @@ export function AnimatedBook(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, -1]} position={[7.119, 0.571, -59.817]} scale={0.209}>
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, -1]} position={[7.119, 0.431, -59.817]} scale={0.209}>
           <group name="root">
             <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
               <group

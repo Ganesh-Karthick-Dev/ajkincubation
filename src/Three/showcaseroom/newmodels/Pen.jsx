@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 export function Pen(props) {
   const { nodes, materials } = useGLTF('/models/NewModels/compressed_pen.glb')
   return (
-    <group {...props} dispose={null} position={[7.219, 0.571, -59.217]} scale={1.901} rotation={[0, 1, 0]}>
+    <group {...props} dispose={null} position={[7.219, 0.431, -59.217]} scale={1.901} rotation={[0, 1, 0]}>
       <mesh
         castShadow
         receiveShadow

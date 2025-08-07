@@ -117,7 +117,7 @@ const WhyWeExist = () => {
                 <div className='absolute inset-0 rounded-3xl' style={{ backgroundImage: "url('/investors_one_bg.jpg')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}></div>
 
                
-                    <Image ref={imageRef2} src="/webp/home.webp" alt="why-we-exist" width={2000} height={2000} className='absolute w-[130px] h-[130px] md:w-[230px] md:h-[230px] z-50 -top-[4rem] md:-top-[8.5rem] xs:left-[1%] md:right-[5%] transform rotate-5' />
+                    <Image ref={imageRef2} src="/webp/home.webp" alt="why-we-exist" width={2000} height={2000} className='absolute w-[130px] h-[130px] md:w-[230px] md:h-[230px] z-50 -top-[4rem] md:-top-[8.5rem] xs:left-[1%] md:right-[25%] transform rotate-5' />
 
                 
                 <div className='flex flex-col items-end gap-3 md:gap-5 rounded-xl px-6 md:px-[3.5rem] py-8 md:py-[4rem] justify-self-end w-full md:w-[60%] bg-gradient-to-l from-[#00CA40] from-0% via-[#00CA40] via-60% to-transparent to-100% relative z-10'>

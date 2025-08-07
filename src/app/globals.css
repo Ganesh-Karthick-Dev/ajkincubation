@@ -3,6 +3,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Custom Font Face Declarations */
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/Ethnocentric_Rg.otf') format('opentype'),
+       url('/fonts/Ethnocentric_Rg.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -77,6 +87,10 @@
 
 .font-audiowide {
   font-family: "Audiowide", sans-serif;
+}
+
+.font-ethnocentric {
+  font-family: "Ethnocentric", sans-serif;
 }
 
 /* ====================== Square Dotted Pattern Background ====================== */

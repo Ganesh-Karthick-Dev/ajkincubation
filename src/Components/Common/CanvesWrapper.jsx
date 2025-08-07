@@ -14,7 +14,7 @@ import { PerspectiveCamera, SheetProvider } from "@theatre/r3f";
 import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { editable as e } from "@theatre/r3f";
-import sequences from "@/../public/sequences/MainProject.theatre-project-state_3.json";
+import sequences from "@/../public/sequences/MainProject.theatre-project-state_4.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
 import { CustomLoader } from "./CustomerLoader";
 import { SimpleLoader } from "./SimpleLoader";
@@ -63,7 +63,7 @@ class ThreeErrorBoundary extends Component {
 //   studio.extend(extension);
 // }
 
-function CanvesWrapper({ children }) {
+function CanvesWrapper({ children, onDurationChange }) {
   const [isClient, setIsClient] = useState(false);
   
   // Initialize all hooks first - before any conditional returns
@@ -132,12 +132,17 @@ function CanvesWrapper({ children }) {
       if (sheet && overlayRef.current) {
         durationRef.current = sheet.sequence.position;
         overlayRef.current.textContent = `Current Duration: ${durationRef.current.toFixed(2)}`;
+        
+        // Call the callback if provided
+        if (onDurationChange) {
+          onDurationChange(durationRef.current);
+        }
       }
       frame = requestAnimationFrame(update);
     }
     update();
     return () => cancelAnimationFrame(frame);
-  }, [sheet]);
+  }, [sheet, onDurationChange]);
   
   if (!isClient) {
     return <SimpleLoader />;
@@ -147,7 +152,7 @@ function CanvesWrapper({ children }) {
     <ThreeErrorBoundary>
       <div className="w-full h-full relative p-2 md:p-3 lg:p-5 ">
           {/* Duration overlay - only show in development */}
-          {/* {process.env.NODE_ENV === 'development' && (
+          {process.env.NODE_ENV === 'development' && (
             <div ref={overlayRef} style={{
               position: 'fixed',
               top: 20,
@@ -161,13 +166,13 @@ function CanvesWrapper({ children }) {
               zIndex: 800,
               pointerEvents: 'none',
             }} />
-          )} */}
+          )}
         <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
           <Canvas
           camera={{ fov: cameraSettings.fov, position: cameraSettings.position }}
           gl={{
             antialias: true,
-            preserveDrawingBuffer: false,
+            preserveDrawingBuffer: true,
             powerPreference: 'high-performance',
             alpha: false,
             stencil: false,
