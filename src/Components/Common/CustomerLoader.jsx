@@ -14,9 +14,11 @@ export function CustomLoader() {
     function animate() {
       // Always animate toward 100 if progress is 100
       const target = progress === 100 ? 100 : progress
-      animProgress.current += (target - animProgress.current) * 0.4 // Faster animation
-      if (Math.abs(target - animProgress.current) < 0.1) { // More precise
-        animProgress.current = target
+      // Only move forward - never backward
+      const newProgress = Math.max(target, animProgress.current)
+      animProgress.current += (newProgress - animProgress.current) * 0.4 // Faster animation
+      if (Math.abs(newProgress - animProgress.current) < 0.1) { // More precise
+        animProgress.current = newProgress
       }
       setDisplay(animProgress.current)
       if (animProgress.current < 100) {
