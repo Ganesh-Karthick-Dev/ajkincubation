@@ -14,7 +14,7 @@ import { PerspectiveCamera, SheetProvider } from "@theatre/r3f";
 import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { editable as e } from "@theatre/r3f";
-import sequences from "@/../public/sequences/MainProject.theatre-project-state_4.json";
+import sequences from "@/../public/sequences/MainProject.theatre-project-state_5.json";
 import ScrollbasedAnimation from "@/Three/RoomWithRobo/Animation/ScrollbasedAnimation";
 import { CustomLoader } from "./CustomerLoader";
 import { SimpleLoader } from "./SimpleLoader";
