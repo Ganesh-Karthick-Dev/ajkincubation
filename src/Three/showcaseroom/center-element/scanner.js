@@ -22,7 +22,7 @@ export function Scanner(props) {
   })
 
   // Only render if currentDuration is greater than or equal to 38.01
-  if (currentDuration > 31.38 && currentDuration < 33.70) return null;
+  if (currentDuration > 29.95 && currentDuration < 33.70) return null;
 
   return (
     <group ref={group} {...props} dispose={null} position={[0.038, 1.834, -57.603]}>

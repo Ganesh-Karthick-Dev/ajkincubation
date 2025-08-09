@@ -394,7 +394,8 @@ export default function Home() {
             title: "From Idea to Launchpad",
             description: "Fuel your vision with expert-led incubation and startup essentials.",
             actionText: "Learn More",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-center"
           })}
         />
         <TextThree 
@@ -408,7 +409,8 @@ export default function Home() {
             title: "Build Fast. Think Bold.",
             description: "Experience hands-on bootcamps that turn raw ideas into real solutions.",
             actionText: "Explore",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-center"
           })}
         />
         <TextFour 
@@ -422,7 +424,8 @@ export default function Home() {
             title: "Mentors Who Move You Forward",
             description: "1-on-1 sessions with startup experts to sharpen your pitch, product, and path.",
             actionText: "Connect",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-center"
           })}
         />
         {/* <TextFive /> */}
@@ -450,12 +453,13 @@ export default function Home() {
           actionText="Get Started"
           onActionClick={handlePopupAction}
           showStartTime={19.56}
-          showEndTime={21.5}
+          showEndTime={21.0}
           onVisibilityChange={(isVisible) => handleTopTextVisibilityChange(isVisible, {
             title: "From Campus to Company Your Startup Journey Starts Here.",
             description: "",
             actionText: "Get Started",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-end"
           })}
         />
 
@@ -471,7 +475,8 @@ export default function Home() {
             title: "Big ideas deserve Bigger stage.",
             description: "",
             actionText: "Learn More",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-end"
           })}
         />
 
@@ -487,7 +492,8 @@ export default function Home() {
             title: "Big Dreams. Small Towns. Global Impact.",
             description: "",
             actionText: "Explore",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-end"
           })}
         />
 
@@ -503,7 +509,8 @@ export default function Home() {
             title: "Launch Your Startup Before You Graduate. We Turn Ideas into Impact.",
             description: "",
             actionText: "Start Now",
-            onActionClick: handlePopupAction
+            onActionClick: handlePopupAction,
+            position: "justify-center"
           })}
         />
 
@@ -521,7 +528,7 @@ export default function Home() {
 
       {/* Glass Popup - Outside Canvas */}
       {popupRender && (
-        <div className="fixed inset-0  flex items-center justify-center">
+        <div className={`fixed inset-0  flex items-center ${popupContent.position}`}>
           {/* Backdrop */}
           <div 
             ref={backdropRef}
@@ -530,7 +537,7 @@ export default function Home() {
           ></div>
           
           {/* Glass Popup Card */}
-          <div ref={popupRef} className="relative max-w-xl w-full mx-4">
+          <div ref={popupRef} className="relative max-w-lg w-full mx-4">
             {/* Glass Card */}
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 shadow-2xl transform transition-all duration-500 scale-100">
               {/* Gradient Border Effect */}
@@ -541,7 +548,7 @@ export default function Home() {
               <div className="relative z-10 text-center backdrop-blur-md bg-white border border-white/20 px-6 py-4 rounded-lg shadow-xl"
                    style={{ 
                      fontFamily: 'Ethnocentric, sans-serif',
-                     fontSize: '1.5rem',
+                     fontSize: '1.2rem',
                      letterSpacing: '0.1em',
                      textTransform: 'uppercase'
                    }}>
