@@ -152,7 +152,7 @@ function CanvesWrapper({ children, onDurationChange }) {
     <ThreeErrorBoundary>
       <div className="w-full h-full relative p-2 md:p-3 lg:p-5 ">
           {/* Duration overlay - only show in development */}
-          {process.env.NODE_ENV === 'development' && (
+          {/* {process.env.NODE_ENV === 'development' && (
             <div ref={overlayRef} style={{
               position: 'fixed',
               top: 20,
@@ -166,7 +166,7 @@ function CanvesWrapper({ children, onDurationChange }) {
               zIndex: 800,
               pointerEvents: 'none',
             }} />
-          )}
+          )} */}
         <div className="w-full h-full relative bg-black rounded-[3rem] overflow-hidden">
           <Canvas
           camera={{ fov: cameraSettings.fov, position: cameraSettings.position }}
