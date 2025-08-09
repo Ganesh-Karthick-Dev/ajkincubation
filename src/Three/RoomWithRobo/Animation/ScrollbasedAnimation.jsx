@@ -27,8 +27,9 @@ function ScrollbasedAnimation({ project }) {
   const [projectReady, setProjectReady] = useState(false);
   const totalDuration = val(sheet.sequence.pointer.length);
   const MAX_SCROLL_DURATION = 39; // Limit scrolling to duration 39
-  const INTRO_DURATION = 4; // Duration of intro animation
-  const INTRO_ANIMATION_DURATION = 0.5; // Fast intro - just 0.5 seconds
+  const INTRO_DURATION = 1; // Start from duration 1 (no longer skipping first 4)
+  const INTRO_END_DURATION = 4; // Auto-play until duration 4
+  const INTRO_PLAY_DURATION_MS = 4000; // Smooth autoplay duration (ms)
   const INITIAL_DELAY = 0; // No delay - immediate start
 
   // Wait for project to be ready
@@ -40,19 +41,46 @@ function ScrollbasedAnimation({ project }) {
     });
   }, [project]);
 
-  // Quick intro animation setup
+  // Intro auto-play animation from 1 -> 4, then enable interaction
   useEffect(() => {
     if (!sheet || !projectReady || introPlayed) return;
 
-    // Set initial position immediately and enable interaction
+    // Set initial position immediately
     sheet.sequence.position = INTRO_DURATION;
     scrollRef.current.current = INTRO_DURATION;
     scrollRef.current.target = INTRO_DURATION;
-    
-    // Enable interaction immediately after a very short delay
-    setTimeout(() => {
-      setIntroPlayed(true);
-    }, 200); // Just 200ms for scene to settle
+
+    // Smoothly animate to INTRO_END_DURATION
+    let rafId;
+    const startTime = performance.now();
+    const startPos = INTRO_DURATION;
+    const endPos = INTRO_END_DURATION;
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const t = Math.min(1, elapsed / INTRO_PLAY_DURATION_MS);
+      const eased = easeInOutQuint(t);
+      const pos = startPos + (endPos - startPos) * eased;
+      sheet.sequence.position = pos;
+      scrollRef.current.current = pos;
+      scrollRef.current.target = pos;
+
+      if (t < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        // Ensure we land exactly at the end and enable interaction
+        sheet.sequence.position = endPos;
+        scrollRef.current.current = endPos;
+        scrollRef.current.target = endPos;
+        setIntroPlayed(true);
+      }
+    };
+
+    rafId = requestAnimationFrame(step);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
 
   }, [sheet, projectReady, introPlayed]);
 
