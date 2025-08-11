@@ -10,11 +10,11 @@ const bentoCards = [
     content: (
       <>
         <p className="mb-2 text-xs md:text-sm leading-6">
-          At AJK Innovation Incubator Foundation (AIIF), we go beyond mentorship and workspace. We empower startups with access to essential templates, guides, and government updates all tailored to support early-stage entrepreneurs, student founders, and academic innovators.
+          At AJK Innovation Incubator Foundation (AIIF), we go beyond mentorship and workspace. We empower startups with access to essential templates, guides and government updates all tailored to support early-stage entrepreneurs, student founders and academic innovators.
         </p>
 
         <p className="mb-2 text-xs md:text-sm leading-6">
-          AJK Innovation Incubator Foundation (AIIF) helps early-stage startups, students, and academic founders by offering mentorship, workspaces, useful templates, and key government updates.
+          AJK Innovation Incubator Foundation (AIIF) helps early-stage startups, students and academic founders by offering mentorship, workspaces, useful templates and key government updates.
         </p>
 
       </>
@@ -32,10 +32,10 @@ const bentoCards = [
       <>
         <p className="mb-1 text-xs md:text-sm leading-6">Create strong investor-ready presentations with our professionally designed templates:</p>
         <ul className="list-disc pl-4 text-xs md:text-sm mb-1 leading-6 my-[8px]">
-          <li>Customizable Pitch Decks to showcase your idea, team, market, and financials</li>
-          <li>Business Model Canvas (BMC) templates to plan your startup's value, customer segments, and revenue strategy</li>
+          <li>Customizable Pitch Decks to showcase your idea, team, market and financials</li>
+          <li>Business Model Canvas (BMC) templates to plan your startup's value, customer segments and revenue strategy</li>
         </ul>
-        <p className="italic text-xs md:text-sm">(Perfect for idea validation, competitions, and funding presentations.)</p>
+        <p className="italic text-xs md:text-sm">(Perfect for idea validation, competitions and funding presentations.)</p>
       </>
     ),
     bg: 'bg-[#D1FADF]',
@@ -49,12 +49,12 @@ const bentoCards = [
     title: 'Startup Policy & Founder Handbook',
     content: (
       <>
-        <p className="mb-1 text-xs md:text-sm leading-6">Understand the rules, benefits, and support systems available for campus startups:</p>
+        <p className="mb-1 text-xs md:text-sm leading-6">Understand the rules, benefits and support systems available for campus startups:</p>
         <ul className="list-disc pl-4 text-xs md:text-sm mb-1 leading-6 my-[8px]">
           <li>AIIF's Startup Policy for students and faculty entrepreneurs</li>
-          <li>A Step-by-Step Handbook for starting, running, and registering a startup</li>
+          <li>A Step-by-Step Handbook for starting, running and registering a startup</li>
         </ul>
-        <p className="italic text-xs md:text-sm">(Know your rights, responsibilities, and the pathways to formalize your startup.)</p>
+        <p className="italic text-xs md:text-sm">(Know your rights, responsibilities and the pathways to formalize your startup.)</p>
       </>
     ),
     bg: 'bg-[#FFF7D1]',
@@ -70,7 +70,7 @@ const bentoCards = [
       <>
         <p className="mb-1 text-xs md:text-sm leading-6">Stay informed about the latest startup support from national and state bodies:</p>
         <ul className="list-disc pl-4 text-xs md:text-sm mb-1 leading-6 my-[8px]">
-          <li>Latest schemes from Startup India, StartupTN, BIRAC, EDII-TN, and MSME</li>
+          <li>Latest schemes from Startup India, StartupTN, BIRAC, EDII-TN and MSME</li>
           <li>Monthly updates on new grant opportunities</li>
           <li>Application tips and deadlines curated by the AIIF team</li>
         </ul>
@@ -90,7 +90,7 @@ const bentoCards = [
         <p className="mb-1 text-xs md:text-sm leading-6">Get recognized as an official micro or small business in India:</p>
         <ul className="list-disc pl-4 text-xs md:text-sm mb-1 leading-6 my-[8px]">
           <li>Step-by-step process for Udyam Registration under MSME</li>
-          <li>Benefits you receive: government schemes, subsidies, and easier funding access</li>
+          <li>Benefits you receive: government schemes, subsidies and easier funding access</li>
         </ul>
       </>
     ),
