@@ -6,11 +6,11 @@ import Link from "next/link";
 import { Menu, X, Home, Users, Briefcase, Rocket, BookOpen, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
+import { useNavbarStore } from "../../../store/navbarStore";
 
 function NavBar() {
   const pathname = usePathname(); // Gets current path like "/contact", "/about", etc.
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  const { isModalOpen, isDesktopMenuOpen, setIsModalOpen, setIsDesktopMenuOpen } = useNavbarStore();
   const modalRef = useRef(null);
   const overlayRef = useRef(null);
   const navItemsRef = useRef(null);

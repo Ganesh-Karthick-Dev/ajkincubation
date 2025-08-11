@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useCurrentSheet } from "@theatre/r3f";
 import { val } from "@theatre/core";
+import { useNavbarStore } from "../../../store/navbarStore";
 
 // Smooth easing function
 const easeOutCubic = (x) => {
@@ -17,6 +18,7 @@ const easeInOutQuint = (x) => {
 
 function ScrollbasedAnimation({ project }) {
   const sheet = useCurrentSheet();
+  const { setIsDesktopMenuOpen } = useNavbarStore();
   const scrollRef = useRef({
     current: 0,
     target: 0,
@@ -177,6 +179,11 @@ function ScrollbasedAnimation({ project }) {
     );
     
     sheet.sequence.position = scrollRef.current.current;
+    
+    // Control navbar based on scroll position
+    if (scrollRef.current.current >= 38.0) {
+      setIsDesktopMenuOpen(true);
+    }
   });
 
   return null;
