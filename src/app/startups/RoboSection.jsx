@@ -5,6 +5,9 @@ import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei
 
 const RoboSection = () => {
     const fovRef = useRef(55)
+    const [showGlow, setShowGlow] = useState(false)
+    const [hasTriggered, setHasTriggered] = useState(false)
+    const sectionRef = useRef(null)
 
     useEffect(() => {
         const handleResize = () => {
@@ -17,13 +20,45 @@ const RoboSection = () => {
         // Add event listener
         window.addEventListener('resize', handleResize)
 
+        // Intersection Observer for triggering effect only when section comes into view
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasTriggered) {
+                        // Section is visible and effect hasn't been triggered yet
+                        setHasTriggered(true)
+                        
+                        // Start the glow and blink effect
+                        setTimeout(() => {
+                            setShowGlow(true)
+                            // Turn off glow after 3 seconds
+                            setTimeout(() => setShowGlow(false), 3000)
+                        }, 500)
+                    }
+                })
+            },
+            {
+                threshold: 0.3, // Trigger when 30% of the section is visible
+                rootMargin: '0px'
+            }
+        )
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current)
+        }
+
         // Cleanup
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current)
+            }
+        }
+    }, [hasTriggered])
 
     return (
-        <>
-                <h1 className=' my-[70px]  text-center text-4xl font-bold'>Grow Your Startup with Expert Backing</h1>
+        <div ref={sectionRef}>
+            <h1 className=' my-[70px]  text-center text-4xl font-bold'>Grow Your Startup with Expert Backing</h1>
             <div className="grid grid-cols-12 gap-4 ">
 
 
@@ -58,6 +93,19 @@ const RoboSection = () => {
                             <Environment preset="city" />
                         </Suspense>
                     </Canvas>
+                    {/* Interactive instruction */}
+                    <div className="text-center mb-3">
+                        <div className={`inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium transition-all duration-1000 ${
+                            showGlow 
+                                ? 'shadow-[0_0_20px_rgba(59,130,246,0.8)] border-blue-400 scale-105 animate-pulse' 
+                                : 'shadow-none scale-100'
+                        }`}>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.122 2.122" />
+                            </svg>
+                            <span>Move your cursor over the drone to interact</span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* right side */}
@@ -76,7 +124,7 @@ const RoboSection = () => {
                 </div>
 
             </div>
-        </>
+        </div>
     )
 }
 
