@@ -75,10 +75,23 @@ const RoboSection = () => {
                         <p className=" leading-relaxed">Our hands-on clinic offers expert feedback, business coaching, and pitch support to shape your idea into a solid business.</p>
                     </div>
 
+                    <div className=" md:hidden text-center mb-3">
+                        <div className={`inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium transition-all duration-1000 ${
+                            showGlow 
+                                ? 'shadow-[0_0_20px_rgba(59,130,246,0.8)] border-blue-400 scale-105 animate-pulse' 
+                                : 'shadow-none scale-100'
+                        }`}>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.122 2.122" />
+                            </svg>
+                            <span>Touch the drone to explore</span>
+                        </div>
+                    </div>
+
                 </div>
 
                 {/* middle side */}
-                <div className="h-[70vh] md:h-[400px] w-full col-span-12 md:col-span-6">
+                <div className="h-[40vh] md:h-[400px] w-full  col-span-12 md:col-span-6">
                     <Canvas
                         style={{ width: '100%', height: '100%' }}
                     >
@@ -94,7 +107,7 @@ const RoboSection = () => {
                         </Suspense>
                     </Canvas>
                     {/* Interactive instruction */}
-                    <div className="text-center mb-3">
+                    <div className=" hidden md:block text-center mb-3">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium transition-all duration-1000 ${
                             showGlow 
                                 ? 'shadow-[0_0_20px_rgba(59,130,246,0.8)] border-blue-400 scale-105 animate-pulse' 

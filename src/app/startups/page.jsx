@@ -169,7 +169,7 @@ const page = () => {
             }
 
             // Dice roll reveal animation
-            const diceTexts = [{name : "StartupTN", image : "/webp/startup/startup.webp"}, {name : "EDIA", image : "/webp/startup/EDIA.webp"}, {name : "IIC", image : "/webp/startup/iic.webp"}, {name : "MS&ME", image : "/webp/startup/ms&me.webp"}];
+            const diceTexts = [{name : "StartupTN", image : "/webp/startup/startup.webp"}, {name : "EDII", image : "/webp/startup/EDIA.webp"}, {name : "IIC", image : "/webp/startup/iic.webp"}, {name : "MS&ME", image : "/webp/startup/ms&me.webp"}];
             let currentIndex = 0;
 
             // Set initial text and image to match the first item
@@ -326,7 +326,7 @@ const page = () => {
                                 {/* Layer 3: Black Circle (Between shadow and text, behind upTN only) */}
                                 <div
                                     ref={circleRef}
-                                    className='w-16 h-16 sm:w-20 sm:h-20 lg:w-[120px] lg:h-[120px] bg-white rounded-full absolute pointer-events-none hidden sm:block'
+                                    className='w-16 h-16 sm:w-20 sm:h-20 lg:w-[120px] lg:h-[120px] bg-white rounded-full absolute pointer-events-none'
                                     style={{
                                         top: 'calc(22% - 10px)',
                                         right: '5%',
@@ -342,7 +342,7 @@ const page = () => {
                                         width={100}
                                         height={100}
                                         quality={100}
-                                        className="w-[7.5rem] h-[7.5rem] object-contain rounded-full"
+                                        className="w-[7.5rem] h-[5rem] md:h-[7.5rem] object-contain rounded-full"
                                     />
                                 </div>
 
