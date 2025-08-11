@@ -305,7 +305,7 @@ const ContactForm = () => {
                 Phone Number
               </h4>
               <p className="font-outfit text-sm sm:text-base leading-6 text-[#7e7e7e]">
-                +91-6384555533
+                +91-8925889316
               </p>
             </div>
 
@@ -399,7 +399,7 @@ const ContactForm = () => {
               {/* WhatsApp Contact Content */}
               {activeModal === 'whatsapp' && (
                 <div className="text-center place-content-center place-items-center h-full">
-                  <p className="text-2xl font-bold text-gray-800">+91-6384555533</p>
+                  <p className="text-2xl font-bold text-gray-800">+91-8925889316</p>
                 </div>
               )}
 
@@ -434,7 +434,7 @@ const ContactForm = () => {
                 {activeModal === 'instagram' && 'Follow on Instagram'}
                 {activeModal === 'facebook' && 'Follow on Facebook'}
                 {activeModal === 'thread' && 'Follow on Thread'}
-                {activeModal === 'whatsapp' && 'Call us'}
+                {activeModal === 'whatsapp' && 'chat with us'}
                 {activeModal === 'whatsappChannel' && 'Click to Join'}
               </button>
             </div>
