@@ -195,7 +195,7 @@ function EventsPage() {
         id: `event-${n}`,
         src: `/EventImages/${n}.jpeg`,
         alt: `Event ${n}`,
-        title: `Event ${n}`,
+        title: ``,
       };
     })
   );
