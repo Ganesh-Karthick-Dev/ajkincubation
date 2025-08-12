@@ -134,11 +134,11 @@ function ModernGallery({ images, className }) {
             )}
 
             <div className="w-full h-full flex items-center justify-center px-12 md:px-16 py-16 md:py-20">
-              <div className="relative max-w-[90vw] max-h-[80vh] md:max-w-[85vw] md:max-h-[75vh]">
+              <div className="relative max-w-[90vw] max-h-[70vh]">
                 <img
                   src={images[selectedImage].src || "/placeholder.svg"}
                   alt={images[selectedImage].alt}
-                  className="max-w-full max-h-full object-contain rounded-2xl md:rounded-3xl shadow-2xl"
+                  className="max-w-full max-h-[70vh] object-contain rounded-2xl md:rounded-3xl shadow-2xl"
                 />
 
                 {/* Image loading indicator */}
