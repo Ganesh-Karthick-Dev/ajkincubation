@@ -104,17 +104,19 @@ export default function ScrollFan() {
       // Create scroll trigger for fan rotation
       ScrollTrigger.create({
         trigger: container,
-        start: "center center",
+        start: "top top",
         end: "+=2200", // Increased scroll distance for smoother rotation
-        scrub: 5,
+        scrub: true,
         scroller: "#main-scroll-area", // Tell ScrollTrigger to use the LayoutWrapper's scroll container
         pin: true, // Pin the component in place while scrolling
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
           const progress = self.progress
           rotation = -progress * 60 // 2 * 30, so all 3 blades pass through the right side
 
           // Rotate only the text elements, not the entire fan container with smooth transition
-          gsap.to(fanRef.current, { rotation: rotation, duration: 0.05, ease: "none", overwrite: "auto" })
+          gsap.set(fanRef.current, { rotation: rotation })
 
           // Calculate which text should be visible based on rotation
           let activeText = 0 // Start with the first text blade (index 0)
@@ -135,9 +137,6 @@ export default function ScrollFan() {
             
             // Check if text is on the right side (between 330 and 30 degrees)
             const isOnRightSide = normalizedAngle >= 330 || normalizedAngle <= 30
-            
-            // Debug logging
-            console.log(`Text ${index}: angle=${normalizedAngle.toFixed(1)}°, isOnRightSide=${isOnRightSide}, activeText=${activeText}`)
             
             if (index === activeText && isOnRightSide) {
               gsap.to(element, { opacity: 1, duration: 0.3 })
