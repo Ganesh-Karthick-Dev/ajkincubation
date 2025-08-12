@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./NavBar.css";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Home, Users, Briefcase, Rocket, BookOpen, Phone } from "lucide-react";
+import { Menu, X, Home, Users, Briefcase, Rocket, BookOpen, Phone, Calendar } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useNavbarStore } from "../../../store/navbarStore";
@@ -148,7 +148,7 @@ function NavBar() {
             </span>
           </div>
 
-          <div className={`menu__items font-audiowide items-center justify-center gap-[3rem] flex overflow-hidden transition-all duration-1000 ease-in-out ${isDesktopMenuOpen ? "w-[60rem]" : "w-0"}`}>
+          <div className={`menu__items font-audiowide items-center justify-center gap-[3rem] flex overflow-hidden transition-all duration-1000 ease-in-out ${isDesktopMenuOpen ? "w-[70rem]" : "w-0"}`}>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
               href="/"
@@ -169,6 +169,13 @@ function NavBar() {
               onClick={handleLinkClick}
             >
              Programs & Services
+            </Link>
+            <Link
+              className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
+              href="/events"
+              onClick={handleLinkClick}
+            >
+              Events
             </Link>
             <Link
               className="text-black text-sm md:text-lg whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:transition-all after:duration-300 after:bg-gradient-to-r after:from-[#6b95ff] after:to-[#4e73ff]"
@@ -293,6 +300,14 @@ function NavBar() {
                >
                  <Briefcase className="w-8 h-8 mr-4" />
                  Programs & Services
+               </Link>
+               <Link
+                 className="flex items-center text-3xl font-extrabold text-gray-800 py-3 border-b border-gray-100 hover:text-[#6b95ff] transition-colors"
+                 href="/events"
+                 onClick={handleLinkClick}
+               >
+                 <Calendar className="w-8 h-8 mr-4" />
+                 Events
                </Link>
                <Link
                  className="flex items-center text-3xl font-extrabold text-gray-800 py-3 border-b border-gray-100 hover:text-[#6b95ff] transition-colors"
