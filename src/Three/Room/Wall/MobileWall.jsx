@@ -136,11 +136,11 @@ function MobileWall() {
       />
     </mesh>
 
-    <group position={[-11.423, 6.1, 34.1]} rotation={[0, 0, 0.0093]}>
+    <group position={[-11.61, 5.5 , 34.1]} rotation={[0, 0, 0.0093]}>
       <Center>
         <Text3D
           font="/fonts/Audiowide_Regular.json"
-          size={0.2}
+          size={0.1}
           height={0.4}
           curveSegments={12}
           bevelEnabled
@@ -148,7 +148,7 @@ function MobileWall() {
           bevelSize={0.01}
           bevelOffset={0}
           bevelSegments={2}
-          letterSpacing={0.05}
+          letterSpacing={0.03}
         >
           From Spark to Solution
           {/* <meshBasicMaterial toneMapped={false} map={videoTexture} /> */}
@@ -156,19 +156,19 @@ function MobileWall() {
       </Center>
     </group>
 
-        <group position={[-11.453, 5.0123, 34.512]} rotation={[0, 0, -0.00]}>
+        <group position={[-11.653, 5.0123, 34.512]} rotation={[0, 0, -0.00]}>
       <Center>
         <Text3D
           font="/fonts/Ethnocentric_Regular.json"
-          size={0.423}
-          height={0.0013}
+          size={0.09}
+          height={0.0023}
           curveSegments={32}
           bevelEnabled
-          bevelThickness={0.002}
+          bevelThickness={0.001}
           bevelSize={0.008}
           bevelOffset={0}
           bevelSegments={8}
-          letterSpacing={0.15}
+          letterSpacing={0.1}
         >
           AIIF Ignites 
           <meshBasicMaterial toneMapped={false} map={videoTexture} />

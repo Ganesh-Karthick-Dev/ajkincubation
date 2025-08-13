@@ -95,7 +95,7 @@ function ScrollbasedAnimation({ project }) {
       const deltaY = e.deltaY * scrollSpeed;
       
       const newTarget = Math.max(
-        INTRO_DURATION,
+        INTRO_END_DURATION,
         Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + deltaY)
       );
       
@@ -122,7 +122,7 @@ function ScrollbasedAnimation({ project }) {
       const scrollSpeed = 0.01; // MUCH faster for touch
       
       const newTarget = Math.max(
-        INTRO_DURATION,
+        INTRO_END_DURATION,
         Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + deltaY * scrollSpeed)
       );
       
@@ -142,7 +142,7 @@ function ScrollbasedAnimation({ project }) {
         const momentum = velocity * (touchDuration / 100);
         
         const newTarget = Math.max(
-          INTRO_DURATION,
+          INTRO_END_DURATION,
           Math.min(MAX_SCROLL_DURATION, scrollRef.current.target + momentum)
         );
         
@@ -174,7 +174,7 @@ function ScrollbasedAnimation({ project }) {
     scrollRef.current.current += distance * smoothness;
     
     scrollRef.current.current = Math.max(
-      INTRO_DURATION,
+      INTRO_END_DURATION,
       Math.min(MAX_SCROLL_DURATION, scrollRef.current.current)
     );
     
